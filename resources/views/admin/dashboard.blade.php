@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-	This is a dashboard.
-</body>
-</html>
+@extends('layouts.app')
+
+@section('content')
+	hello
+	<i class="fas fa-home"></i>
+@endsection
