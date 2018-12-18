@@ -24,4 +24,13 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth'], 'namespace' => 'Admin']
 	Route::get('/dashboard', function () {
 		return view('admin.dashboard');
 	});
+	Route::get('/setting', function () {
+		return view('admin.setting');
+	});
+	Route::get('/project', function () {
+		return view('admin.project');
+	});
+	Route::get('/profile', function () {
+		return view('admin.profile');
+	});
 });
