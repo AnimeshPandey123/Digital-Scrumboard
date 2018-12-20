@@ -23,5 +23,19 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix'=>'admin', 'middleware'=>['auth'], 'namespace' => 'Admin'], function(){
 	Route::get('/dashboard', function () {
 		return view('admin.dashboard');
-	});
+	})->name('dashboard');
+	Route::get('/setting', function () {
+		return view('admin.setting');
+	})->name('setting');
+	Route::get('/project', function () {
+		return view('admin.project');
+	})->name('project');
+	Route::get('/profile', function () {
+		return view('admin.profile');
+	})->name('profile');
+
+	Route::get('/documentation/css', function(){
+		return view('admin.documentation.css');
+	})->name('css.documentation');
 });
+
