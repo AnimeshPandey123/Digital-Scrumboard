@@ -170,6 +170,42 @@
 							A pink card
 						</div>
 					</div>
+
+					<div id="buttons" style="margin-top:40px;">
+						<h5 class="text-info">Buttons</h5>
+						<div class="margin-top:20px;">
+							<h6>Default Buttons</h6>
+							<button class="btn dsb_button">
+								Normal button
+							</button>
+							<button class="btn dsb_button dsb_button_green">
+								Green button
+							</button>
+							<button class="btn dsb_button dsb_button_pink">
+								Pink button
+							</button>
+							<button class="btn dsb_button dsb_button_blue">
+								Blue Button
+							</button>
+							<br><br>
+							<h6>Buttons with Icons</h6>
+							<button class="btn dsb_button">
+								<i class="fas fa-home"></i>&nbsp;
+								Go Home
+							</button>
+							<button class="btn dsb_button dsb_button_green">
+								<i class="fas fa-cog"></i>&nbsp;
+								Settings
+							</button>
+							<button class="btn dsb_button dsb_button_pink">
+								<i class="fas fa-trash"></i>&nbsp;
+								Delete Files
+							</button>
+							<button class="btn dsb_button dsb_button_blue">
+								<i class="fas fa-check"></i>&nbsp;
+								Select All
+							</button>
+						</div>
 				</div>
 			</div>
 		</div>
