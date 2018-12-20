@@ -1,0 +1,26 @@
+/* ------------------------------------------------------------------------
+--------------------------------FONTS--------------------------------------
+---------------------------------------------------------------------------/*
+
+/* Poppins is going to be our primary font */
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+/*Pacifico is a cursive font, use only for fancy stuff */
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+
+/* -----------------------------------------------------------------------
+--------------------------GLOBAL STYLING ---------------------------------
+-------------------------------------------------------------------------- */
+
+body{background:#fafafa;margin:0px auto;padding:0px;font-family:Poppins;}
+p{font-size:1em;}
+a,a:hover,a:focus{color:inherit;text-decoration:none;transition:all 0.3s;}
+input:focus{outline:none;}
+
+/* -----------------------------------------------------------------------
+--------------------------COLORS ------- ---------------------------------
+-------------------------------------------------------------------------- */
+.yellow{background:#FFEAA7;}
+.green{background:#55EFC4;}
+.pink{background:#FD79A8;}
+.blue{background:#74B9FF;}
