@@ -33,4 +33,9 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth'], 'namespace' => 'Admin']
 	Route::get('/profile', function () {
 		return view('admin.profile');
 	})->name('profile');
+
+	Route::get('/documentation/css', function(){
+		return view('admin.documentation.css');
+	})->name('css.documentation');
 });
+
