@@ -24,48 +24,39 @@
 					      <a class="nav-link" href="#intro" style="color:#3498db;">Introduction</a>
 					    </li>
 					    <li class="nav-item">
-					      <a class="nav-link" href="#depend">Dependencies</a>
+					      <a class="nav-link" href="#depend" style="color:#3498db;">Dependencies</a>
 					    </li>
 					    <li class="nav-item">
-					      <a class="nav-link" href="#rules">Rules to follow</a>
+					      <a class="nav-link" href="#rules" style="color:#3498db;">Rules to follow</a>
 					    </li>
 					    <hr>
 					    <li class="nav-item">
-					    	<a class="nav-link" href="#ui">UI Elements</a>
+					    	<a class="nav-link" href="#ui" style="color:#3498db;">UI Elements</a>
 					    </li>
 					    <ul>
 					    	<li class="nav-link">
-					    		<a class="nav-item" href="#colors">Colors</a>
+					    		<a class="nav-item" href="#colors" style="color:#3498db;">Colors</a>
 					    	</li>
 					    	<li class="nav-link">
-					    		<a class="nav-item" href="#cards">Cards</a>
+					    		<a class="nav-item" href="#cards" style="color:#3498db;">Cards</a>
 					    	</li>
 					    	<li class="nav-link">
-					    		<a class="nav-item" href="#buttons">Buttons</a>
+					    		<a class="nav-item" href="#buttons" style="color:#3498db;">Buttons</a>
 					    	</li>
 					    	<li class="nav-link">
-					    		<a class="nav-item" href="#inputs">Input Boxes</a>
+					    		<a class="nav-item" href="#inputs" style="color:#3498db;">Inputs</a>
 					    	</li>
 					    	<li class="nav-link">
-					    		<a class="nav-item" href="#check">Checkbox/Radio</a>
+					    		<a class="nav-item" href="#progress" style="color:#3498db;">Progress Bars</a>
 					    	</li>
 					    	<li class="nav-link">
-					    		<a class="nav-item" href="#text">Text Area</a>
+					    		<a class="nav-item" href="#modal" style="color:#3498db;">Modals</a>
 					    	</li>
 					    	<li class="nav-link">
-					    		<a class="nav-item" href="#progress">Progress Bars</a>
+					    		<a class="nav-item" href="#tooltip" style="color:#3498db;">Tooltip</a>
 					    	</li>
 					    	<li class="nav-link">
-					    		<a class="nav-item" href="#typo">Typography</a>
-					    	</li>
-					    	<li class="nav-link">
-					    		<a class="nav-item" href="#modal">Modals</a>
-					    	</li>
-					    	<li class="nav-link">
-					    		<a class="nav-item" href="#tooltip">Tooltip</a>
-					    	</li>
-					    	<li class="nav-link">
-					    		<a class="nav-item" href="#animation">Animations</a>
+					    		<a class="nav-item" href="#animation" style="color:#3498db;">Animations</a>
 					    	</li>
 					    </ul>
 					  </ul>
@@ -141,6 +132,42 @@
 							<div class="col-md-6" style="background:#74B9FF;padding:10px;color:#fff;">
 								#74B9FF
 							</div>
+						</div>
+						<div style="margin-top:20px;">
+							<p class="text-theme">This is the theme text.</p>
+							<p class="text-pink">This text is pink</p>
+							<p class="text-green">This text is green</p>
+							<p class="text-blue">This text is blue</p>
+							<p class="text-yellow">You can hardly see this in this background</p>
+							<p class="text-grey">This is the default font color</p>
+							<p class="text-lightgrey">This can be used as secondary text color</p>
+						</div>
+					</div>
+
+					<div id="cards" style="margin-top:40px;">
+						<h5 class="text-info">Cards</h5>
+						<div class="dsb_card dsb_card20">
+							The padding is 20px
+						</div>
+						<br>
+						<div class="dsb_card dsb_card40">
+							The padding is 40px
+						</div>
+						<br>
+						<div class="dsb_card dsb_green_card dsb_card20 text-white">
+							A green card
+						</div>
+						<br>
+						<div class="dsb_card dsb_yellow_card dsb_card20 text-grey">
+							A yellow card
+						</div>
+						<br>
+						<div class="dsb_card dsb_blue_card dsb_card20 text-white">
+							A blue card
+						</div>
+						<br>
+						<div class="dsb_card dsb_pink_card dsb_card20 text-white">
+							A pink card
 						</div>
 					</div>
 				</div>
