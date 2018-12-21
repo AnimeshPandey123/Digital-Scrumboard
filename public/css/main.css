@@ -40,6 +40,7 @@ input:focus{outline:none;}
 /* -----------------------------------------------------------------------
 -------------------------- CARDS- ----------------------------------------
 -------------------------------------------------------------------------- */
+.dsb_cardz{border-radius:5px;background:#fff;color:#444;padding:10px;font-size:0.9em;}
 .dsb_card{border-radius:5px;background:#fff;box-shadow:0px 1px 6px #b5b5b5;}
 .dsb_card20{padding:20px;}
 .dsb_card40{padding:40px;}
@@ -49,6 +50,8 @@ input:focus{outline:none;}
 .dsb_green_card{background:#55EFC4;}
 .dsb_pink_card{background:#FD79A8;}
 .dsb_blue_card{background:#74B9FF;}
+.dsb_grey_card{background:#bdc3c7;}
+.dsb_primary_card{background:#005792;color:#fff;}
 
 /* -----------------------------------------------------------------------
 -------------------------- BUTTONS ---------------------------------------
@@ -78,6 +81,17 @@ input:focus{outline:none;}
 .profile_link:hover{color:#fff;}
 .pic_logo{width:28px;border-radius:100px;border:3px solid #fff;margin-left:-12px;}
 .profile_text{font-size:0.9em;margin-left:3px;}
+
+/* Your Projects Section */
+.bigicon{font-size:6em;opacity:0.3;}
+.centerpox{padding-top:40px;padding-bottom:40px;}
+
+/* Recent Tab */
+.whitenigga{color:#005792;background:#fff;padding:3px 9px;border-radius:100px;}
+.whitenigga:hover{color:#005792;}
+.cardz{margin-top:20px;}
+
+
 
 
 
