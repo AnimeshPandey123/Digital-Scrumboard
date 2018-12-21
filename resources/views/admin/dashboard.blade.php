@@ -16,9 +16,9 @@
 								new Chart(document.getElementById("pie-chart"), {
 								    type: 'pie',
 								    data: {
-								      labels: ["College Project", "Mind Map", "Designers Club"],
+								      labels: ["College Project", "Mind Map", "Designer's Club"],
 								      datasets: [{
-								        label: "Population (millions)",
+								        label: "Tasks",
 								        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f"],
 								        data: [2478,5267,734]
 								      }]
