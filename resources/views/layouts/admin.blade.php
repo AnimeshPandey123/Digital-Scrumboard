@@ -25,9 +25,6 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 
-    <!-- Custom CSS -->
-    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
-
     <!-- Animate CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
@@ -35,13 +32,46 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
 
+    <!-- Custom CSS -->
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 
 </head>
 <body>
     <div id="app">
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <nav class="navbar navbar-expand-sm navi">
+            <div class="container">
+                <a class="navbar-brand float-left">
+                    <img src="{{asset('images/logo.png')}}" alt="" class="logo">&nbsp;
+                    <span class="logotext">Digital SCRUM Board</span>
+                </a>
+                <h6 class="justify-content-end">
+                    <a href="#" class="nav_link navlink_active">
+                        Dashboard
+                    </a> 
+                    <a href="#" class="nav_link">
+                        Projects
+                    </a> 
+                    <a href="#" class="nav_link">
+                        Settings
+                    </a> 
+                    <a href="#" class="nav_link" style="font-size:1.1em; ">
+                        <i class="fas fa-bell"></i>
+                    </a> 
+                    <a href="#" class="profile_link">
+                        <img src="{{asset('images/picture.jpg')}}" alt="" class="pic_logo">
+                        <span class="profile_text">
+                            Melissa Williams&nbsp;
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </a>
+                </h6>
+            </div>
+        </nav>
+        <div class="container">
+            <main class="py-4">
+                @yield('content')
+            </main>
+        </div>
     </div>
 </body>
 </html>
