@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-	hello
+	This is project page
 	<i class="fas fa-home"></i>
 @endsection

@@ -45,19 +45,19 @@
                     <span class="logotext">Digital SCRUM Board</span>
                 </a>
                 <h6 class="justify-content-end">
-                    <a href="#" class="nav_link navlink_active">
+                    <a href="{{ route('dashboard') }}" class="nav_link navlink_active ">
                         Dashboard
                     </a> 
-                    <a href="#" class="nav_link">
+                    <a href="{{ route('project') }}" class="nav_link">
                         Projects
                     </a> 
-                    <a href="#" class="nav_link">
+                    <a href="{{ route('setting') }}" class="nav_link">
                         Settings
                     </a> 
                     <a href="#" class="nav_link" style="font-size:1.1em; ">
                         <i class="fas fa-bell"></i>
                     </a> 
-                    <a href="#" class="profile_link">
+                    <a href="{{ route('profile') }}" class="profile_link">
                         <img src="{{asset('images/picture.jpg')}}" alt="" class="pic_logo">
                         <span class="profile_text">
                             Melissa Williams&nbsp;
