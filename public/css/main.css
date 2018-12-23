@@ -95,3 +95,20 @@ input:focus{outline:none;}
 
 
 
+/* -----------------------Temp-------------------------*/
+
+.carousel-control-prev,.carousel-control-next{border-radius: 2px; width: 20px; background-color: pink;}
+.marz{margin: 5px;}
+
+.dsb_cardproject{border-radius:5px;box-shadow:0px 1px 6px #b5b5b5; width: 30%;display: inline-block;}
+.centerpoxv2{padding-top: 30px; padding-bottom: 30px;}
+.sort{margin: 20px 20px; float: right;}
+
+table{margin: 5px;color:#818181;}
+table th{border-bottom: 2px solid #ccc;} 
+td{font-size: 0.9rem; border-bottom: 2px solid #ddd; padding: 5px;}
+
+.prg_bar{width: 100%; background-color: #818181; border-radius: 5px; height: 1vh;}
+.prg{width: 50%;background-color: orange; border-radius: 5px;height: 1vh;}
+
+.pro_mem{width:40px;border-radius:50%;border:3px solid #fff;}
