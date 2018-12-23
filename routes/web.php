@@ -30,6 +30,11 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth'], 'namespace' => 'Admin']
 	Route::get('/project', function () {
 		return view('admin.project');
 	})->name('project');
+
+	Route::get('/project/main', function () {
+		return view('admin.project.mainProject');
+	})->name('project.main');
+
 	Route::get('/profile', function () {
 		return view('admin.profile');
 	})->name('profile');
