@@ -90,7 +90,7 @@
 	<h6 class="text-lightgrey" style="margin-top: 20px;">
 		All Projects
 	</h6>
-	<div class="dsb_card">
+	<div class="dsb_card dsb_card20">
 		<div class="row">
 			<div class="col-md-10"></div>
 			<div class="col-md-2">
@@ -101,7 +101,7 @@
 			</div>			
 		</div>
 
-		<table class="Project_tab">
+		<table class="table table-borderless Project_tab">
 			<tr>
 				<th style="width: 30vw"> Project </th>
 				<th style="width: 50vw"> Details </th>
