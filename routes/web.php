@@ -18,18 +18,16 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('login/google', 'Auth\LoginController@redirectToProvider')->name('login.google');
+Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');
 
-
-Route::group(['prefix'=>'admin', 'middleware'=>['auth'], 'namespace' => 'Admin'], function(){
-	Route::get('/dashboard', function () {
-		return view('admin.dashboard');
-	})->name('dashboard');
+Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
+	Route::get('/dashboard', 'Dashboard\DashboardController@index')->name('dashboard');
 	Route::get('/setting', function () {
 		return view('admin.setting');
 	})->name('setting');
-	Route::get('/project', function () {
-		return view('admin.project');
-	})->name('project');
+	Route::get('/project', 'Project\ProjectController@index')->name('project');
+	Route::post('/project/store', 'Project\ProjectController@store')->name('project.create');
 
 	Route::get('/project/main', function () {
 		return view('admin.project.mainProject');
@@ -43,4 +41,5 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth'], 'namespace' => 'Admin']
 		return view('admin.documentation.css');
 	})->name('css.documentation');
 });
+
 

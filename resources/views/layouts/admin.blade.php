@@ -60,7 +60,7 @@
                     <a href="{{ route('profile') }}" class="profile_link">
                         <img src="{{asset('images/picture.jpg')}}" alt="" class="pic_logo">
                         <span class="profile_text">
-                            Melissa Williams&nbsp;
+                            {{auth()->user()->name}}&nbsp;
                             <i class="fas fa-chevron-down"></i>
                         </span>
                     </a>

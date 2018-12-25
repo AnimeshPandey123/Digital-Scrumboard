@@ -13,7 +13,7 @@
 							<canvas id="pie-chart" width="100" height="100"></canvas>
 							<!-- Pie Chart -->
 							<script>
-								new Chart(document.getElementById("pie-chart"), {
+								 new Chart(document.getElementById("pie-chart"), {
 								    type: 'pie',
 								    data: {
 								      labels: ["College Project", "Mind Map", "Designer's Club"],
@@ -47,6 +47,7 @@
 				Your Projects
 			</h6>	
 			<div class="row">
+				@foreach($projects as $project)
 				<div class="col-md-4">
 					<div class="dsb_card">
 					  <div class="card-body dsb_blue_card">
@@ -54,29 +55,11 @@
 					  		<i class="fas fa-graduation-cap bigicon align-middle"></i>
 					  	</div>
 					  </div> 
-					  <div class="card-footer">College Project</div>
+					  <div class="card-footer">{{$project->name}}</div>
 					</div>
 				</div>
-				<div class="col-md-4">
-					<div class="dsb_card" >
-					  <div class="card-body dsb_green_card">
-					  	<div class="text-center centerpox">
-					  		<i class="fas fa-brain bigicon"></i>
-					  	</div>
-					  </div> 
-					  <div class="card-footer">Mind Map</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="dsb_card" >
-					  <div class="card-body dsb_pink_card">
-					  	<div class="text-center centerpox">
-					  		<i class="fas fa-palette bigicon"></i>
-					  	</div>
-					  </div> 
-					  <div class="card-footer">Designer's Club</div>
-					</div>
-				</div>
+				@endforeach
+			
 			</div>	
 			<br>
 			<div class="row">

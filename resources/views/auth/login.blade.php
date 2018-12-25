@@ -1,5 +1,41 @@
 @extends('layouts.app')
-
+@section('styles')
+<style type="text/css">
+     #customBtn {
+      display: inline-block;
+      background: white;
+      color: #444;
+      width: 190px;
+      border-radius: 5px;
+      border: thin solid #888;
+      box-shadow: 1px 1px 1px grey;
+      white-space: nowrap;
+    }
+    #customBtn:hover {
+      cursor: pointer;
+    }
+    span.label {
+      font-family: serif;
+      font-weight: normal;
+    }
+    span.icon {
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png') transparent 5px 50% no-repeat;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+    }
+    span.buttonText {
+      display: inline-block;
+      vertical-align: middle;
+      padding-left: 42px;
+      padding-right: 42px;
+      font-size: 14px;
+      font-weight: bold;
+      /* Use the Roboto font that is loaded in the <head> */
+      font-family: 'Roboto', sans-serif;
+    }
+</style>
+@endsection
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -56,14 +92,16 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
+                                <br>
+                              
+                                
                             </div>
                         </div>
                     </form>
+
                 </div>
+                                      <a style="margin-left: 25%;" id="customBtn" href="{{route('login.google')}}"><span class="icon"></span>
+      <span class="buttonText">Google</span></a>
             </div>
         </div>
     </div>
