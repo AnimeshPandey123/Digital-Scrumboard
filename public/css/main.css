@@ -113,6 +113,7 @@ input:focus{outline:none;}
 .peeps_blue{border:3px solid #74b9ff;}
 .peeps_pink{border:3px solid #fd79a8;}
 .peeps_green{border:3px solid #55efc4;}
+.nobox_button{background:none;border:none;cursor:pointer;font-size:1.5em;}
 
 /* -------------------------------------------------------------------------------------------
 ---------------------------------- SETTINGS PAGE ---------------------------------------------
