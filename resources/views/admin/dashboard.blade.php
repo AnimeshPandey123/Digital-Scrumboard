@@ -10,27 +10,7 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div>
-							<canvas id="pie-chart" width="100" height="100"></canvas>
-							<!-- Pie Chart -->
-							<script>
-								new Chart(document.getElementById("pie-chart"), {
-								    type: 'pie',
-								    data: {
-								      labels: ["College Project", "Mind Map", "Designer's Club"],
-								      datasets: [{
-								        label: "Tasks",
-								        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f"],
-								        data: [2478,5267,734]
-								      }]
-								    },
-								    options: {
-								      title: {
-								        display: true,
-								        text: 'Tasks Division'
-								      }
-								    }
-								});
-							</script>
+							
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -81,7 +61,7 @@
 			<br>
 			<div class="row">
 				<div class="col-md-4">
-					<div class="dsb_card">
+					<div class="dsb_card" style="border-style:dashed;border-color:#7f8c8d">
 					  <div class="card-body dsb_grey_card">
 					  	<div class="text-center centerpox">
 					  		<i class="fas fa-plus bigicon"></i>
