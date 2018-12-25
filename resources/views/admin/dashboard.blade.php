@@ -64,7 +64,7 @@
 			<br>
 			<div class="row">
 				<div class="col-md-4">
-					<div class="dsb_card" style="border-style:dashed;border-color:#7f8c8d">
+					<div class="dsb_card">
 					  <div class="card-body dsb_grey_card">
 					  	<div class="text-center centerpox">
 					  		<i class="fas fa-plus bigicon"></i>
@@ -86,93 +86,7 @@
 				</span><br>
 				<div class="cardz">
 					<div class="dsb_cardz">
-						<i>
-							<span style="float:right;">
-								15th Dec
-							</span>
-						</i>
-						<table class="table table-sm table-borderless">
-							<tr>
-								<td>
-									<img src="{{asset('images/picture.jpg')}}" alt="" class="rec_pic">
-								</td>
-								<td>
-									<b class="text-theme">Melissa Willaims</b><br> completed 2 tasks in <b class="text-theme">College Project</b>
-								</td>
-							</tr>
-						</table>
-					</div>
-					<br>
-					<div class="dsb_cardz">
-						<i>
-							<span style="float:right;">
-								15th Dec
-							</span>
-						</i>
-						<table class="table table-sm table-borderless">
-							<tr>
-								<td>
-									<img src="{{asset('images/picture.jpg')}}" alt="" class="rec_pic">
-								</td>
-								<td>
-									<b class="text-theme">Melissa Willaims</b><br> completed 5 tasks in <b class="text-theme">Mind Map</b>
-								</td>
-							</tr>
-						</table>
-					</div>
-					<br>
-					<div class="dsb_cardz">
-						<i>
-							<span style="float:right;">
-								15th Dec
-							</span>
-						</i>
-						<table class="table table-sm table-borderless">
-							<tr>
-								<td>
-									<img src="{{asset('images/picture.jpg')}}" alt="" class="rec_pic">
-								</td>
-								<td>
-									<b class="text-theme">Melissa Willaims</b><br> created a new project <b class="text-theme">DotA Team</b> and added 17 memebers
-								</td>
-							</tr>
-						</table>
-					</div>
-					<br>
-					<div class="dsb_cardz">
-						<i>
-							<span style="float:right;">
-								15th Dec
-							</span>
-						</i>
-						<table class="table table-sm table-borderless">
-							<tr>
-								<td>
-									<img src="{{asset('images/picture.jpg')}}" alt="" class="rec_pic">
-								</td>
-								<td>
-									<b class="text-theme">Melissa Willaims</b><br> created a new project <b class="text-theme">Reddit Nepal Mod</b> and added 3 memebers
-								</td>
-							</tr>
-						</table>
-					</div>
-					<br>
-					<div class="dsb_cardz">
-						<i>
-							<span style="float:right;">
-								15th Dec
-							</span>
-						</i>
-						<table class="table table-sm table-borderless">
-							<tr>
-								<td>
-									<img src="{{asset('images/picture.jpg')}}" alt="" class="rec_pic">
-								</td>
-								<td>
-									<b class="text-theme">Melissa Willaims</b><br> archived 25 tasks in <b class="text-theme">College Project</b>
-								</td>
-							</tr>
-						</table>
+						yolo
 					</div>
 				</div>
 			</div>
