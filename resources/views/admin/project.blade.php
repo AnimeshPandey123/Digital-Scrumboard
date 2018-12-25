@@ -62,6 +62,7 @@
 		All Projects
 	</h6>
 	<div class="dsb_card dsb_card20">
+		@if($projects)
 		<div class="row">
 			<div class="col-md-10"></div>
 			<div class="col-md-2">
@@ -71,14 +72,14 @@
 				</div>
 			</div>			
 		</div>
-
+		
 		<table class="table table-borderless Project_tab">
 			<tr>
 				<th style="width: 30vw"> Project </th>
 				<th style="width: 50vw"> Details </th>
 				<th style="width: 20vw"> Members </th>
 			</tr>
-			@if($projects)
+			
 			@foreach($projects as $project)
 			<tr>
 				<td>
@@ -107,11 +108,12 @@
 				</td>
 			</tr>
 			@endforeach
-			@else
 			
-			@endif
 			
 		</table>
+		@else
+			
+		@endif
 	</div>
 	
 @endsection

@@ -76,21 +76,107 @@
 			</div>	
 		</div>
 		<div class="col-md-4">
-			<div class="dsb_card dsb_card20 dsb_primary_card">
-				<span class="text-white" style="font-size:1.1em;">Recents</span>
-				<span style="float:right;">
-					<a href="#" class="whitenigga">
-						<i class="fas fa-sync"></i>&nbsp;
-						update
-					</a>
-				</span><br>
-				<div class="cardz">
-					<div class="dsb_cardz">
-						yolo
+				<div class="dsb_card dsb_card20 dsb_primary_card">
+					<span class="text-white" style="font-size:1.1em;">Recents</span>
+					<span style="float:right;">
+						<a href="#" class="whitenigga">
+							<i class="fas fa-sync"></i>&nbsp;
+							update
+						</a>
+					</span><br>
+					<div class="cardz">
+						<div class="dsb_cardz">
+							<i>
+								<span style="float:right;">
+									15th Dec
+								</span>
+							</i>
+							<table class="table table-sm table-borderless">
+								<tr>
+									<td>
+										<img src="{{asset('images/picture.jpg')}}" alt="" class="rec_pic">
+									</td>
+									<td>
+										<b class="text-theme">Melissa Willaims</b><br> completed 2 tasks in <b class="text-theme">College Project</b>
+									</td>
+								</tr>
+							</table>
+						</div>
+						<br>
+						<div class="dsb_cardz">
+							<i>
+								<span style="float:right;">
+									15th Dec
+								</span>
+							</i>
+							<table class="table table-sm table-borderless">
+								<tr>
+									<td>
+										<img src="{{asset('images/picture.jpg')}}" alt="" class="rec_pic">
+									</td>
+									<td>
+										<b class="text-theme">Melissa Willaims</b><br> completed 5 tasks in <b class="text-theme">Mind Map</b>
+									</td>
+								</tr>
+							</table>
+						</div>
+						<br>
+						<div class="dsb_cardz">
+							<i>
+								<span style="float:right;">
+									15th Dec
+								</span>
+							</i>
+							<table class="table table-sm table-borderless">
+								<tr>
+									<td>
+										<img src="{{asset('images/picture.jpg')}}" alt="" class="rec_pic">
+									</td>
+									<td>
+										<b class="text-theme">Melissa Willaims</b><br> created a new project <b class="text-theme">DotA Team</b> and added 17 memebers
+									</td>
+								</tr>
+							</table>
+						</div>
+						<br>
+						<div class="dsb_cardz">
+							<i>
+								<span style="float:right;">
+									15th Dec
+								</span>
+							</i>
+							<table class="table table-sm table-borderless">
+								<tr>
+									<td>
+										<img src="{{asset('images/picture.jpg')}}" alt="" class="rec_pic">
+									</td>
+									<td>
+										<b class="text-theme">Melissa Willaims</b><br> created a new project <b class="text-theme">Reddit Nepal Mod</b> and added 3 memebers
+									</td>
+								</tr>
+							</table>
+						</div>
+						<br>
+						<div class="dsb_cardz">
+							<i>
+								<span style="float:right;">
+									15th Dec
+								</span>
+							</i>
+							<table class="table table-sm table-borderless">
+								<tr>
+									<td>
+										<img src="{{asset('images/picture.jpg')}}" alt="" class="rec_pic">
+									</td>
+									<td>
+										<b class="text-theme">Melissa Willaims</b><br> archived 25 tasks in <b class="text-theme">College Project</b>
+									</td>
+								</tr>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 	</div>
 
 @endsection

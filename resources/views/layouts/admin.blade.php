@@ -39,7 +39,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-sm navi">
-            <div class="container">
+            <div class="container-fluid">
                 <a class="navbar-brand float-left">
                     <img src="{{asset('images/logo.png')}}" alt="" class="logo">&nbsp;
                     <span class="logotext">Digital SCRUM Board</span>
@@ -67,7 +67,7 @@
                 </h6>
             </div>
         </nav>
-        <div class="container">
+        <div class="container-fluid">
             <main class="py-4">
                 @yield('content')
             </main>

@@ -37,12 +37,15 @@ input:focus{outline:none;}
 .text-white{color:#ffffff;}
 .text-grey{color:#444444;}
 .text-lightgrey{color:#818181;}
+.bolder{font-weight:bold;}
 
 /* Buttons */
 .redbutton{border-radius:5px;transition:0.5s;background:#e74c3c;padding:5px 15px;border:none;}
 .redbutton:hover{background:#c0392b;}
 .bluebutton{border-radius:5px;transition:0.5s;background:#3498db;padding:5px 15px;border:none;}
 .bluebutton:hover{background:#2980b9;}
+.greenbutton{border-radius:5px;transition:0.5s;background:#2ecc71;padding:5px 15px;border:none;}
+.greenbutton:hover{background:#27ae60;}
 
 
 /* -----------------------------------------------------------------------
@@ -101,6 +104,17 @@ input:focus{outline:none;}
 .rec_pic{width:32px;border-radius:100px;}
 
 /* -------------------------------------------------------------------------------------------
+---------------------------------- INDIVIDUAL PROJECT-----------------------------------------
+----------------------------------------------------------------------------------------------*/
+.project_wrapper{width:90%;margin-left:auto;margin-right:auto;}
+.ico_gre{color:#CBCBCB;}
+.task_peeps{width:32px;border-radius:100px;margin-bottom:-40px;}
+.peeps_yellow{border:3px solid #FFEAA7;}
+.peeps_blue{border:3px solid #74b9ff;}
+.peeps_pink{border:3px solid #fd79a8;}
+.peeps_green{border:3px solid #55efc4;}
+
+/* -------------------------------------------------------------------------------------------
 ---------------------------------- SETTINGS PAGE ---------------------------------------------
 ----------------------------------------------------------------------------------------------*/
 
@@ -114,7 +128,7 @@ input:focus{outline:none;}
 
 /* -----------------------Temp-------------------------*/
 
-.carousel-control-prev,.carousel-control-next{border-radius: 2px; width: 20px; background-color: pink;}
+.carousel-control-prev,.carousel-control-next{border-radius: 2px; width: 20px; background-color:pink;}
 .marz{margin: 5px;}
 
 .dsb_cardproject{border-radius:5px;box-shadow:0px 1px 6px #b5b5b5; width: 30%;display: inline-block;}
