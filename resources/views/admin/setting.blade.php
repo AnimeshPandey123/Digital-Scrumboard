@@ -81,9 +81,66 @@
 		  		</tr>
 		  	</table>
 		  </div> 
-		  <div class="tab-pane container fade" id="profile">...</div>
+		  <div class="tab-pane container fade" id="profile">
+		  	<div class="text-center">
+		  		<img src="{{asset('images/picture.jpg')}}" alt="" class="pro_settings"><br>
+		  		<a href="#" style="color:#005792;font-size:0.8em;">Change Picture</a>
+		  	</div>
+		  </div>
 		  <div class="tab-pane container fade" id="notifications">...</div>
-		  <div class="tab-pane container fade" id="custom">...</div>
+		  <div class="tab-pane container fade" id="custom">
+		  	<div class="text-center">
+		  		<div class="row">
+		  			<div class="col-md-6">
+		  				<div class="light">
+		  					<div class="purp"></div>
+		  					<div class="row">
+		  						<div class="col-md-6">
+		  							<div class="purp"></div>
+		  							<div class="purp"></div>
+		  							<div class="purp"></div>
+		  							<div class="purp"></div>
+		  						</div>
+		  						<div class="col-md-6">
+		  							<div class="purp" style="height:85px;"></div>
+		  						</div>
+		  					</div>
+		  					<div class="purp"></div>
+		  				</div>
+		  			</div>
+		  			<div class="col-md-6">
+		  				<div class="dark">
+		  					<div class="purpa"></div>
+		  					<div class="row">
+		  						<div class="col-md-6">
+		  							<div class="purpa"></div>
+		  							<div class="purpa"></div>
+		  							<div class="purpa"></div>
+		  							<div class="purpa"></div>
+		  						</div>
+		  						<div class="col-md-6">
+		  							<div class="purpa" style="height:85px;"></div>
+		  						</div>
+		  					</div>
+		  					<div class="purpa"></div>
+		  				</div>
+		  			</div>
+		  		</div>
+		  		<br>
+		  		<div class="row">
+		  			<div class="col-md-6">
+		  				Light Theme (Current)
+		  			</div>
+		  			<div class="col-md-6">
+		  				Dark Theme 
+		  				<button class="btn btn-sm btn-info bluebutton" style="margin-left:40px;">
+		  					<i class="fas fa-check"></i>&nbsp;
+		  					Apply
+		  				</button>
+		  			</div>
+		  		</div>
+		  	</div>
+		  </div>
 		</div>
 	</div>
 @endsection
