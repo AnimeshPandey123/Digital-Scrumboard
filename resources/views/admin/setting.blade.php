@@ -42,7 +42,7 @@
 			  				Change Username
 			  			</td>
 			  			<td>
-			  				<input type="text" class="form-control boxee" placeholder="Username" >
+			  				<input type="text" class="boxee" placeholder="Username" >
 			  			</td>
 			  		</tr>
 			  		<tr>
@@ -55,9 +55,9 @@
 			  				Chage Password
 			  			</td>
 			  			<td>
-			  				<input type="password" class="form-control boxee" placeholder="Current Password" ><br>
-			  				<input type="password" class="form-control boxee" placeholder="New Password" ><br>
-			  				<input type="password" class="form-control boxee" placeholder="Confirm Password"><br>
+			  				<input type="password" class="boxee" placeholder="Current Password" ><br><br>
+			  				<input type="password" class="boxee" placeholder="New Password" ><br><br>
+			  				<input type="password" class="boxee" placeholder="Confirm Password"><br>
 			  			</td>
 			  		</tr>
 			  		<tr>
