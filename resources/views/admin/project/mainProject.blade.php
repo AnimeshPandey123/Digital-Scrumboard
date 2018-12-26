@@ -1,5 +1,8 @@
 @extends('layouts.admin')
 
+@section('title')
+	Main Projects
+@endsection
 @section('content')
 
 <div class="project_wrapper">
