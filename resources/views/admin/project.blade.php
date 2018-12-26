@@ -57,7 +57,7 @@
 			All Projects
 		</h6>
 		<div class="dsb_card dsb_card40">
-			<table class="table">
+			<table class="table" style="font-size:0.9em;">
 				<thead>
 					<tr style="font-weight:600;color:#005792;">
 						<td>Project Name</td>
@@ -143,6 +143,8 @@
 		</div>
 	</div>
 
+
+
 	<!--The Modal Box for Creating Project-->
 	    <div id="create_project" class="modal fade" role="dialog">
 	        <div class="modal-dialog modal-lg">
@@ -157,9 +159,11 @@
 		                <button type="button" class="close" data-dismiss="modal">&times;</button>
 		            </div>
 
-		            <div class="modal-body" style="color:#444;">
+		            <div class="modal-body" style="color:#444;margin-top:40px;">
 						<div class="text-center">
-							<input type="text" class="boxee" placeholder="Project Name">
+							<input type="text" class="boxee" placeholder="Project Name"><br><br>
+							<input type="text" class="boxee" placeholder="Add Members"><br><br>
+							<textarea name="" id="" cols="30" rows="5" class="boxee_text" placeholder="Description"></textarea>
 						</div>
 		            </div>
 		            <div class="modal-footer">
@@ -174,5 +178,6 @@
 		           </div>
 	        </div>
 	    </div>
+
 	
 @endsection
