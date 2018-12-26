@@ -43,7 +43,7 @@
 			<div class="col-md-4">
 				<div class="dsb_card dsb_card20 dsb_primary_card">
 					<div class="text-center">
-						<button class="btn" style="background:none;color:#fff;" data-toggle="modal" data-target="#create_project">
+						<button class="btn" style="background:none;color:#fff;border:2px solid #ecf0f1;border-radius:100px;padding:5px 25px;" data-toggle="modal" data-target="#create_project">
 							<i class="fas fa-plus"></i>&nbsp;
 							Create New
 						</button>
