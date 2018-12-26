@@ -4,9 +4,8 @@
 
 <div class="project_wrapper">
 	<div class="dsb_card dsb_card20">
-		<button class="btn btn-success btn">
-			<i class="fas fa-plus"></i>&nbsp;
-			Add a new task
+		<button class="btn dsb_button dsb_button_green">
+			Some random button
 		</button>
 		<span style="float:right;">
 			<button class="nobox_button" data-toggle="modal" data-target="#about_project">
@@ -60,6 +59,27 @@
 							Use HTML CSS along with Bootstrap and complete the frontend part <br>
 							<span style="float:right;">
 								<img src="{{asset('images/picture.jpg')}}" alt="" class="task_peeps peeps_yellow">
+							</span>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class="dsb_cardz" style="opacity:0.8;">
+					<div class="row">
+						<div class="col-md-2">
+							<div class="text-center">
+								<h2>
+									<i class="fas fa-edit ico_gre"></i>
+								</h2>
+							</div>
+						</div>
+						<div class="col-md-10" style="border-left:2px solid #cbcbcb;">
+							<span style="float:right;font-size:0.8em;">
+								<i>show today's date</i>
+							</span><br>
+							Add a new task<br>
+							<span style="float:right;">
+								<img src="{{asset('images/plus.jpg')}}" alt="" class="task_peeps peeps_yellow">
 							</span>
 						</div>
 					</div>
@@ -287,7 +307,7 @@
 	</div>
 </div>
 
-<!--The Modal Box for Showing New Features-->
+<!--The Modal Box for About Project-->
     <div id="about_project" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg">
 
@@ -295,7 +315,7 @@
 	        <div class="modal-content" style="border-radius:0px;">
 	            <div class="modal-header" style="height:256px;background:#27ae60;color:#fff;background-image:url('https://images.pexels.com/photos/159657/paint-notebook-brush-pencil-159657.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');background-size:cover;background-repeat:no-repeat;">
 	                <h3 class="modal-title"  style="color:#fff;margin-top:180px;">
-	                    <i class="fas fa-tachometer-alt"></i>&nbsp;&nbsp;
+	                    <i class="fas fa-project-diagram"></i>&nbsp;&nbsp;
 	                    About the Project
 	                </h3>
 	                <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -320,10 +340,14 @@
 					</div>
 	            </div>
 	            <div class="modal-footer">
-	                <button type="button" id="ediScheduleCloseModal" class="btn btn-danger redbutton" data-dismiss="modal">Close</button>
+	                <button type="button" id="ediScheduleCloseModal" class="btn dsb_button dsb_button_pink" data-dismiss="modal">
+	                	<i class="fas fa-times"></i>&nbsp;
+	                	Close
+	                </button>
 	            </div>
 	           </div>
         </div>
     </div>
+
 
 @endsection

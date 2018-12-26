@@ -70,11 +70,11 @@
 			  				Linked Profiles
 			  			</td>
 			  			<td>
-			  				<button class="btn btn-danger redbutton">
+			  				<button class="btn dsb_button dsb_button_pink">
 			  					<i class="fab fa-google"></i>&nbsp;
 			  					Disconnect <span style="font-size:0.8em;">"akashrajdahal@gmail.com"</span>
 			  				</button><br><br>
-			  				<button class="btn btn-info bluebutton">
+			  				<button class="btn dsb_button dsb_button_blue">
 			  					<i class="fab fa-facebook"></i>&nbsp;
 			  					Disconnect <span style="font-size:0.8em;">"Aakash Raj Dahal"</span>
 			  				</button>
