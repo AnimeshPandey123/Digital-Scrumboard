@@ -85,7 +85,7 @@
 								update
 							</a>
 						</span><br>
-						<div class="cardz">
+						<div class="cardz" style="font-size:1em;">
 							<div class="dsb_cardz">
 								<i>
 									<span style="float:right;">

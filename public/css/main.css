@@ -17,6 +17,7 @@ p{font-size:1em;}
 a,a:hover,a:focus{color:inherit;text-decoration:none;transition:all 0.3s;}
 input:focus{outline:none;}
 .boxee{width:350px;border-radius:5px;border:none;border:1px solid #bdc3c7;height:35px;padding:5px;color:#818181;font-size:0.9em;}
+.boxee_text{width:350px;border-radius:5px;border:none;border:1px solid #bdc3c7;padding:5px;color:#818181;font-size:0.9em;}
 
 /* -----------------------------------------------------------------------
 -------------------------- COLORS ----------------------------------------
@@ -114,6 +115,7 @@ input:focus{outline:none;}
 .peeps_pink{border:3px solid #fd79a8;}
 .peeps_green{border:3px solid #55efc4;}
 .nobox_button{background:none;border:none;cursor:pointer;font-size:1.5em;}
+.task_type{padding:5px;}
 
 /* -------------------------------------------------------------------------------------------
 ---------------------------------- SETTINGS PAGE ---------------------------------------------
@@ -133,6 +135,6 @@ input:focus{outline:none;}
 ---------------------------------- PROJECTS PAGE ---------------------------------------------
 ----------------------------------------------------------------------------------------------*/
 
-table{color:#818181;font-size:0.8em;}
+table{color:#818181;}
 .small_card{background:#005792;border-radius:5px;padding:10px;color:#fff;font-size:1.5em;}
 

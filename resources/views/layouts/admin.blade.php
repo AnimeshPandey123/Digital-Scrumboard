@@ -33,6 +33,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 
+    <link rel="stylesheet" href="css/bootstrap-iconpicker.min.css">
+    <script src="js/bootstrap-iconpicker.min.js"></script>
+
     <!-- Custom CSS -->
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 
@@ -74,5 +77,12 @@
             </main>
         </div>
     </div>
+
+    <!-- Script for activating tooltip -->
+    <script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip(); 
+    });
+    </script>
 </body>
 </html>
