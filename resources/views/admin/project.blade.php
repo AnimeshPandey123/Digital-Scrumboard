@@ -163,7 +163,82 @@
 						<div class="text-center">
 							<input type="text" class="boxee" placeholder="Project Name"><br><br>
 							<input type="text" class="boxee" placeholder="Add Members"><br><br>
-							<textarea name="" id="" cols="30" rows="5" class="boxee_text" placeholder="Description"></textarea>
+							<textarea name="" id="" cols="30" rows="5" class="boxee_text" placeholder="Description"></textarea><br><br>
+							<span style="font-size:0.9em;">Choose Icon</span><br>
+							<div style="font-size:1.5em;">
+								<a href="" class="text-lightgrey">
+									<i class="fas fa-graduation-cap"></i>
+								</a>
+								<a href="" class="text-lightgrey">
+									<i class="fas fa-brain"></i>
+								</a>
+								<a href="" class="text-lightgrey">
+									<i class="fas fa-palette"></i>
+								</a>
+								<a href="" class="text-lightgrey">
+									<i class="fas fa-ambulance"></i>
+								</a>
+								<a href="" class="text-lightgrey">
+									<i class="fas fa-anchor"></i>
+								</a>
+								<a href="" class="text-lightgrey">
+									<i class="fas fa-users"></i>
+								</a>
+								<a href="" class="text-lightgrey">
+									<i class="fas fa-archive"></i>
+								</a>
+								<a href="" class="text-lightgrey">
+									<i class="fas fa-archway"></i>
+								</a><br>
+								<a href="" class="text-lightgrey">
+									<i class="fas fa-book"></i>
+								</a>
+								<a href="" class="text-lightgrey">
+									<i class="fas fa-grin"></i>
+								</a>
+								<a href="" class="text-lightgrey">
+									<i class="fas fa-briefcase"></i>
+								</a>
+								<a href="" class="text-lightgrey">
+									<i class="fas fa-bullhorn"></i>
+								</a>
+								<a href="" class="text-lightgrey">
+									<i class="fas fa-chart-pie"></i>
+								</a>
+								<a href="" class="text-lightgrey">
+									<i class="fas fa-bomb"></i>
+								</a>
+								<a href="" class="text-lightgrey">
+									<i class="fas fa-carrot"></i>
+								</a>
+								<a href="" class="text-lightgrey">
+									<i class="fas fa-feather-alt"></i>
+								</a><br>
+								<a href="" class="text-lightgrey">
+									<i class="fas fa-fire"></i>
+								</a>
+								<a href="" class="text-lightgrey">
+									<i class="fas fa-futbol"></i>
+								</a>
+								<a href="" class="text-lightgrey">
+									<i class="fas fa-gift"></i>
+								</a>
+								<a href="" class="text-lightgrey">
+									<i class="fas fa-gamepad"></i>
+								</a>
+								<a href="" class="text-lightgrey">
+									<i class="fas fa-heart"></i>
+								</a>
+								<a href="" class="text-lightgrey">
+									<i class="fas fa-lightbulb"></i>
+								</a>
+								<a href="" class="text-lightgrey">
+									<i class="fas fa-paw"></i>
+								</a>
+								<a href="" class="text-lightgrey">
+									<i class="fas fa-shopping-cart"></i>
+								</a>	
+							</div>
 						</div>
 		            </div>
 		            <div class="modal-footer">
