@@ -76,5 +76,12 @@
             </main>
         </div>
     </div>
+
+    <!-- Script for activating tooltip -->
+    <script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip(); 
+    });
+    </script>
 </body>
 </html>
