@@ -339,6 +339,10 @@
 								<td>Total Cards</td>
 								<td>58</td>
 							</tr>
+							<tr>
+								<td width="300px;">Description of the project</td>
+								<td style="text-align:left;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore aperiam fugit consequuntur voluptatibus ex, sint iure in, distinctio sed dolorem aspernatur veritatis repellendus dolorum voluptate, animi libero, officiis eveniet accusamus!</td>
+							</tr>
 						</table>
 					</div>
 	            </div>
