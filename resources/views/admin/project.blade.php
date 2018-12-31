@@ -7,37 +7,8 @@
 		</h6>
 		<div class="row">
 			<div class="col-md-8">
-				<div class="row">
-					<div class="col-md-4">
-						<div class="dsb_card">
-						  <div class="card-body dsb_blue_card">
-						  	<div class="text-center centerpox"> 
-						  		<i class="fas fa-graduation-cap bigicon align-middle"></i>
-						  	</div>
-						  </div> 
-						  <div class="card-footer">College Project</div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="dsb_card">
-						  <div class="card-body dsb_green_card">
-						  	<div class="text-center centerpox"> 
-						  		<i class="fas fa-brain bigicon align-middle"></i>
-						  	</div>
-						  </div> 
-						  <div class="card-footer">Mind Map</div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="dsb_card">
-						  <div class="card-body dsb_pink_card">
-						  	<div class="text-center centerpox"> 
-						  		<i class="fas fa-palette bigicon align-middle"></i>
-						  	</div>
-						  </div> 
-						  <div class="card-footer">Designer's Club</div>
-						</div>
-					</div>
+				<div id="mainProjects" class="row">
+			
 				</div>
 			</div>
 			<div class="col-md-4">
@@ -57,7 +28,7 @@
 			All Projects
 		</h6>
 		<div class="dsb_card dsb_card40">
-			<table class="table" style="font-size:0.9em;">
+			<table id="allProjects" class="table" style="font-size:0.9em;">
 				<thead>
 					<tr style="font-weight:600;color:#005792;">
 						<td>Project Name</td>
@@ -69,7 +40,7 @@
 				<tbody>
 					<tr>
 						<td>
-							<a href="#">
+							<a href="##">
 								<i class="fas fa-graduation-cap"></i>&nbsp;College Project
 							</a>
 						</td>
@@ -83,7 +54,7 @@
 					</tr>
 					<tr>
 						<td>
-							<a href="#">
+							<a href="##">
 								<i class="fas fa-brain"></i>&nbsp;Mind Map
 							</a>
 						</td>
@@ -97,7 +68,7 @@
 					</tr>
 					<tr>
 						<td>
-							<a href="#">
+							<a href="##">
 								<i class="fas fa-palette"></i>&nbsp;Designer's Club
 							</a>
 						</td>
@@ -111,7 +82,7 @@
 					</tr>
 					<tr>
 						<td>
-							<a href="#">
+							<a href="##">
 								<i class="fas fa-book"></i>&nbsp;Book Club
 							</a>
 						</td>
@@ -125,7 +96,7 @@
 					</tr>
 					<tr>
 						<td>
-							<a href="#">
+							<a href="##">
 								<i class="fas fa-book"></i>&nbsp;Library Mangment Project
 							</a>
 						</td>
@@ -151,6 +122,7 @@
 
 		        <!-- Modal content-->
 		        <div class="modal-content" style="border-radius:0px;">
+		        	<form id="formCreate" action="#">
 		            <div class="modal-header" style="height:256px;background:#27ae60;color:#fff;background-image:url('https://images.pexels.com/photos/267569/pexels-photo-267569.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');background-size:cover;background-repeat:no-repeat;">
 		                <h3 class="modal-title"  style="color:#fff;margin-top:180px;">
 		                    <i class="fas fa-plus"></i>&nbsp;&nbsp;
@@ -160,99 +132,255 @@
 		            </div>
 
 		            <div class="modal-body" style="color:#444;margin-top:40px;">
+
 						<div class="text-center">
-							<input type="text" class="boxee" placeholder="Project Name"><br><br>
-							<input type="text" class="boxee" placeholder="Add Members"><br><br>
-							<textarea name="" id="" cols="30" rows="5" class="boxee_text" placeholder="Description"></textarea><br><br>
+							
+								
+							
+							<input type="text" id="name" class="boxee" placeholder="Project Name" required><br><br>
+							<textarea name="" id="description" id="" cols="30" rows="5" class="boxee_text" placeholder="Description(optional)"></textarea><br><br>
 							<span style="font-size:0.9em;">Choose Icon</span><br>
 							<div style="font-size:1.5em;">
-								<a href="" class="text-lightgrey">
-									<i class="fas fa-graduation-cap"></i>
+								<a href="#" class="text-lightgrey selectIcon">
+									<i id="as" class="fas fa-graduation-cap"></i>
 								</a>
-								<a href="" class="text-lightgrey">
+								<a href="#" class="text-lightgrey selectIcon">
 									<i class="fas fa-brain"></i>
 								</a>
-								<a href="" class="text-lightgrey">
+								<a href="#" class="text-lightgrey selectIcon">
 									<i class="fas fa-palette"></i>
 								</a>
-								<a href="" class="text-lightgrey">
+								<a href="#" class="text-lightgrey selectIcon">
 									<i class="fas fa-ambulance"></i>
 								</a>
-								<a href="" class="text-lightgrey">
+								<a href="#" class="text-lightgrey selectIcon">
 									<i class="fas fa-anchor"></i>
 								</a>
-								<a href="" class="text-lightgrey">
+								<a href="#" class="text-lightgrey selectIcon">
 									<i class="fas fa-users"></i>
 								</a>
-								<a href="" class="text-lightgrey">
+								<a href="#" class="text-lightgrey selectIcon">
 									<i class="fas fa-archive"></i>
 								</a>
-								<a href="" class="text-lightgrey">
+								<a href="#" class="text-lightgrey selectIcon">
 									<i class="fas fa-archway"></i>
 								</a><br>
-								<a href="" class="text-lightgrey">
+								<a href="#" class="text-lightgrey selectIcon">
 									<i class="fas fa-book"></i>
 								</a>
-								<a href="" class="text-lightgrey">
+								<a href="#" class="text-lightgrey selectIcon">
 									<i class="fas fa-grin"></i>
 								</a>
-								<a href="" class="text-lightgrey">
+								<a href="#" class="text-lightgrey selectIcon">
 									<i class="fas fa-briefcase"></i>
 								</a>
-								<a href="" class="text-lightgrey">
+								<a href="#" class="text-lightgrey selectIcon">
 									<i class="fas fa-bullhorn"></i>
 								</a>
-								<a href="" class="text-lightgrey">
+								<a href="#" class="text-lightgrey selectIcon">
 									<i class="fas fa-chart-pie"></i>
 								</a>
-								<a href="" class="text-lightgrey">
+								<a href="#" class="text-lightgrey selectIcon">
 									<i class="fas fa-bomb"></i>
 								</a>
-								<a href="" class="text-lightgrey">
+								<a href="#" class="text-lightgrey selectIcon">
 									<i class="fas fa-carrot"></i>
 								</a>
-								<a href="" class="text-lightgrey">
+								<a href="#" class="text-lightgrey selectIcon">
 									<i class="fas fa-feather-alt"></i>
 								</a><br>
-								<a href="" class="text-lightgrey">
+								<a href="#" class="text-lightgrey selectIcon">
 									<i class="fas fa-fire"></i>
 								</a>
-								<a href="" class="text-lightgrey">
+								<a href="#" class="text-lightgrey selectIcon">
 									<i class="fas fa-futbol"></i>
 								</a>
-								<a href="" class="text-lightgrey">
+								<a href="#" class="text-lightgrey selectIcon">
 									<i class="fas fa-gift"></i>
 								</a>
-								<a href="" class="text-lightgrey">
+								<a href="#" class="text-lightgrey selectIcon">
 									<i class="fas fa-gamepad"></i>
 								</a>
-								<a href="" class="text-lightgrey">
+								<a href="#" class="text-lightgrey selectIcon">
 									<i class="fas fa-heart"></i>
 								</a>
-								<a href="" class="text-lightgrey">
+								<a href="#" class="text-lightgrey selectIcon">
 									<i class="fas fa-lightbulb"></i>
 								</a>
-								<a href="" class="text-lightgrey">
+								<a href="#" class="text-lightgrey selectIcon">
 									<i class="fas fa-paw"></i>
 								</a>
-								<a href="" class="text-lightgrey">
+								<a href="#" class="text-lightgrey selectIcon">
 									<i class="fas fa-shopping-cart"></i>
 								</a>	
 							</div>
 						</div>
 		            </div>
 		            <div class="modal-footer">
-		            	<button type="button" class="btn dsb_button dsb_button_green" data-dismiss="modal">
+		            	<button onclick="getAllinput()" type="submit" class="btn dsb_button dsb_button_green" >
 		                	<i class="fas fa-check"></i>&nbsp;
 		                	Done
 		                </button>
-		                <button type="button" class="btn dsb_button dsb_button_pink" data-dismiss="modal">
+		                <button type="button" id="cancel" class="btn dsb_button dsb_button_pink" data-dismiss="modal">
 		                	Cancel
 		                </button>
 		            </div>
+		            </form>
 		           </div>
 	        </div>
 	    </div>
 
+
 	
+@endsection
+
+@section('scripts')
+
+    <script type="text/javascript" src="{{asset('js/sortTable.js')}}"></script>
+	<script type="text/javascript">
+		 $(document).ready(function() {
+		 	getProjects();
+            //option A
+            $("#formCreate").submit(function(e){
+               
+                e.preventDefault(e);
+            });
+        });
+
+		 var icon = "";
+		 var i;
+		 var prev;
+		
+		 var k = 0;
+		 $(document).on('click', '.selectIcon', function(){
+		 	k++;
+		 	if (k > 1) {
+		 		prev = i;
+		 		prev.css('color', '');
+		 		k = 1;
+		 	}
+		 	// console.log(prev);
+		    i = $(this).find("i");
+		    // console.log(i.className);
+		 	icon = i[0].classList[1].split(/^.*?-/)[1] ;
+		 	// console.log(icon);
+		 	i.css('color', 'red');
+		 	
+		 });
+		 
+		function getAllinput(){
+			let name = $('#name').val();
+			let description = $('#description').val();
+
+			console.log(description);
+			if (name && icon) {
+				$.ajax({
+            		type: "get",
+		            url: "{{ route('project.store') }}",
+		            headers: {
+		            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		            },
+		            data: { _token : $('meta[name="csrf-token"]').attr('content'),
+		            name : name, description: description, icon: icon 
+		            },
+		            success: function (s){
+		            	removeModal();
+		            	getProjects();
+
+		                console.log(s);
+
+		            },
+		            error: function(e){
+		                toastr.error("Something went wrong!!");
+		                console.log(e);
+
+		        }
+		            // $('#'+id).text();
+		        });
+				
+				
+			}
+		}
+
+		function removeModal(){
+			$('#cancel').click();
+			$("#create_project").modal("hide");
+			$(".modal").modal("hide");
+			$('body').removeClass('modal-open');
+			$(".modal-backdrop").remove();
+		}
+
+		function getProjects(){
+			$.ajax({
+            		type: "get",
+		            url: "{{ route('project.get') }}",
+		            headers: {
+		            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		            },
+		            
+		            
+		            success: function (s){
+		            	$.each(s, function(k, v) {
+		            		appendToLatest(k, v);
+		            		appendToallProjects(k, v);
+		                
+		            });
+		                
+
+		            },
+		            error: function(e){
+		                toastr.error("Something went wrong!!");
+		                console.log(e);
+
+		        }
+		            // $('#'+id).text();
+		        });
+		
+	}
+	
+
+		function appendToLatest(k, v){
+			if (k > 2) {
+		    	return false;
+		     }
+    		if (k == 0) {
+
+    			$('#mainProjects').empty();
+    		}
+
+    		$('#mainProjects').append(` <a href="/admin/project/main/${v.id}" class="col-md-4">
+						<div class="dsb_card">
+						  <div class="card-body dsb_blue_card">
+						  	<div class="text-center centerpox"> 
+						  		<i class="fas fa-${v.icon} bigicon align-middle"></i>
+						  	</div>
+						  </div> 
+						 <div class="card-footer">${v.name}</div>
+					</div>
+				</a>`);
+		}
+
+		function appendToallProjects(k, v){
+			if (k == 0) {
+				$('#allProjects tbody').empty('');
+			}
+			$('#allProjects tbody').append(`<tr>
+						<td>
+							<a href="/admin/project/main/${v.id}">
+								<i class="fas fa-${v.icon}"></i>&nbsp;${v.name}
+							</a>
+						</td>
+						<td>${v.userCount}</td>
+						<td>58</td>
+						<td>
+							<div class="progress" style="height:5px;margin-top:3px;">
+							  <div class="progress-bar" style="width:40%;height:5px;background:#005792;"></div>
+							</div>
+						</td>
+					</tr>`);
+			// $("#allProjects").tablesorter();
+			
+		}
+		
+	</script>
 @endsection

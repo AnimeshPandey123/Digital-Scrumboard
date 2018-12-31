@@ -27,11 +27,20 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
 		return view('admin.setting');
 	})->name('setting');
 	Route::get('/project', 'Project\ProjectController@index')->name('project');
-	Route::post('/project/store', 'Project\ProjectController@store')->name('project.create');
+	Route::get('/project/get', 'Project\ProjectController@get')->name('project.get');
+	Route::get('/project/store', 'Project\ProjectController@store')->name('project.store');
 
-	Route::get('/project/main', function () {
-		return view('admin.project.mainProject');
-	})->name('project.main');
+	Route::get('/project/main/{project_id}', 'Project\ProjectController@mainProject')->name('project.main');
+
+	Route::get('/project/get/specific', 'Project\ProjectController@getProject')->name('project.specific');
+
+	Route::get('/project/update', 'Project\ProjectController@update')->name('project.update');
+
+
+	Route::get('/tasks/', 'Task\TaskController@tasks')->name('task.all');
+	Route::get('/tasks/store/this', 'Task\TaskController@create')->name('task.store');
+	Route::get('/tasks/update/', 'Task\TaskController@update')->name('task.update');
+
 
 	Route::get('/profile', function () {
 		return view('admin.profile');

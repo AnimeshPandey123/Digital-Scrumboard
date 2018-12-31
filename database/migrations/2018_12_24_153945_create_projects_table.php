@@ -17,9 +17,8 @@ class CreateProjectsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('user_id');
-            $table->text('description');
-            $table->enum('type', ['Prototyping', 'Designing','Coding','Testing', 'Meeting', 'Research', 'Learn']);
-            $table->enum('icon', ['th', 'palette','code','double', 'comments', 'vial', 'book']);
+            $table->text('description')->nullable();
+            $table->string('icon');
             $table->timestamps();
         });
     }
