@@ -59,4 +59,14 @@ class ProjectController extends Controller
         
         return response()->json( $project, 200);
     }
+
+     public function getTask(Request $request){
+        // return $request->all();
+        $project = Project::findOrFail($request->project_id);
+        // dd($project->creator);
+        $tasks = $project->tasks->where('state', $request->state);
+        return $tasks;
+        return response()->json( $project, 200);
+    }
+
 }

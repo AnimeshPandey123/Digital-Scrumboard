@@ -33,13 +33,16 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
 	Route::get('/project/main/{project_id}', 'Project\ProjectController@mainProject')->name('project.main');
 
 	Route::get('/project/get/specific', 'Project\ProjectController@getProject')->name('project.specific');
+	Route::get('/project/get/task', 'Project\ProjectController@getTask')->name('project.specific.task');
 
 	Route::get('/project/update', 'Project\ProjectController@update')->name('project.update');
 
 
+	Route::get('/task/{id}', 'Task\TaskController@index')->name('task.find');
 	Route::get('/tasks/', 'Task\TaskController@tasks')->name('task.all');
 	Route::get('/tasks/store/this', 'Task\TaskController@create')->name('task.store');
 	Route::get('/tasks/update/', 'Task\TaskController@update')->name('task.update');
+	Route::get('/tasks/position/update/', 'Task\TaskController@updatePosition')->name('task.update.position');
 
 
 	Route::get('/profile', function () {

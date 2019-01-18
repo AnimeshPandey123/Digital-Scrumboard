@@ -10,7 +10,7 @@ class Project extends Model
 {
 	protected $fillable = ['user_id', 'name', 'description', 'icon'];
 
-	 protected $appends = ['userCount'];
+	 protected $appends = ['userCount', 'taskCount'];
 
      protected $with = ['creator'];
 
@@ -21,6 +21,9 @@ class Project extends Model
     	return ($this->users()->count() );
     }
 
+    public function getTaskCountAttribute(){
+        return $this->tasks()->count();   
+    }
     public function users(){
         return $this->belongsToMany(User::class);
     }

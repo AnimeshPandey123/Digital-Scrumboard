@@ -5,7 +5,13 @@
 @endsection
 
 @section('styles')
-<div rel="stylesheet" type="text/css" href="{{asset('css/tagify.css')}}">
+
+
+<link rel="stylesheet" href="https://cdn.rawgit.com/yairEO/ec9e154c4269b9a0f264fba7f64d7383/raw/e0c395043e809c2def517280850aeec410536abd/vsync_demos.css">
+<link rel="stylesheet" type="text/css" href="{{asset('css/tagify.css')}}">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.min.css">
+
 <style type="text/css">
 ul {
   list-style-type: none;
@@ -14,9 +20,14 @@ ul {
 .dsb_card{
 	list-style-type: none;
 }
+.makeTagify{
+	text-align: left !important;
+	margin-left: 27%;
+}
 </style>
 @endsection
 @section('content')
+
 
 <div class="project_wrapper">
 	<div class="dsb_card dsb_card20">
@@ -68,7 +79,7 @@ ul {
 					</div>
 				</li>
 				
-				<li class="sort notSortable" id="dontSort">
+				<li class="sort notSortable" id="dontSort" position-list="100">
 					<br>
 				<div class="dsb_cardz" style="opacity:0.8; position: relative;">
 					<div class="row">
@@ -356,7 +367,7 @@ ul {
 							</tr>
 							<tr>
 								<td>Total Cards</td>
-								<td>58</td>
+								<td><label id="taskCount"></label></td>
 							</tr>
 							<tr>
 								<td width="300px;">Description of the project</td>
@@ -393,8 +404,7 @@ ul {
 		            <div class="modal-body" style="color:#444;margin-top:40px;">
 						<div class="text-center">
 							<input type="text" class="boxee" id="projectName" value="{{$project->name}}" placeholder="Project Name" required><br><br>
-							<input type="text" id="emaiut" class="boxee" onfocusout="checkEmail(this)" placeholder="Add Members"><br><br>
-							<input type="text" class="boxee" placeholder="Remove Members"><br><br>
+							<input name='tags' class='boxee makeTagify' placeholder='write some tags' value='css, html, javascript, css' autofocus><br><br>
 							<textarea name="" id="projectDesc" cols="30" rows="5" class="boxee_text" placeholder="Description">{{$project->description}}</textarea><br><br>
 							<span style="font-size:0.9em;">Choose Icon</span><br>
 							<div id="iconContainer" style="font-size:1.5em;">
@@ -529,9 +539,69 @@ ul {
 						</a>
 					</div>
 					<br>
+					<input type="text" id="taskID" name="id" style="display: none;">
 					<textarea id="taskDescription" name="" id="" cols="30" rows="5" class="boxee_text" placeholder="Task Description" required></textarea><br><br>
 					<input type="text" class="boxee" placeholder="Assign Members"><br><br>
 					<input type="text" id="taskDeadline" class="boxee" placeholder="Deadline" onfocus="(this.type='date')" required>
+				</div>
+            </div>
+            <div class="modal-footer">
+            	<button type="button" class="btn dsb_button dsb_button_green" onclick="storeEditedTask()">
+                	<i class="fas fa-save"></i>&nbsp;
+                	Save
+                </button>
+                <button type="button" id="taskCancel" class="btn dsb_button dsb_button_pink" data-dismiss="modal">
+                	Cancel
+                </button>
+            </div>
+            </form>
+           </div>
+    </div>
+</div>
+<div id="create_task" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content" style="border-radius:0px;">
+        	<form action="#">
+            <div class="modal-header" style="height:256px;background:#27ae60;color:#fff;background-image:url('https://images.pexels.com/photos/34199/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');background-size:cover;background-repeat:no-repeat;">
+                <h3 class="modal-title"  style="color:#fff;margin-top:180px;">
+                    <i class="fas fa-edit"></i>&nbsp;&nbsp;
+                    Create Task
+                </h3>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body" style="color:#444;margin-top:40px;">
+				<div class="text-center">
+					<span style="font-size:0.9em;">Task Type</span><br>
+					<div style="font-size:1.5em;">
+						<a href="#" class="text-lightgrey task_type" title="Prototyping">
+							<i class="fas fa-th"></i>
+						</a>
+						<a href="#" class="text-lightgrey task_type" title="Designing">
+							<i class="fas fa-palette"></i>
+						</a>
+						<a href="#" class="text-lightgrey task_type" title="Coding">
+							<i class="fas fa-code"></i>
+						</a>
+						<a href="#" class="text-lightgrey task_type" title="Testing">
+							<i class="fas fa-check-double"></i>
+						</a>
+						<a href="#" class="text-lightgrey task_type" title="Meeting">
+							<i class="fas fa-comments"></i>
+						</a>
+						<a href="#" class="text-lightgrey task_type" title="Researching">
+							<i class="fas fa-vial"></i>
+						</a>
+						<a href="#" class="text-lightgrey task_type" title="Learning">
+							<i class="fas fa-book"></i>
+						</a>
+					</div>
+					<br>
+					<textarea id="taskDescriptionCreate" name="" id="" cols="30" rows="5" class="boxee_text" placeholder="Task Description" required></textarea><br><br>
+					<input type="text" class="boxee" placeholder="Assign Members"><br><br>
+					<input type="text" id="taskDeadlineCreate" class="boxee" placeholder="Deadline" onfocus="(this.type='date')" required>
 				</div>
             </div>
             <div class="modal-footer">
@@ -539,7 +609,7 @@ ul {
                 	<i class="fas fa-save"></i>&nbsp;
                 	Save
                 </button>
-                <button type="button" id="taskCancel" class="btn dsb_button dsb_button_pink" data-dismiss="modal">
+                <button type="button" id="taskCancelCreate" class="btn dsb_button dsb_button_pink" data-dismiss="modal">
                 	Cancel
                 </button>
             </div>
@@ -553,7 +623,10 @@ ul {
 
 @section('scripts')
 
+<script src='https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js'></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" defer></script>
+<script type="text/javascript" src="{{asset('js/tagify.min.js')}}" defer></script>
+ <script src="{{asset('js/jQuery.tagify.min.js')}}" defer></script>
 
 
 <script type="text/javascript">
@@ -566,6 +639,8 @@ ul {
 	var prev;
 	var iconName;
 	var project;
+	var taskState;
+	var editFlag = 0;
 	const iconObj = {
 		'Prototyping': 'fa-th',
 		'Designing': 'fa-palette',
@@ -610,37 +685,38 @@ ul {
 	});
 
  function getProjectDetails(){
- 	$.ajax({
-		type: "get",
-		url: "{{ route('project.specific') }}",
-		headers: {
-	    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-		 },
-		data: {
-		     project_id: {{$project->id}}
-		     },    
-		 success: function (s){
-		 	project = s;
-		    console.log(s);
-		     icon =  s.icon;
-		     iconName = s.icon;
-		     $('#projectName').val(s.name);
-		     $('#projectDesc').val(s.description);	
-		     $('.projectName').html(s.name);
-		     $('#ownerName').text(s.creator.name);
-		     $('#memberCount').text(s.userCount);
-		     $('.projectDesc').text(s.description);
-		     console.log($('#ownerName'));
-		     loadAllTasks(s.id);
-		 },
-		 error: function(e){
-		    toastr.error("Something went wrong!!");
-		     console.log(e);
+	 	$.ajax({
+			type: "get",
+			url: "{{ route('project.specific') }}",
+			headers: {
+		    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			 },
+			data: {
+			     project_id: {{$project->id}}
+			     },    
+			 success: function (s){
+			 	project = s;
+			    console.log(s);
+			     icon =  s.icon;
+			     iconName = s.icon;
+			     $('#projectName').val(s.name);
+			     $('#projectDesc').val(s.description);	
+			     $('.projectName').html(s.name);
+			     $('#ownerName').text(s.creator.name);
+			     $('#memberCount').text(s.userCount);
+			     $('.projectDesc').text(s.description);
+			     $('#taskCount').text(s.taskCount);
+			     console.log($('#ownerName'));
+			     loadAllTasks(s.id);
+			 },
+			 error: function(e){
+			    toastr.error("Something went wrong!!");
+			     console.log(e);
 
-		    }
-		            // $('#'+id).text();
-		   });
- }
+			    }
+			            // $('#'+id).text();
+			   });
+	}
  
 				
 
@@ -692,7 +768,7 @@ ul {
   	
 
 		$(document).on('click', '#addNewCard', function(){
-			$('#edit_task').modal();
+			$('#create_task').modal();
 			addNewCard();
 		});
 		var taskIcon;
@@ -702,8 +778,8 @@ ul {
 		var taskTitle;
 
 		function addNewCard(){
-			$('#taskDescription').val('');
-			$('#taskDeadline').val('');
+			$('#taskDescriptionCreate').val('');
+			$('#taskDeadlineCreate').val('');
 			taskTitle = '';
 			k++;
 			if (k > 1) {
@@ -724,32 +800,34 @@ ul {
 		}
 
 		function createTask(){
-			descriptionTask = $('#taskDescription').val();
-			deadlineTask = $('#taskDeadline').val();
-			created_by = {{auth()->user()->id}};
-			positionTask = $('#todo').children().length;
-			console.log(positionTask);
-			if (descriptionTask && taskTitle && deadlineTask) {
-				$.ajax({
-            		type: "get",
-		            url: "{{ route('task.store') }}",
-		            headers: {
-		            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-		            },
-		            data: { _token : $('meta[name="csrf-token"]').attr('content'),
-		            project_id:project.id, title : taskTitle, description: descriptionTask, icon: taskIcon, created_by: created_by, position: positionTask, deadline: deadlineTask
-		            },
-		            success: function (s){
-		            	taskModelClose();
-		            	toastr.success("Created!!");
-		                console.log(s);
+			
+				descriptionTask = $('#taskDescriptionCreate').val();
+				deadlineTask = $('#taskDeadlineCreate').val();
+				created_by = {{auth()->user()->id}};
+				positionTask = $('#todo').children().length;
+				console.log(positionTask);
+				if (descriptionTask && taskTitle && deadlineTask) {
+					$.ajax({
+	            		type: "get",
+			            url: "{{ route('task.store') }}",
+			            headers: {
+			            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			            },
+			            data: { _token : $('meta[name="csrf-token"]').attr('content'),
+			            project_id:project.id, title : taskTitle, description: descriptionTask, icon: taskIcon, created_by: created_by, position: positionTask, deadline: deadlineTask
+			            },
+			            success: function (s){
+			            	taskModelClose('Create');
+			            	toastr.success("Created!!");
+			            	loadSpecificTask(project.id, 'todo');
+			                console.log(s);
 
-		            },
-		            error: function(e){
-		                toastr.error("Something went wrong!!");
-		                console.log(e);
+			            },
+			            error: function(e){
+			                toastr.error("Something went wrong!!");
+			                console.log(e);
 
-		        }
+			        }
 		            // $('#'+id).text();
 		        });
 				
@@ -762,14 +840,16 @@ ul {
 				console.log(deadlineTask);
 				console.log(created_by);
 			}
+		}
+			
 			
 
-		}
+		
 
 		$(document).on('click', '.dsb_cardz', function(){
 			
-			console.log($(this).parent().index());		
-		}
+				console.log($(this).parent().index());		
+			}
 		);
 
 		var input = $('#checkTest')[0];
@@ -785,7 +865,9 @@ ul {
 	            // console.log(this.id);
 	            console.log('receive');
         },
-        update: function(){
+        update: function(event, ui){
+        	console.log(this.id);
+        	updatePosition(this.id);
         	console.log('update');
         }
     },"serialize", { key: "sort" }).disableSelection();
@@ -793,28 +875,41 @@ ul {
     	
 	});
 
-    function taskModelClose(){
-    	$('#taskCancel').click();
+    function taskModelClose(t=''){
+    	$('#taskCancel'+t).click();
+    	console.log($('#taskCancel'+t));
     	$('.modal').css('overflow-y', 'auto');
 		// $('body').removeClass('modal-open');
 		$(".modal-backdrop").hide();
     }
 	
-	$(document).on('click', '.dsb_cardz', function(){
+	$(document).on('click', '.sort:not(#dontSort)', function(){
 		$('#edit_task').modal();
 		editTask(this);
 		console.log(this);
 	});
 	const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+	let selectElm;
 	function editTask(elem){
+		editFlag = 1;
+		selectElm = elem;
+		taskState = '';
+		taskState = $(elem).parent().attr('id');
+		
 		// console.log($(elem).find('span').find('i').html());
 		let selectedIcon = $(elem).find('.fas');
-		console.log(elem);
+		console.log(selectedIcon);
+
 		$('#edit_task').find('.fas').css('color','');
+
+		$('#taskID').val(' ');
+		$('#taskID').val($(elem).find('.dsb_cardz').attr('id'));
+		
 		taskNowIcon = $('#edit_task').find('.'+ selectedIcon[0].classList[1]);
 		taskNowIcon.css('color','red');
 		var date = $(elem).find('span').find('i').html();
 		d = getDate(date);
+
 		// console.log(d);
 		$('#taskDescription').val($(elem).find('label').html());
 		$('#taskDeadline')[0].type='date';
@@ -822,15 +917,17 @@ ul {
 		// console.log($('#taskDeadline'));
 		taskTitle = taskNowIcon.parent().attr('title');
 		console.log(elem.id);
-		id = elem.id;
+		let id = elem.id;
+
 		$('.task_type').on('click', function(){
 			if (taskNowIcon) {
+				// console.log(taskIcon);
 				taskNowIcon.css('color', '');
 			}
 			taskNowIcon = $(this).find("i");
 			taskTitle =taskNowIcon.parent().attr('title');
 			taskIcon = taskNowIcon[0].classList[1].split(/^.*?-/)[1] ;
-			console.log(taskTitle);
+			// console.log(taskTitle);
 			taskNowIcon.css('color', 'red');
 		});
 	}
@@ -873,6 +970,7 @@ ul {
 		            			insertAtIndex('ongoing', v.position, v);
 		            		}
 		            	});
+		            	checkSort();
 
 		            },
 		            error: function(e){
@@ -884,11 +982,54 @@ ul {
 		        });
 	}
 
+	let countList = 10;
+
+	function checkSort(){
+		let items = $('#todo li');
+		items.sort(function(a, b){
+		    return +$(a).attr('position-list') - +$(b).attr('position-list');
+		});
+		    
+		items.appendTo('#todo');
+		console.log(items);
+
+	}
+
+	function updatePosition(parentId){
+		$('#'+parentId + ' li').each(function(i, v){
+			let selectedItem = $(v);
+			selectedItem.attr('position-list', selectedItem.index());
+			// console.log();
+			$.ajax({
+	            		type: "get",
+			            url: "{{ route('task.update.position') }}",
+			            headers: {
+			            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			            },
+			            data: { _token : $('meta[name="csrf-token"]').attr('content'),
+			            task_id:selectedItem.find('.dsb_cardz').attr('id'), position: selectedItem.index(), state: parentId
+			            },
+			            success: function (s){
+			                console.log(s);
+
+			            },
+			            error: function(e){
+			                console.log(e);
+
+			        }
+		            // $('#'+id).text();
+		        });
+				
+			console.log(v);
+		});
+	}
 	function insertAtIndex(id, i, v) {
+
 		let date = v.deadline.split('-');
-		// console.log(date);
+		countList--;
+		console.log(id);
 		let th = nth(date[2]);
-	    $("#"+id+" > :nth-child(" + (i) + ")").after(`<li class="sort">
+	    $("#"+id).append(`<li position-list="${v.position}" class="sort">
 					<br>
 				
 					<div class="dsb_cardz" id="${v.id}">
@@ -925,5 +1066,202 @@ ul {
 			    default: return "th";
 			  }
 		}
+
+		function saveEditTask(){
+			console.log(taskTitle);
+			descriptionTask = $('#taskDescription').val();
+			deadlineTask = $('#taskDeadline').val();
+			updated_by = {{auth()->user()->id}};
+			position = $(this).parent().index();
+			console.log(position);
+			// positionTask = $('#todo').children().length;
+			console.log(descriptionTask);
+			console.log(deadlineTask);
+			console.log(selectElm);
+			editFlag = 0;
+		}
+
+		function loadSpecificTask(id, state){
+		
+			// $("#"+state).find('li').not('#dontSort').remove();
+			$.ajax({
+            		type: "get",
+		            url: "{{ route('project.specific.task') }}",
+		            headers: {
+		            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		            },
+		            data: { _token : $('meta[name="csrf-token"]').attr('content'),
+		            		project_id:id, state:state
+		            },
+		            success: function (s){
+		            	// console.log(s);
+		            	// $("#"+state).empty();
+		            	
+						$("#"+state).find('li').not('#dontSort').remove();
+		            	// console.log($("#"+state).find('*').not('h2', '#dontSort'));
+						let addNewCard = $('#dontSort');
+						// $("#"+state).append('<h2 class="text-white bolder">TODO</h2>');
+		            	$.each(s, function(k, v){
+		            		insertAtIndex(state, v.position, v);
+		            		
+		            		
+		            	});
+		            	checkSort();
+		            	if (state == 'todo') {
+		            		$("#"+state).append(addNewCard);
+		            	}
+		            },
+		            error: function(e){
+		                toastr.error("Something went wrong!!");
+		                console.log(e);
+
+		        }
+		          
+		        });
+		}
+
+		function storeEditedTask(){
+			descriptionTask = $('#taskDescription').val();
+			deadlineTask = $('#taskDeadline').val();
+			created_by = {{auth()->user()->id}};
+			positionTask = $('#todo').children().length;
+			let id = $('#taskID').val();
+			console.log(id);
+			
+			if (descriptionTask && taskTitle && deadlineTask) {
+					$.ajax({
+	            		type: "get",
+			            url: "{{ route('task.update') }}",
+			            headers: {
+			            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			            },
+			            data: { _token : $('meta[name="csrf-token"]').attr('content'),
+			            project_id:project.id, task_id:id, title : taskTitle, description: descriptionTask, icon: taskIcon, created_by: created_by, position: positionTask, deadline: deadlineTask, state: taskState
+			            },
+			            success: function (s){
+			            	taskModelClose();
+			            	toastr.success("Created!!");
+			            	loadSpecificTask(project.id, taskState);
+			                console.log(s);
+
+			            },
+			            error: function(e){
+			                toastr.error("Something went wrong!!");
+			                console.log(e);
+
+			        }
+		            // $('#'+id).text();
+		        });
+				
+				
+			}else{
+				toastr.error("Something went wrong!!");
+				console.log(taskTitle);
+				console.log(positionTask);
+				console.log(descriptionTask);
+				console.log(deadlineTask);
+				console.log(created_by);
+			}		
+				
+		}
+
+
+		// console.log(project);
+		// setTimeout(function(){ loadSpecificTask('asda', 'todo');}, 3000);
+
+		// loadSpecificTask(project.id, 'todo');
+</script>
+    <script>
+        setTimeout(function(){
+            Prism.highlightAll();
+        }, 500)
+    </script>
+<script defer>
+            var isIE = !document.currentScript;
+
+            function renderPRE(currentScript, codeScriptName){
+                if( isIE ) return;
+                setTimeout(function(){
+                    var jsCode = document.querySelector("[data-name='"+ codeScriptName +"']").innerHTML;
+
+                    // cleanup closure wraper
+                    jsCode = jsCode.replace("(function(){", "" ).replace("})()", "" ).trim();
+                    // escape angled brackets between two _ESCAPE_START_ and _ESCAPE_END_ comments
+                    let textsToEscape = jsCode.match(new RegExp("// _ESCAPE_START_([^]*?)// _ESCAPE_END_", 'mg'));
+                    if (textsToEscape) {
+                        textsToEscape.forEach(textToEscape => {
+                            jsCode = jsCode.replace(textToEscape, textToEscape.replace(/</g, "&lt" )
+                                                                              .replace(/>/g, "&gt" )
+                                                                              .replace("// _ESCAPE_START_", "")
+                                                                              .replace("// _ESCAPE_END_", "")
+                                                                              .trim());
+                        });
+                    }
+                    currentScript.insertAdjacentHTML('afterend', "<pre class='language-js'><code>" + jsCode + "</code></pre>");
+                }, 60);
+            }
+        </script>
+
+<script type="text/javascript" defer>
+	var tagify;
+	var input;
+	setTimeout(getTagify, 1000);
+	$(document).on('ready', function(){
+		
+	});
+	function getTagify(){
+	 input = document.querySelector('input[name=tags]'),
+    // init Tagify script on the above inputs
+    tagify = new Tagify(input, {
+        whitelist : ["ani.mesh13578@gmail.com"],
+        blacklist : ["/.*/" ],
+        keepInvalidTags     : false,
+        dropdown : false,
+        enforceWhitelist: true
+    });
+
+// // "remove all tags" button event listener
+// document.querySelector('.tags--removeAllBtn')
+//     .addEventListener('click', tagify.removeAllTags.bind(tagify))
+    console.log(tagify);
+// Chainable event listeners
+tagify.on('add', onAddTag)
+      .on('remove', onRemoveTag)
+      .on('input', onInput)
+      .on('invalid', onInvalidTag)
+      .on('click', onTagClick);
+
+}
+		
+
+	// tag added callback
+	function onAddTag(e){
+	    console.log(e.detail.tag);
+	    // tagify.removeTag(e.detail.tag);
+	    console.log("original input value: ", input.value)
+	    // tagify.off('add', onAddTag) // exmaple of removing a custom Tagify event
+	}
+
+	// tag remvoed callback
+	function onRemoveTag(e){
+	    console.log(e.detail);
+	    console.log("tagify instance value:", tagify.value);
+	}
+
+	// on character(s) added/removed (user is typing/deleting)
+	function onInput(e){
+	    console.log(e.detail);
+	}
+
+	// invalid tag added callback
+	function onInvalidTag(e){
+	    console.log(e.detail);
+	    
+	}
+
+	// invalid tag added callback
+	function onTagClick(e){
+	    console.log(e.detail);
+	}
 </script>
 @endsection
