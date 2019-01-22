@@ -7,7 +7,7 @@
 @section('styles')
 
 
-<link rel="stylesheet" href="https://cdn.rawgit.com/yairEO/ec9e154c4269b9a0f264fba7f64d7383/raw/e0c395043e809c2def517280850aeec410536abd/vsync_demos.css">
+
 <link rel="stylesheet" type="text/css" href="{{asset('css/tagify.css')}}">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.min.css">
@@ -23,6 +23,7 @@ ul {
 .makeTagify{
 	text-align: left !important;
 	margin-left: 27%;
+	height: auto;
 }
 </style>
 @endsection
@@ -634,6 +635,7 @@ ul {
 		console.log(inp);
 	}	
 	// var child = $('#iconContainer').children();
+	// INITIALIZING GLOBAL VARIABLES
 	var icon;
 	var k = 0;
 	var prev;
@@ -641,6 +643,15 @@ ul {
 	var project;
 	var taskState;
 	var editFlag = 0;
+	var iconColor = 'blue';
+	var taskPrevIcon;
+	var taskNowIcon;
+	var taskTitle;
+	var taskIcon;
+	const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+	var selectElm;
+
+	//creating const object for icons
 	const iconObj = {
 		'Prototyping': 'fa-th',
 		'Designing': 'fa-palette',
@@ -651,40 +662,52 @@ ul {
 		'Learning': 'fa-book'
 	};
 
+	//TO COLOR THE SELECTED ICON OF PROJECT WHEN SETTING MODAL IS OPEN
 	$(document).on('shown.bs.modal','#settings_project', function () {
- 		 $('.fa-'+icon).css('color', 'red');
+ 		 $('.fa-'+icon).css('color', iconColor);
 	});
 
+	//HANDLING CLICK EVENT OF ICONS
 	 $(document).on('click', '.iconSelect', function(e){
+
+	 	//FOR FIRST TIME
 	 	if (k == 0) {
 			$('.fa-'+icon).css('color', '');	
 	 	}
 
 	 	k++;
+	 	//FOR OTHER TIMES
 		 if (k > 1) {
 		 	prev = i;
+		 	//REMOVING COLOR OF PREV ICONS
 		 	prev.css('color', '');
 		 	k = 1;
 		 }
-		 	// console.log(prev);
+		
+		//SELCTING ICON OF THIS ELEMENT
 		i = $(this).find("i");
-		    // console.log(i.className);
+		 
+		//GETTING THE ICON CLASS OF THE SELECTED ICON
 		iconName = i[0].classList[1].split(/^.*?-/)[1] ;
-		 	// console.log(icon);
-		 i.css('color', 'red');
+		 
+		 //CHANGING THE COLOR OF SELECTED ICON
+		 i.css('color', iconColor);
 		 	
 	});
 
- $(document).ready(function() {
- 	$("#settings").submit(function(e){
-               
-        e.preventDefault(e);
-    });
-    getProjectDetails();
+ 	$(document).ready(function() {
+	 	$("#settings").submit(function(e){
+	        //PREVENTING THE FORM FROM SUBMITTING 
+	        e.preventDefault(e);
+	    });
+
+    	//GETTING PROJECT DETAILS
+    	getProjectDetails();
 
 	});
 
- function getProjectDetails(){
+ 	//GETTING PROJECT DETAILS
+ 	function getProjectDetails(){
 	 	$.ajax({
 			type: "get",
 			url: "{{ route('project.specific') }}",
@@ -699,6 +722,7 @@ ul {
 			    console.log(s);
 			     icon =  s.icon;
 			     iconName = s.icon;
+			     //PUTTING THE VALUES IN TO PROJECT DETAILS
 			     $('#projectName').val(s.name);
 			     $('#projectDesc').val(s.description);	
 			     $('.projectName').html(s.name);
@@ -706,12 +730,13 @@ ul {
 			     $('#memberCount').text(s.userCount);
 			     $('.projectDesc').text(s.description);
 			     $('#taskCount').text(s.taskCount);
-			     console.log($('#ownerName'));
+			     // console.log($('#ownerName'));
 			     loadAllTasks(s.id);
 			 },
 			 error: function(e){
+			 	getProjectDetails();
 			    toastr.error("Something went wrong!!");
-			     console.log(e);
+			     // console.log(e);
 
 			    }
 			            // $('#'+id).text();
@@ -719,207 +744,233 @@ ul {
 	}
  
 				
+	//SUBMITTING THE PROJECT DETAILS TO DB
+	function settingSubmit(){
+		//GETTING THE VALUES
+		let name = $('#projectName').val();
+		let description = $('#projectDesc').val();
 
-			function settingSubmit(){
-			let name = $('#projectName').val();
-			let description = $('#projectDesc').val();
+		//CHECKING IF THERE ARE VALUES
+		if (name && iconName) {
+			$.ajax({
+        		type: "get",
+	            url: "{{ route('project.update') }}",
+	            headers: {
+	            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	            },
+	            data: { _token : $('meta[name="csrf-token"]').attr('content'),
+	            project_id:project.id, name : name, description: description, icon: iconName 
+	            },
+	            success: function (s){
+	            	removeModal();
+	            	getProjectDetails();
+	            	toastr.success("Updated!!");
+	                // console.log(s);
 
-			console.log(iconName);
-			if (name && iconName) {
-				$.ajax({
-            		type: "get",
-		            url: "{{ route('project.update') }}",
-		            headers: {
-		            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-		            },
-		            data: { _token : $('meta[name="csrf-token"]').attr('content'),
-		            project_id:project.id, name : name, description: description, icon: iconName 
-		            },
-		            success: function (s){
-		            	removeModal();
-		            	getProjectDetails();
-		            	toastr.success("Updated!!");
-		                console.log(s);
+	            },
+	            error: function(e){
+	                toastr.error("Something went wrong!!");
+	                // console.log(e);
 
-		            },
-		            error: function(e){
-		                toastr.error("Something went wrong!!");
-		                console.log(e);
-
-		        }
-		            // $('#'+id).text();
-		        });
-				
-				
-			}else{
-				toastr.error('Please select icon and input name');
-			}
+	        }
+	            // $('#'+id).text();
+	        });
+			
+			
+		}else{
+			toastr.error('Please select icon and input name');
 		}
-				
-		function removeModal(){
-			$('#settingCancel').click();
-			// $("#settings_project").modal("hide");
-			$('.modal').css('overflow-y', 'auto');
-			// $('body').removeClass('modal-open');
-			$(".modal-backdrop").hide();
-		}
+	}
+	
+	//REMOVING THE SETTING MODAL		
+	function removeModal(){
+		$('#settingCancel').click();
+		// $("#settings_project").modal("hide");
+		$('.modal').css('overflow-y', 'auto');
+		// $('body').removeClass('modal-open');
+		$(".modal-backdrop").hide();
+	}
 		
 			
   	
-
-		$(document).on('click', '#addNewCard', function(){
-			$('#create_task').modal();
-			addNewCard();
-		});
-		var taskIcon;
-		var k = 0;
-		var taskPrevIcon;
-		var taskNowIcon;
-		var taskTitle;
-
-		function addNewCard(){
-			$('#taskDescriptionCreate').val('');
-			$('#taskDeadlineCreate').val('');
-			taskTitle = '';
-			k++;
-			if (k > 1) {
-				taskPrevIcon = taskNowIcon;
-				taskPrevIcon.css('color', '');
-				k = 1;
-			}
-
-			$('.task_type').on('click', function(){
-			 	taskNowIcon = $(this).find("i");
-				taskTitle =taskNowIcon.parent().attr('title');
-				taskIcon = taskNowIcon[0].classList[1].split(/^.*?-/)[1] ;
-					 	// console.log(icon);
-				taskNowIcon.css('color', 'red');
-			});
-			
-			
-		}
-
-		function createTask(){
-			
-				descriptionTask = $('#taskDescriptionCreate').val();
-				deadlineTask = $('#taskDeadlineCreate').val();
-				created_by = {{auth()->user()->id}};
-				positionTask = $('#todo').children().length;
-				console.log(positionTask);
-				if (descriptionTask && taskTitle && deadlineTask) {
-					$.ajax({
-	            		type: "get",
-			            url: "{{ route('task.store') }}",
-			            headers: {
-			            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-			            },
-			            data: { _token : $('meta[name="csrf-token"]').attr('content'),
-			            project_id:project.id, title : taskTitle, description: descriptionTask, icon: taskIcon, created_by: created_by, position: positionTask, deadline: deadlineTask
-			            },
-			            success: function (s){
-			            	taskModelClose('Create');
-			            	toastr.success("Created!!");
-			            	loadSpecificTask(project.id, 'todo');
-			                console.log(s);
-
-			            },
-			            error: function(e){
-			                toastr.error("Something went wrong!!");
-			                console.log(e);
-
-			        }
-		            // $('#'+id).text();
-		        });
-				
-				
-			}else{
-				toastr.error("Something went wrong!!");
-				console.log(taskTitle);
-				console.log(positionTask);
-				console.log(descriptionTask);
-				console.log(deadlineTask);
-				console.log(created_by);
-			}
-		}
-			
-			
-
-		
-
-		$(document).on('click', '.dsb_cardz', function(){
-			
-				console.log($(this).parent().index());		
-			}
-		);
-
-		var input = $('#checkTest')[0];
-    // init Tagify script on the above inputs
-    $(document).ready(function(){
-    	var sortedIDs = $( ".sortable" ).sortable({items:"li:not(.notSortable)" ,connectWith: ".sortable",
-    		 
-        stop: function(){
-        	console.log('stop');
-        },receive: function(event, ui) {
-	            // console.log(ui);
-	            // console.log(event);
-	            // console.log(this.id);
-	            console.log('receive');
-        },
-        update: function(event, ui){
-        	console.log(this.id);
-        	updatePosition(this.id);
-        	console.log('update');
-        }
-    },"serialize", { key: "sort" }).disableSelection();
-    	console.log(sortedIDs);
-    	
+	//SHOWING A MODAL WHEN ADD NEW CARD IS CLICKED
+	$(document).on('click', '#addNewCard', function(){
+		$('#create_task').modal();
+		addNewCard();
 	});
 
+	
+	var k = 0;
+
+	//FOR ADDING NEW CARD OR TASK
+	function addNewCard(){
+		//GETTING VALUES OF THE INPUT VALUE
+		$('#taskDescriptionCreate').val('');
+		$('#taskDeadlineCreate').val('');
+
+		//PREV TASK TITLE IS REMOVED
+		taskTitle = '';
+		k++;
+		//FOR MORE THAN ONE TIME
+		if (k > 1) {
+			taskPrevIcon = taskNowIcon;
+			taskPrevIcon.css('color', '');
+			k = 1;
+		}
+
+		//WHEN ICON IS CLICKED
+		$('.task_type').on('click', function(){
+			if (taskNowIcon) {
+				taskNowIcon.css('color', '');	
+			}
+		 	taskNowIcon = $(this).find("i");
+
+		 	//GETTING TITLE OF THE ICON
+			taskTitle =taskNowIcon.parent().attr('title');
+			taskIcon = taskNowIcon[0].classList[1].split(/^.*?-/)[1] ;
+				 	// console.log(icon);
+			taskNowIcon.css('color', iconColor);
+		});
+		
+	}
+
+	function createTask(){
+		//GETTING INPUT VALUES
+		descriptionTask = $('#taskDescriptionCreate').val();
+		deadlineTask = $('#taskDeadlineCreate').val();
+		created_by = {{auth()->user()->id}};
+		positionTask = $('#todo').children().length;
+		
+		//CHECKING IF THESE INPUTS HAS VALUES
+		if (descriptionTask && taskTitle && deadlineTask) {
+			//SUBMITTING THE NEWLY CREATED TASK TO SERVER
+			$.ajax({
+        		type: "get",
+	            url: "{{ route('task.store') }}",
+	            headers: {
+	            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	            },
+	            data: { _token : $('meta[name="csrf-token"]').attr('content'),
+	            project_id:project.id, title : taskTitle, description: descriptionTask, icon: taskIcon, created_by: created_by, position: positionTask, deadline: deadlineTask
+	            },
+	            success: function (s){
+	            	taskModelClose('Create');
+	            	toastr.success("Created!!");
+	            	loadSpecificTask(project.id, 'todo');
+	                console.log(s);
+
+	            },
+	            error: function(e){
+	                toastr.error("Something went wrong!!");
+	                console.log(e);
+
+	        }
+            // $('#'+id).text();
+        });
+			
+		}else{
+			toastr.error("Something went wrong!!");
+			console.log(taskTitle);
+			console.log(positionTask);
+			console.log(descriptionTask);
+			console.log(deadlineTask);
+			console.log(created_by);
+		}
+	}
+			
+	// $(document).on('click', '.dsb_cardz', function(){
+			
+	// 		console.log($(this).parent().index());		
+	// 	}
+	// );
+
+    // FOR MAKING THE DIVS SORTABLE
+    $(document).ready(function(){
+    	var sortedIDs = $( ".sortable" ).sortable({
+    		items:"li:not(.notSortable)" ,connectWith: ".sortable",
+    		 
+	        stop: function(){
+	        	console.log('stop');
+	        },receive: function(event, ui) {
+		            // console.log(ui);
+		            // console.log(event);
+		            // console.log(this.id);
+		            console.log('receive');
+	        },
+	        update: function(event, ui){
+	        	console.log(this.id);
+	        	updatePosition(this.id);
+	        	console.log('update');
+	        }
+    	},
+	    "serialize", { key: "sort" }).disableSelection();
+	    	console.log(sortedIDs);
+	    	
+	});
+
+    //FOR CLOSING MODALS
     function taskModelClose(t=''){
     	$('#taskCancel'+t).click();
-    	console.log($('#taskCancel'+t));
+    	// console.log($('#taskCancel'+t));
     	$('.modal').css('overflow-y', 'auto');
 		// $('body').removeClass('modal-open');
 		$(".modal-backdrop").hide();
     }
 	
+	//FOR OPENING EDIT MODAL
 	$(document).on('click', '.sort:not(#dontSort)', function(){
 		$('#edit_task').modal();
 		editTask(this);
-		console.log(this);
+		// console.log(this);
 	});
-	const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-	let selectElm;
+
+	//FOR TASK EDITING
 	function editTask(elem){
-		editFlag = 1;
+
+		//STORING THE SELECTED ELEMENT
 		selectElm = elem;
 		taskState = '';
+
+		//GETTING THE PARENT OF SELECTED ELEM TO GET STATE
 		taskState = $(elem).parent().attr('id');
 		
-		// console.log($(elem).find('span').find('i').html());
+		//GETTING SELECTED ICON
 		let selectedIcon = $(elem).find('.fas');
-		console.log(selectedIcon);
+		// console.log(selectedIcon);
 
+		//GET FAS CLAS AND REMOVING THE COLOR
 		$('#edit_task').find('.fas').css('color','');
 
+		//REMOVING THE ALREADY PRESENT VALUE
 		$('#taskID').val(' ');
+
+		//STORING THE ID OF THE VAL OF TASK TO THIS INPUT
 		$('#taskID').val($(elem).find('.dsb_cardz').attr('id'));
 		
+		//GETTING THE ICON
 		taskNowIcon = $('#edit_task').find('.'+ selectedIcon[0].classList[1]);
-		taskNowIcon.css('color','red');
+
+		//COLORING IT
+		taskNowIcon.css('color',iconColor);
+
+		//GETTING THE DATE
 		var date = $(elem).find('span').find('i').html();
+
+		//GETTING THE DATE IN CORRECT FORMAT
 		d = getDate(date);
 
-		// console.log(d);
+		// PUTTING THE VALUE IN INPUT
 		$('#taskDescription').val($(elem).find('label').html());
 		$('#taskDeadline')[0].type='date';
 		$('#taskDeadline')[0].value = d;
 		// console.log($('#taskDeadline'));
 		taskTitle = taskNowIcon.parent().attr('title');
-		console.log(elem.id);
+		// console.log(elem.id);
 		let id = elem.id;
 
+		//HANDLING THE CLICK EVENT OF THE ICONS
 		$('.task_type').on('click', function(){
+			$('#edit_task').find('.fas').css('color','');
 			if (taskNowIcon) {
 				// console.log(taskIcon);
 				taskNowIcon.css('color', '');
@@ -928,12 +979,16 @@ ul {
 			taskTitle =taskNowIcon.parent().attr('title');
 			taskIcon = taskNowIcon[0].classList[1].split(/^.*?-/)[1] ;
 			// console.log(taskTitle);
-			taskNowIcon.css('color', 'red');
+			taskNowIcon.css('color', iconColor);
 		});
 	}
 
+	//GETTING THE DATE IN CORRECT FORMAT
 	function getDate(date){
+		//STRING TO ARRAY
 		date = date.split(' ');
+
+		//LOOPING THROUGH THE DATE ARRAY
 		for (var i = 0; i < date.length; i++) {
 			if (i  == 1) {
 				let temp = monthNames.indexOf(date[i]) + 1;
@@ -948,42 +1003,46 @@ ul {
 		return d;
 	}
 
+	//LOADING ALL THE TASK IN THE PROJECT
 	function loadAllTasks(id){
 		$.ajax({
-            		type: "get",
-		            url: "{{ route('task.all') }}",
-		            headers: {
-		            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-		            },
-		            data: { _token : $('meta[name="csrf-token"]').attr('content'),
-		            		project_id:id
-		            },
-		            success: function (s){
-		            	// console.log(s);
-		            	$.each(s, function(k, v){
-		            		if (v.state == 'todo') {
-		            			// console.log(v.position);
-		            			insertAtIndex('todo', v.position, v);
-		            		}
-		            		if (v.state == 'ongoing') {
-		            			// console.log(v.position);
-		            			insertAtIndex('ongoing', v.position, v);
-		            		}
-		            	});
-		            	checkSort();
+    		type: "get",
+            url: "{{ route('task.all') }}",
+            headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: { _token : $('meta[name="csrf-token"]').attr('content'),
+            		project_id:id
+            },
+            success: function (s){
+            	// console.log(s);
+            	//LOOPING THROUGH THE TASKS
+            	$.each(s, function(k, v){
+            		//PUTTING THE TASKS IN THEIR STATE
+            		insertAtIndex(v.state, v.position, v);
+            		// if (v.state == 'todo') {
+            		// 	// console.log(v.position);
+            		// 	insertAtIndex('todo', v.position, v);
+            		// }
+            		// if (v.state == 'ongoing') {
+            		// 	// console.log(v.position);
+            		// 	insertAtIndex('ongoing', v.position, v);
+            		// }
+            	});
+            	//SORTING THE DIV
+            	checkSort();
 
-		            },
-		            error: function(e){
-		                toastr.error("Something went wrong!!");
-		                console.log(e);
+            },
+            error: function(e){
+                toastr.error("Something went wrong!!");
+                console.log(e);
 
-		        }
-		            // $('#'+id).text();
-		        });
+        }
+            // $('#'+id).text();
+        });
 	}
 
-	let countList = 10;
-
+	//SORTING THE DIVS ACCORDING TO THEIR POSITION
 	function checkSort(){
 		let items = $('#todo li');
 		items.sort(function(a, b){
@@ -995,40 +1054,48 @@ ul {
 
 	}
 
+	//UPDATE THE POSITION AFTER SORTING
 	function updatePosition(parentId){
+		//SELECTING EACH OF THE LI
 		$('#'+parentId + ' li').each(function(i, v){
 			let selectedItem = $(v);
+			//UPDATING THEIR ATTRIBUTE
 			selectedItem.attr('position-list', selectedItem.index());
 			// console.log();
+			//UPDATING THE POSITION IN DB
 			$.ajax({
-	            		type: "get",
-			            url: "{{ route('task.update.position') }}",
-			            headers: {
-			            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-			            },
-			            data: { _token : $('meta[name="csrf-token"]').attr('content'),
-			            task_id:selectedItem.find('.dsb_cardz').attr('id'), position: selectedItem.index(), state: parentId
-			            },
-			            success: function (s){
-			                console.log(s);
+            		type: "get",
+		            url: "{{ route('task.update.position') }}",
+		            headers: {
+		            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		            },
+		            data: { _token : $('meta[name="csrf-token"]').attr('content'),
+		            task_id:selectedItem.find('.dsb_cardz').attr('id'), position: selectedItem.index(), state: parentId
+		            },
+		            success: function (s){
+		                console.log(s);
 
-			            },
-			            error: function(e){
-			                console.log(e);
+		            },
+		            error: function(e){
+		                console.log(e);
 
-			        }
+		        }
 		            // $('#'+id).text();
 		        });
 				
-			console.log(v);
+			// console.log(v);
 		});
 	}
-	function insertAtIndex(id, i, v) {
 
+	//INSERTING THE DIVS IN THEIR POSITION
+	function insertAtIndex(id, i, v) {
+		//GETTING THE DATE
 		let date = v.deadline.split('-');
-		countList--;
-		console.log(id);
+
+		// console.log(id);
 		let th = nth(date[2]);
+
+		//APPENDING IN THE UL
 	    $("#"+id).append(`<li position-list="${v.position}" class="sort">
 					<br>
 				
@@ -1057,113 +1124,108 @@ ul {
 	     // console.log($("#"+id+" > :nth-child(" + (i) + ")"));
 	}
 
+	// GETTING THE NTH FOR DATES
 	function nth(d) {
-	  	if (d > 3 && d < 21) return 'th'; 
-			  switch (d % 10) {
-			    case 1:  return "st";
-			    case 2:  return "nd";
-			    case 3:  return "rd";
-			    default: return "th";
-			  }
+	  	if (d > 3 && d < 21) 
+	  		return 'th';  
+	  	switch (d % 10) 
+		{
+		    case 1:  return "st";
+		    case 2:  return "nd";
+		    case 3:  return "rd";
+		    default: return "th";
 		}
+	}
 
-		function saveEditTask(){
-			console.log(taskTitle);
-			descriptionTask = $('#taskDescription').val();
-			deadlineTask = $('#taskDeadline').val();
-			updated_by = {{auth()->user()->id}};
-			position = $(this).parent().index();
-			console.log(position);
-			// positionTask = $('#todo').children().length;
-			console.log(descriptionTask);
-			console.log(deadlineTask);
-			console.log(selectElm);
-			editFlag = 0;
-		}
 
-		function loadSpecificTask(id, state){
+	//LOAD SPECIFIC TASK FROM SPECIFIC STATE
+	function loadSpecificTask(id, state){
+		//REQUESTING FROM SERVER
+		$.ajax({
+        		type: "get",
+	            url: "{{ route('project.specific.task') }}",
+	            headers: {
+	            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	            },
+	            data: { _token : $('meta[name="csrf-token"]').attr('content'),
+	            		project_id:id, state:state
+	            },
+	            success: function (s){
+	            	// console.log(s);
+	            	// $("#"+state).empty();
+	            	//REMOVING ALL THE LI IN UL
+					$("#"+state).find('li').not('#dontSort').remove();
+	            	// console.log($("#"+state).find('*').not('h2', '#dontSort'));
+					let addNewCard = $('#dontSort');
+					// $("#"+state).append('<h2 class="text-white bolder">TODO</h2>');
+	            	$.each(s, function(k, v){
+	            		//LOOPING THROUGH THE LISTS AND UPDATING IT
+	            		insertAtIndex(state, v.position, v);
+	            		
+	            	});
+
+	            	//SORT DIV
+	            	checkSort();
+
+	            	//CHECKING IF STATE IS TODO
+	            	if (state == 'todo') {
+	            		$("#"+state).append(addNewCard);
+	            	}
+	            },
+	            error: function(e){
+	                toastr.error("Something went wrong!!");
+	                console.log(e);
+
+	        }
+	          
+	        });
+	}
+
+	function storeEditedTask(){
+		//GETTING THE INPUT VALUES
+		descriptionTask = $('#taskDescription').val();
+		deadlineTask = $('#taskDeadline').val();
+		created_by = {{auth()->user()->id}};
 		
-			// $("#"+state).find('li').not('#dontSort').remove();
-			$.ajax({
+		let id = $('#taskID').val();
+		// console.log(id);
+		//CHECKING IF THE INPUT HAVE VALUES
+		if (id && descriptionTask && taskTitle && deadlineTask) {
+				$.ajax({
             		type: "get",
-		            url: "{{ route('project.specific.task') }}",
+		            url: "{{ route('task.update') }}",
 		            headers: {
 		            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 		            },
 		            data: { _token : $('meta[name="csrf-token"]').attr('content'),
-		            		project_id:id, state:state
+		            project_id:project.id, task_id:id, title : taskTitle, description: descriptionTask, icon: taskIcon, created_by: created_by, deadline: deadlineTask, state: taskState
 		            },
 		            success: function (s){
-		            	// console.log(s);
-		            	// $("#"+state).empty();
-		            	
-						$("#"+state).find('li').not('#dontSort').remove();
-		            	// console.log($("#"+state).find('*').not('h2', '#dontSort'));
-						let addNewCard = $('#dontSort');
-						// $("#"+state).append('<h2 class="text-white bolder">TODO</h2>');
-		            	$.each(s, function(k, v){
-		            		insertAtIndex(state, v.position, v);
-		            		
-		            		
-		            	});
-		            	checkSort();
-		            	if (state == 'todo') {
-		            		$("#"+state).append(addNewCard);
-		            	}
+		            	taskModelClose();
+		            	toastr.success("Created!!");
+		            	loadSpecificTask(project.id, taskState);
+		                console.log(s);
+
 		            },
 		            error: function(e){
 		                toastr.error("Something went wrong!!");
 		                console.log(e);
 
 		        }
-		          
-		        });
-		}
-
-		function storeEditedTask(){
-			descriptionTask = $('#taskDescription').val();
-			deadlineTask = $('#taskDeadline').val();
-			created_by = {{auth()->user()->id}};
-			positionTask = $('#todo').children().length;
-			let id = $('#taskID').val();
-			console.log(id);
+	            // $('#'+id).text();
+	        });
 			
-			if (descriptionTask && taskTitle && deadlineTask) {
-					$.ajax({
-	            		type: "get",
-			            url: "{{ route('task.update') }}",
-			            headers: {
-			            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-			            },
-			            data: { _token : $('meta[name="csrf-token"]').attr('content'),
-			            project_id:project.id, task_id:id, title : taskTitle, description: descriptionTask, icon: taskIcon, created_by: created_by, position: positionTask, deadline: deadlineTask, state: taskState
-			            },
-			            success: function (s){
-			            	taskModelClose();
-			            	toastr.success("Created!!");
-			            	loadSpecificTask(project.id, taskState);
-			                console.log(s);
-
-			            },
-			            error: function(e){
-			                toastr.error("Something went wrong!!");
-			                console.log(e);
-
-			        }
-		            // $('#'+id).text();
-		        });
-				
-				
-			}else{
-				toastr.error("Something went wrong!!");
-				console.log(taskTitle);
-				console.log(positionTask);
-				console.log(descriptionTask);
-				console.log(deadlineTask);
-				console.log(created_by);
-			}		
-				
-		}
+			
+		}else{
+			toastr.error("Something went wrong!!");
+			console.log(taskTitle);
+			console.log(positionTask);
+			console.log(descriptionTask);
+			console.log(deadlineTask);
+			console.log(created_by);
+		}		
+			
+	}
 
 
 		// console.log(project);
@@ -1171,36 +1233,12 @@ ul {
 
 		// loadSpecificTask(project.id, 'todo');
 </script>
-    <script>
-        setTimeout(function(){
-            Prism.highlightAll();
-        }, 500)
-    </script>
-<script defer>
-            var isIE = !document.currentScript;
+<script>
+    setTimeout(function(){
+        Prism.highlightAll();
+    }, 500)
+</script>
 
-            function renderPRE(currentScript, codeScriptName){
-                if( isIE ) return;
-                setTimeout(function(){
-                    var jsCode = document.querySelector("[data-name='"+ codeScriptName +"']").innerHTML;
-
-                    // cleanup closure wraper
-                    jsCode = jsCode.replace("(function(){", "" ).replace("})()", "" ).trim();
-                    // escape angled brackets between two _ESCAPE_START_ and _ESCAPE_END_ comments
-                    let textsToEscape = jsCode.match(new RegExp("// _ESCAPE_START_([^]*?)// _ESCAPE_END_", 'mg'));
-                    if (textsToEscape) {
-                        textsToEscape.forEach(textToEscape => {
-                            jsCode = jsCode.replace(textToEscape, textToEscape.replace(/</g, "&lt" )
-                                                                              .replace(/>/g, "&gt" )
-                                                                              .replace("// _ESCAPE_START_", "")
-                                                                              .replace("// _ESCAPE_END_", "")
-                                                                              .trim());
-                        });
-                    }
-                    currentScript.insertAdjacentHTML('afterend', "<pre class='language-js'><code>" + jsCode + "</code></pre>");
-                }, 60);
-            }
-        </script>
 
 <script type="text/javascript" defer>
 	var tagify;
@@ -1217,19 +1255,19 @@ ul {
         blacklist : ["/.*/" ],
         keepInvalidTags     : false,
         dropdown : false,
-        enforceWhitelist: true
+        enforceWhitelist: false
     });
 
-// // "remove all tags" button event listener
-// document.querySelector('.tags--removeAllBtn')
-//     .addEventListener('click', tagify.removeAllTags.bind(tagify))
-    console.log(tagify);
-// Chainable event listeners
-tagify.on('add', onAddTag)
-      .on('remove', onRemoveTag)
-      .on('input', onInput)
-      .on('invalid', onInvalidTag)
-      .on('click', onTagClick);
+	// // "remove all tags" button event listener
+	// document.querySelector('.tags--removeAllBtn')
+	//     .addEventListener('click', tagify.removeAllTags.bind(tagify))
+	    console.log(tagify);
+	// Chainable event listeners
+	tagify.on('add', onAddTag)
+	      .on('remove', onRemoveTag)
+	      .on('input', onInput)
+	      .on('invalid', onInvalidTag)
+	      .on('click', onTagClick);
 
 }
 		

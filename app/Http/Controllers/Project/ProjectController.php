@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Project;
 
+use App\User;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -26,12 +27,18 @@ class ProjectController extends Controller
     }
 
     public function store(Request $request){
-    	// dd($request->all());
-    	Project::create(['name' => $request->name,
+    	
+    	$project = Project::create(['name' => $request->name,
     					'description' => $request->description,
                         'icon' => $request->icon,
     					'user_id' => auth()->user()->id
     	]);
+
+        foreach ($request->emails as $key => $value) {
+            $user = User::where('email',$value)->first();
+            $project->users()->attach($user->id);
+        }
+        // dd($project->users);
     	return response()->json('success', 200);
 
     }

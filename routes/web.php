@@ -44,6 +44,9 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
 	Route::get('/tasks/update/', 'Task\TaskController@update')->name('task.update');
 	Route::get('/tasks/position/update/', 'Task\TaskController@updatePosition')->name('task.update.position');
 
+	Route::get('check/email', 'User\UserController@checkEmail')->name('check.email');
+
+	Route::get('users/all', 'User\UserController@returnAllUsers')->name('');
 
 	Route::get('/profile', function () {
 		return view('admin.profile');

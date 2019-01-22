@@ -138,6 +138,7 @@
 								
 							
 							<input type="text" id="name" class="boxee" placeholder="Project Name" required><br><br>
+							<input id='tags' type="emai"l class='boxee makeTagify' placeholder='add user by email' autofocus><br><br>
 							<textarea name="" id="description" id="" cols="30" rows="5" class="boxee_text" placeholder="Description(optional)"></textarea><br><br>
 							<span style="font-size:0.9em;">Choose Icon</span><br>
 							<div style="font-size:1.5em;">
@@ -233,13 +234,33 @@
 
 	
 @endsection
+@section('styles')
 
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.min.css">
+
+<link rel="stylesheet" type="text/css" href="{{asset('css/tagify.css')}}">
+<style type="text/css">
+	.makeTagify{
+		text-align: left !important;
+		margin-left: 27%;
+		height: auto;
+	}
+	.modal { overflow: auto !important; }
+</style>
+@endsection
 @section('scripts')
-
-    <script type="text/javascript" src="{{asset('js/sortTable.js')}}"></script>
+	
+<script src='https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js'></script>
+<script type="text/javascript" src="{{asset('js/tagify.min.js')}}" defer></script>
+ <script src="{{asset('js/jQuery.tagify.min.js')}}" defer></script>
+    <script type="text/javascript" src="{{asset('js/sortTable.js')}}" defer></script>
 	<script type="text/javascript">
-		 $(document).ready(function() {
+
+		var newProjectUsers = [];
+		$(document).ready(function() {
 		 	getProjects();
+		 	// $('#allProjects').tablesorter();
             //option A
             $("#formCreate").submit(function(e){
                
@@ -272,7 +293,7 @@
 			let name = $('#name').val();
 			let description = $('#description').val();
 
-			console.log(description);
+			// console.log(description);
 			if (name && icon) {
 				$.ajax({
             		type: "get",
@@ -281,13 +302,14 @@
 		            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 		            },
 		            data: { _token : $('meta[name="csrf-token"]').attr('content'),
-		            name : name, description: description, icon: icon 
+		            name : name, description: description, icon: icon, emails: newProjectUsers 
 		            },
 		            success: function (s){
 		            	removeModal();
 		            	getProjects();
-
+		            	clearInput();
 		                console.log(s);
+		                toastr.success("Project Created");
 
 		            },
 		            error: function(e){
@@ -320,10 +342,11 @@
 		            
 		            
 		            success: function (s){
+		            	// $('#allProjects tbody').empty('');
 		            	$.each(s, function(k, v) {
 		            		appendToLatest(k, v);
 		            		appendToallProjects(k, v);
-		                
+		                // clearInput();
 		            });
 		                
 
@@ -332,7 +355,7 @@
 		                toastr.error("Something went wrong!!");
 		                console.log(e);
 
-		        }
+		        	}
 		            // $('#'+id).text();
 		        });
 		
@@ -361,6 +384,7 @@
 		}
 
 		function appendToallProjects(k, v){
+			// console.log(v);
 			if (k == 0) {
 				$('#allProjects tbody').empty('');
 			}
@@ -371,7 +395,7 @@
 							</a>
 						</td>
 						<td>${v.userCount}</td>
-						<td>58</td>
+						<td>${v.taskCount}</td>
 						<td>
 							<div class="progress" style="height:5px;margin-top:3px;">
 							  <div class="progress-bar" style="width:40%;height:5px;background:#005792;"></div>
@@ -381,6 +405,110 @@
 			// $("#allProjects").tablesorter();
 			
 		}
+
+		function clearInput(){
+			$('#name').val(' ');
+			$('#description').val(' ');
+			icon = '';
+			i.css('color', '');
+			console.log(tagify);
+			tagify.removeAllTags();
+			newProjectUsers.length = 0;
+		}
 		
 	</script>
+	<script type="text/javascript" defer>
+	var tagify;
+	var input;
+	setTimeout(getTagify, 1000);
+	$(document).on('ready', function(){
+		
+	});
+	function getTagify(){
+	 input = document.querySelector('input[id=tags]'),
+    // init Tagify script on the above inputs
+    tagify = new Tagify(input, {
+        whitelist : [],
+        blacklist : [],
+        keepInvalidTags     : false,
+        dropdown : false,
+        enforceWhitelist: false
+    });
+
+	// // "remove all tags" button event listener
+	// document.querySelector('.tags--removeAllBtn')
+	//     .addEventListener('click', tagify.removeAllTags.bind(tagify))
+	// console.log(tagify);
+	// Chainable event listeners
+	tagify.on('add', onAddTag)
+	      .on('remove', onRemoveTag)
+	      .on('input', onInput)
+	      .on('invalid', onInvalidTag)
+	      .on('click', onTagClick);
+
+	}
+		
+
+	// tag added callback
+	function onAddTag(e){
+	    // console.log(e.detail.tag);
+	    // tagify.removeTag(e.detail.tag);
+	    // console.log("original input value: ", input.value);
+	    // console.log(JSON.parse(input.value));
+	    let inp = JSON.parse(input.value);
+	    checkEmail(inp[inp.length-1].value, e.detail.tag);
+	    // tagify.off('add', onAddTag) // exmaple of removing a custom Tagify event
+	}
+
+	// tag remvoed callback
+	function onRemoveTag(e){
+	    console.log(e.detail);
+	    console.log("tagify instance value:", tagify.value);
+	    newProjectUsers.pop(e.detail.data.value);
+	    
+	}
+
+	// on character(s) added/removed (user is typing/deleting)
+	function onInput(e){
+	    // console.log(e.detail);
+	}
+
+	// invalid tag added callback
+	function onInvalidTag(e){
+	    console.log(e.detail);
+	    
+	}
+
+	// invalid tag added callback
+	function onTagClick(e){
+	    console.log(e.detail);
+	}
+
+	function checkEmail(inp, target){
+		// console.log(inp);
+		$.ajax({
+        		type: "get",
+	            url: "{{ route('check.email') }}",
+	            headers: {
+	            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	            },
+	            data: { _token : $('meta[name="csrf-token"]').attr('content'),
+	            email: inp
+	            },
+	            
+	            success: function (s){
+	            	newProjectUsers.push(inp);
+	            },
+	            error: function(e){
+	            	// console.log(target.data);
+	            	tagify.removeTag(target);
+
+	                // toastr.error("Something went wrong!!");
+                	
+
+	        	}
+		            // $('#'+id).text();
+		    });
+	}
+</script>
 @endsection
