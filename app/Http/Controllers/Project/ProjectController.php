@@ -33,11 +33,13 @@ class ProjectController extends Controller
                         'icon' => $request->icon,
     					'user_id' => auth()->user()->id
     	]);
-
-        foreach ($request->emails as $key => $value) {
+        if ($request->email) {
+           foreach ($request->emails as $key => $value) {
             $user = User::where('email',$value)->first();
             $project->users()->attach($user->id);
         }
+        }
+        
         // dd($project->users);
     	return response()->json('success', 200);
 
