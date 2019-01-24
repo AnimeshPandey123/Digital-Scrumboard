@@ -6,29 +6,16 @@
 
 @section('styles')
 
-
-
+<!-- CDN for Tagify -->
 <link rel="stylesheet" type="text/css" href="{{asset('css/tagify.css')}}">
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.min.css">
-
 <style type="text/css">
-ul {
-  list-style-type: none;
-  margin: 0; padding: 0;
-}
-.dsb_card{
-	list-style-type: none;
-}
-.makeTagify{
-	text-align: left !important;
-	margin-left: 27%;
-	height: auto;
-}
+ul{list-style-type:none;margin:0;padding:0;}
+.dsb_card{list-style-type:none;}
+.makeTagify{text-align:left !important;margin-left:27%;height:auto;}
 </style>
 @endsection
 @section('content')
-
 
 <div class="project_wrapper">
 	<div class="dsb_card dsb_card20">
@@ -51,13 +38,10 @@ ul {
 	</h6>
 	<div class="row" style="margin-top:20px;">
 		<div class="col-md-3">
-			
 			<ul class="dsb_card sortable dsb_card20 dsb_yellow_card" id="todo">
 				<h2 class="text-white bolder">TODO</h2>
-				
 				<li class="sort">
 					<br>
-				
 					<div class="dsb_cardz">
 						<div class="row">
 							<div class="col-md-2">
@@ -387,7 +371,7 @@ ul {
         </div>
     </div>
 
-<!--The Modal Box for Creating Project-->
+<!--The Modal Box for Project Settings-->
 	    <div id="settings_project" class="modal fade" role="dialog">
 	        <div class="modal-dialog modal-lg">
 
@@ -405,7 +389,7 @@ ul {
 		            <div class="modal-body" style="color:#444;margin-top:40px;">
 						<div class="text-center">
 							<input type="text" class="boxee" id="projectName" value="{{$project->name}}" placeholder="Project Name" required><br><br>
-							<input name='tags' class='boxee makeTagify' placeholder='write some tags' value='css, html, javascript, css' autofocus><br><br>
+							<input name='tags' class='boxee makeTagify' placeholder='Add people' value='css, html, javascript, css' autofocus><br><br>
 							<textarea name="" id="projectDesc" cols="30" rows="5" class="boxee_text" placeholder="Description">{{$project->description}}</textarea><br><br>
 							<span style="font-size:0.9em;">Choose Icon</span><br>
 							<div id="iconContainer" style="font-size:1.5em;">
@@ -481,8 +465,13 @@ ul {
 								<a href="#" class="iconSelect text-lightgrey">
 									<i class="fas fa-shopping-cart"></i>
 								</a>	
-							</div>
+							</div><br><br>
+							<button class="btn dsb_button dsb_button_pink">
+								<i class="fas fa-trash"></i>&nbsp;
+								Delete Project
+							</button>
 						</div>
+						
 		            </div>
 		            <div class="modal-footer">
 		            	<button type="submit" onclick="settingSubmit()" class="btn dsb_button dsb_button_green">
@@ -543,7 +532,15 @@ ul {
 					<input type="text" id="taskID" name="id" style="display: none;">
 					<textarea id="taskDescription" name="" id="" cols="30" rows="5" class="boxee_text" placeholder="Task Description" required></textarea><br><br>
 					<input type="text" class="boxee" placeholder="Assign Members"><br><br>
-					<input type="text" id="taskDeadline" class="boxee" placeholder="Deadline" onfocus="(this.type='date')" required>
+					<input type="text" id="taskDeadline" class="boxee" placeholder="Deadline" onfocus="(this.type='date')"><br><br>
+					<div class="form-group">
+					    <label for="formControlRange">Set Progress</label>
+					    <input type="range" class="form-control-range slider" id="formControlRange" style="width:50%;margin-left:auto;margin-right:auto;" min="1" max="100">
+					  </div><br>
+					<button class="btn dsb_button dsb_button_pink">
+						<i class="fas fa-trash"></i>&nbsp;
+						Delete Task
+					</button>
 				</div>
             </div>
             <div class="modal-footer">
@@ -559,6 +556,8 @@ ul {
            </div>
     </div>
 </div>
+
+<!-- Modal for Creating Task-->
 <div id="create_task" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
 
@@ -602,7 +601,7 @@ ul {
 					<br>
 					<textarea id="taskDescriptionCreate" name="" id="" cols="30" rows="5" class="boxee_text" placeholder="Task Description" required></textarea><br><br>
 					<input type="text" class="boxee" placeholder="Assign Members"><br><br>
-					<input type="text" id="taskDeadlineCreate" class="boxee" placeholder="Deadline" onfocus="(this.type='date')" required>
+					<input type="text" id="taskDeadlineCreate" class="boxee" placeholder="Deadline" onfocus="(this.type='date')">
 				</div>
             </div>
             <div class="modal-footer">
@@ -643,7 +642,7 @@ ul {
 	var project;
 	var taskState;
 	var editFlag = 0;
-	var iconColor = 'blue';
+	var iconColor = '#00204a';
 	var taskPrevIcon;
 	var taskNowIcon;
 	var taskTitle;
@@ -1137,7 +1136,6 @@ ul {
 		}
 	}
 
-
 	//LOAD SPECIFIC TASK FROM SPECIFIC STATE
 	function loadSpecificTask(id, state){
 		//REQUESTING FROM SERVER
@@ -1270,8 +1268,6 @@ ul {
 	      .on('click', onTagClick);
 
 }
-		
-
 	// tag added callback
 	function onAddTag(e){
 	    console.log(e.detail.tag);
@@ -1302,4 +1298,5 @@ ul {
 	    console.log(e.detail);
 	}
 </script>
+
 @endsection

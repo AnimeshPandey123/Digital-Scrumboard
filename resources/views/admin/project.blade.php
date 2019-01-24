@@ -134,11 +134,8 @@
 		            <div class="modal-body" style="color:#444;margin-top:40px;">
 
 						<div class="text-center">
-							
-								
-							
 							<input type="text" id="name" class="boxee" placeholder="Project Name" required><br><br>
-							<input id='tags' type="emai"l class='boxee makeTagify' placeholder='add user by email' autofocus><br><br>
+							<input id='tags' type="email" class='boxee makeTagify' placeholder='Add user by email' autofocus><br><br>
 							<textarea name="" id="description" id="" cols="30" rows="5" class="boxee_text" placeholder="Description(optional)"></textarea><br><br>
 							<span style="font-size:0.9em;">Choose Icon</span><br>
 							<div style="font-size:1.5em;">
@@ -237,7 +234,7 @@
 @section('styles')
 
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.min.css">
 
 <link rel="stylesheet" type="text/css" href="{{asset('css/tagify.css')}}">
 <style type="text/css">
@@ -285,7 +282,7 @@
 		    // console.log(i.className);
 		 	icon = i[0].classList[1].split(/^.*?-/)[1] ;
 		 	// console.log(icon);
-		 	i.css('color', 'red');
+		 	i.css('color', '#00204a');
 		 	
 		 });
 		 
