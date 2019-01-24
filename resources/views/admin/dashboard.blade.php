@@ -7,39 +7,138 @@
 		</h6>
 		<div class="row" style="font-size:0.9em;">
 			<div class="col-md-8">
-				<div class="dsb_card dsb_card20">
+				<div class="dsb_card dsb_card20 desh">
 					<div class="row">
 						<div class="col-md-6">
-							<div>
-								<canvas id="pie-chart" width="100" height="100"></canvas>
-								<!-- Pie Chart -->
-								<script>
-									 new Chart(document.getElementById("pie-chart"), {
-									    type: 'pie',
-									    data: {
-									      labels: ["College Project", "Mind Map", "Designer's Club"],
-									      datasets: [{
-									        label: "Tasks",
-									        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f"],
-									        data: [2478,5267,734]
-									      }]
-									    },
-									    options: {
-									      title: {
-									        display: true,
-									        text: 'Tasks Division'
-									      }
-									    }
-									});
-								</script>
+							<h6 class="text-white">
+								Tasks
+							</h6>
+							<div class="dsb_cardz">
+								<div class="row">
+									<div class="col-md-2">
+										<div class="text-center">
+											<h2>
+												<i class="fas fa-palette ico_gre"></i>
+											</h2>
+										</div>
+									</div>
+									<div class="col-md-10">
+										<span style="float:right;font-size:0.8em;">
+											<i>15th Dec 2018</i>
+										</span><br>
+										<label>Complete the design for the frontend part of the Web App</label> <br>
+										<span style="float:right;">
+											<img src="{{asset('images/picture.jpg')}}" alt="" class="task_peeps peeps_yellow peeps_dashboard">
+										</span>
+									</div>
+								</div>
+							</div><br>
+							<div class="dsb_cardz">
+								<div class="row">
+									<div class="col-md-2">
+										<div class="text-center">
+											<h2>
+												<i class="fas fa-palette ico_gre"></i>
+											</h2>
+										</div>
+									</div>
+									<div class="col-md-10">
+										<span style="float:right;font-size:0.8em;">
+											<i>15th Dec 2018</i>
+										</span><br>
+										<label>Complete the design for the frontend part of the Web App</label> <br>
+										<span style="float:right;">
+											<img src="{{asset('images/picture.jpg')}}" alt="" class="task_peeps peeps_yellow peeps_dashboard">
+										</span>
+									</div>
+								</div>
+							</div><br>
+							<div class="dsb_cardz">
+								<div class="row">
+									<div class="col-md-2">
+										<div class="text-center">
+											<h2>
+												<i class="fas fa-palette ico_gre"></i>
+											</h2>
+										</div>
+									</div>
+									<div class="col-md-10">
+										<span style="float:right;font-size:0.8em;">
+											<i>15th Dec 2018</i>
+										</span><br>
+										<label>Complete the design for the frontend part of the Web App</label> <br>
+										<span style="float:right;">
+											<img src="{{asset('images/picture.jpg')}}" alt="" class="task_peeps peeps_yellow peeps_dashboard">
+										</span>
+									</div>
+								</div>
 							</div>
 						</div>
 						<div class="col-md-6">
-							<div>
-								<h6 class="text-lightgrey">
-									Deadlines
-								</h6>
-							</div>
+							<h6 class="text-white">
+								&nbsp;
+							</h6>
+							<div class="dsb_cardz">
+									<div class="row">
+										<div class="col-md-2">
+											<div class="text-center">
+												<h2>
+													<i class="fas fa-palette ico_gre"></i>
+												</h2>
+											</div>
+										</div>
+										<div class="col-md-10">
+											<span style="float:right;font-size:0.8em;">
+												<i>15th Dec 2018</i>
+											</span><br>
+											<label>Complete the design for the frontend part of the Web App</label> <br>
+											<span style="float:right;">
+												<img src="{{asset('images/picture.jpg')}}" alt="" class="task_peeps peeps_yellow peeps_dashboard">
+											</span>
+										</div>
+									</div>
+								</div>
+								<br>
+								<div class="dsb_cardz">
+										<div class="row">
+											<div class="col-md-2">
+												<div class="text-center">
+													<h2>
+														<i class="fas fa-palette ico_gre"></i>
+													</h2>
+												</div>
+											</div>
+											<div class="col-md-10">
+												<span style="float:right;font-size:0.8em;">
+													<i>15th Dec 2018</i>
+												</span><br>
+												<label>Complete the design for the frontend part of the Web App</label> <br>
+												<span style="float:right;">
+													<img src="{{asset('images/picture.jpg')}}" alt="" class="task_peeps peeps_yellow peeps_dashboard">
+												</span>
+											</div>
+										</div>
+									</div><br>
+									<div class="dsb_cardz">
+											<div class="row">
+												<div class="col-md-2">
+													<div class="text-center">
+														<h2>
+															<i class="fas fa-palette ico_gre"></i>
+														</h2>
+													</div>
+												</div>
+												<div class="col-md-10">
+													<span style="float:right;font-size:0.8em;">
+														<i>15th Dec 2018</i>
+													</span><br>
+													<label>Complete the design for the frontend part of the Web App</label> <br>
+													<span style="float:right;">
+														<img src="{{asset('images/picture.jpg')}}" alt="" class="task_peeps peeps_yellow peeps_dashboard">
+													</span>
+												</div>
+											</div>
+									</div>
 						</div>
 					</div>
 				</div>	
@@ -79,12 +178,6 @@
 			<div class="col-md-4">
 					<div class="dsb_card dsb_card20 dsb_primary_card">
 						<span class="text-white" style="font-size:1.1em;">Recents</span>
-						<span style="float:right;">
-							<a href="#" class="whitenigga">
-								<i class="fas fa-sync"></i>&nbsp;
-								update
-							</a>
-						</span><br>
 						<div class="cardz" style="font-size:1em;">
 							<div class="dsb_cardz">
 								<i>

@@ -44,7 +44,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 
-
     <!-- Toastr -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/toastr.min.css') }}">
 

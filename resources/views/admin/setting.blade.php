@@ -73,11 +73,7 @@
 			  				<button class="btn dsb_button dsb_button_pink">
 			  					<i class="fab fa-google"></i>&nbsp;
 			  					Disconnect <span style="font-size:0.8em;">"akashrajdahal@gmail.com"</span>
-			  				</button><br><br>
-			  				<button class="btn dsb_button dsb_button_blue">
-			  					<i class="fab fa-facebook"></i>&nbsp;
-			  					Disconnect <span style="font-size:0.8em;">"Aakash Raj Dahal"</span>
-			  				</button>
+			  				</button><br>
 			  			</td>
 			  		</tr>
 			  	</table>
@@ -85,10 +81,30 @@
 			  <div class="tab-pane container fade" id="profile">
 			  	<div class="text-center">
 			  		<img src="{{asset('images/picture.jpg')}}" alt="" class="pro_settings"><br>
-			  		<a href="#" style="color:#005792;font-size:0.8em;">Change Picture</a>
+					  <a href="#" style="color:#005792;font-size:0.8em;">Change Picture</a><br>
+					  <hr>
+					  <h6 class="text-lightgrey">Previous pictures</h6>
+					  <img src="{{asset('images/picture2.jpg')}}" alt="" class="pro_settings_prev">&nbsp;&nbsp;
+					  <img src="{{asset('images/picture3.jpg')}}" alt="" class="pro_settings_prev">&nbsp;&nbsp;
+					  <img src="{{asset('images/picture4.jpg')}}" alt="" class="pro_settings_prev">&nbsp;&nbsp;
+					  <img src="{{asset('images/picture5.jpg')}}" alt="" class="pro_settings_prev">
 			  	</div>
 			  </div>
-			  <div class="tab-pane container fade" id="notifications">...</div>
+			  <div class="tab-pane container fade" id="notifications">
+					<table class="table table-borderless">
+						<tr>
+							<td>
+								<i class="fas fa-asterisk"></i>&nbsp;
+								Receive Notifications?</td>
+							<td>
+								<input type="radio" name="getNotifications" checked>&nbsp;Yes
+							</td>
+							<td>
+								<input type="radio" name="getNotifications">&nbsp;No
+							</td>
+						</tr>
+					</table>
+			  </div>
 			  <div class="tab-pane container fade" id="custom">
 			  	<div class="text-center">
 			  		<div class="row">

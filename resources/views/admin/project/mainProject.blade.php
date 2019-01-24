@@ -51,7 +51,7 @@ ul{list-style-type:none;margin:0;padding:0;}
 									</h2>
 								</div>
 							</div>
-							<div class="col-md-10" style="border-left:2px solid #cbcbcb;">
+							<div class="col-md-10">
 								<span style="float:right;font-size:0.8em;">
 									<i>15th Dec 2018</i>
 								</span><br>
@@ -75,7 +75,7 @@ ul{list-style-type:none;margin:0;padding:0;}
 								</h2>
 							</div>
 						</div>
-						<div class="col-md-10" style="border-left:2px solid #cbcbcb;" id="addNewCard">
+						<div class="col-md-10" id="addNewCard">
 							<span style="float:right;font-size:0.8em;">
 								<i>show today's date</i>
 							</span><br>
@@ -105,7 +105,7 @@ ul{list-style-type:none;margin:0;padding:0;}
 								</h2>
 							</div>
 						</div>
-						<div class="col-md-10" style="border-left:2px solid #cbcbcb;">
+						<div class="col-md-10">
 							<div class="row">
 								<div class="col-md-6">
 									<div class="progress" style="height:5px;margin-top:5px;">
@@ -137,7 +137,7 @@ ul{list-style-type:none;margin:0;padding:0;}
 								</h2>
 							</div>
 						</div>
-						<div class="col-md-10" style="border-left:2px solid #cbcbcb;">
+						<div class="col-md-10">
 							<div class="row">
 								<div class="col-md-6">
 									<div class="progress" style="height:5px;margin-top:5px;">
@@ -170,7 +170,7 @@ ul{list-style-type:none;margin:0;padding:0;}
 								</h2>
 							</div>
 						</div>
-						<div class="col-md-10" style="border-left:2px solid #cbcbcb;">
+						<div class="col-md-10">
 							<div class="row">
 								<div class="col-md-6">
 									<div class="progress" style="height:5px;margin-top:5px;">
@@ -208,7 +208,7 @@ ul{list-style-type:none;margin:0;padding:0;}
 								</h2>
 							</div>
 						</div>
-						<div class="col-md-10" style="border-left:2px solid #cbcbcb;">
+						<div class="col-md-10">
 							<div class="row">
 								<div class="col-md-6">
 									<div class="progress" style="height:5px;margin-top:5px;">
@@ -245,7 +245,7 @@ ul{list-style-type:none;margin:0;padding:0;}
 								</h2>
 							</div>
 						</div>
-						<div class="col-md-10" style="border-left:2px solid #cbcbcb;">
+						<div class="col-md-10">
 							<span style="float:right;font-size:0.8em;">
 								<i>15th Dec 2018</i>
 							</span><br>
@@ -266,7 +266,7 @@ ul{list-style-type:none;margin:0;padding:0;}
 								</h2>
 							</div>
 						</div>
-						<div class="col-md-10" style="border-left:2px solid #cbcbcb;">
+						<div class="col-md-10">
 							<span style="float:right;font-size:0.8em;">
 								<i>15th Dec 2018</i>
 							</span><br>
@@ -287,7 +287,7 @@ ul{list-style-type:none;margin:0;padding:0;}
 								</h2>
 							</div>
 						</div>
-						<div class="col-md-10" style="border-left:2px solid #cbcbcb;">
+						<div class="col-md-10">
 							<span style="float:right;font-size:0.8em;">
 								<i>15th Dec 2018</i>
 							</span><br>
@@ -308,7 +308,7 @@ ul{list-style-type:none;margin:0;padding:0;}
 								</h2>
 							</div>
 						</div>
-						<div class="col-md-10" style="border-left:2px solid #cbcbcb;">
+						<div class="col-md-10">
 							<span style="float:right;font-size:0.8em;">
 								<i>15th Dec 2018</i>
 							</span><br>
