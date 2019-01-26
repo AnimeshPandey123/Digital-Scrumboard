@@ -77,7 +77,7 @@
                         <i class="fas fa-bell"></i>
                     </a> 
                     <a href="{{ route('profile') }}" class="profile_link">
-                        <img src="{{asset('images/picture.jpg')}}" alt="" class="pic_logo">
+                        <img src="{{asset(auth()->user()->image)}}" alt="No Image" class="pic_logo">
                         <span class="profile_text">
                             {{auth()->user()->name}}&nbsp;
                             <i class="fas fa-chevron-down"></i>

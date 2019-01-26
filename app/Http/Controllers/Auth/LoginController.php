@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Auth;
 use App\User;
+use App\UserPreference;
 use App\Http\Controllers\Controller;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Auth;
 
 class LoginController extends Controller
 {
@@ -55,17 +56,25 @@ class LoginController extends Controller
         $user = Socialite::driver('google')->user();
 
         $userExists = User::where('email', $user->email)->first();
-        // dd($user);
+        // dd($user->avatar_original);
         if ($userExists) {
             Auth::login($userExists, true);
         }else{
             // dd('ok');
-            $user = User::create([
+            $userExists = User::create([
                 'name' => $user->name,
                 'email' => $user->email,
                 'password' => null
             ]);
-            Auth::login($user, true);
+            Auth::login($userExists, true);
+        }
+
+        if (!$userExists->userPreference) {
+            UserPreference::create([
+                'user_id' => $userExists->id,
+                'picture_url' => $user->avatar_original,
+                'theme' => 'light'
+            ]);
         }
         return redirect()->route('dashboard');
     }

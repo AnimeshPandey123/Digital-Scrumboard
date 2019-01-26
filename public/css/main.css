@@ -53,7 +53,6 @@ input:focus{outline:none;}
 -------------------------- CARDS- ----------------------------------------
 -------------------------------------------------------------------------- */
 .dsb_cardz{border-radius:5px;background:#fff;color:#444;padding:10px;font-size:0.9em;}
-.dsb_cardz:hover{cursor:move;}
 .dsb_card{border-radius:5px;background:#fff;box-shadow:0px 1px 6px #b5b5b5;}
 .dsb_card20{padding:20px;}
 .dsb_card40{padding:40px;}

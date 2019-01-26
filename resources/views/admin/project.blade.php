@@ -360,6 +360,7 @@
 	
 
 		function appendToLatest(k, v){
+			let col;
 			if (k > 2) {
 		    	return false;
 		     }
@@ -367,10 +368,15 @@
 
     			$('#mainProjects').empty();
     		}
+    		if (!v.color) {
+    			col = 'dsb_green_card';
+    		}else{
+    			col = v.color;
+    		}
 
     		$('#mainProjects').append(` <a href="/admin/project/main/${v.id}" class="col-md-4">
 						<div class="dsb_card">
-						  <div class="card-body dsb_blue_card">
+						  <div class="card-body ${col}">
 						  	<div class="text-center centerpox"> 
 						  		<i class="fas fa-${v.icon} bigicon align-middle"></i>
 						  	</div>

@@ -9,9 +9,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-    protected $fillable = ['description', 'project_id', 'created_by', 'updated_by', 'state', 'position', 'deadline', 'title'];
+    protected $fillable = ['description', 'project_id', 'created_by', 'updated_by', 'state', 'position', 'deadline', 'title', 'progress'];
 
     protected $casts = ['deadline' => 'date:Y-M-d'];
+
+     protected $with = ['users'];
+
+     protected $hidden = ['pivot'];
 
     public function project()
     {
@@ -25,5 +29,9 @@ class Task extends Model
     public function getDateAttribute()
     {
          return (new Carbon($this->deadline))->format('Y-m-d');
+    }
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
     }
 }

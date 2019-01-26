@@ -13,6 +13,7 @@
 ul{list-style-type:none;margin:0;padding:0;}
 .dsb_card{list-style-type:none;}
 .makeTagify{text-align:left !important;margin-left:27%;height:auto;}
+.dsb_cardz:hover{cursor:move;}
 </style>
 @endsection
 @section('content')
@@ -23,7 +24,7 @@ ul{list-style-type:none;margin:0;padding:0;}
 			Some random button
 		</button>
 		<span style="float:right;">
-			<button class="nobox_button" data-toggle="modal" data-target="#settings_project">
+			<button class="nobox_button" onclick="settingOpen()" data-toggle="modal" data-target="#settings_project">
 				<i class="fas fa-cog" style="color:#3498db;"></i>
 			</button>
 			<button class="nobox_button" data-toggle="modal" data-target="#about_project">
@@ -40,30 +41,30 @@ ul{list-style-type:none;margin:0;padding:0;}
 		<div class="col-md-3">
 			<ul class="dsb_card sortable dsb_card20 dsb_yellow_card" id="todo">
 				<h2 class="text-white bolder">TODO</h2>
-				<li class="sort">
-					<br>
-					<div class="dsb_cardz">
-						<div class="row">
-							<div class="col-md-2">
-								<div class="text-center">
-									<h2>
-										<i class="fas fa-palette ico_gre"></i>
-									</h2>
-								</div>
-							</div>
-							<div class="col-md-10">
-								<span style="float:right;font-size:0.8em;">
-									<i>15th Dec 2018</i>
-								</span><br>
-								<label>Complete the design for the frontend part of the Web App</label> <br>
-								<span style="float:right;">
-									<img src="{{asset('images/picture.jpg')}}" alt="" class="task_peeps peeps_yellow">
-								</span>
-							</div>
-						</div>
-					</div>
-				</li>
-				
+				{{--<li class="sort">
+													<br>
+													<div class="dsb_cardz">
+														<div class="row">
+															<div class="col-md-2">
+																<div class="text-center">
+																	<h2>
+																		<i class="fas fa-palette ico_gre"></i>
+																	</h2>
+																</div>
+															</div>
+															<div class="col-md-10">
+																<span style="float:right;font-size:0.8em;">
+																	<i>15th Dec 2018</i>
+																</span><br>
+																<label>Complete the design for the frontend part of the Web App</label> <br>
+																<span style="float:right;">
+																	<img src="{{asset('images/picture.jpg')}}" alt="" class="task_peeps peeps_yellow">
+																</span>
+															</div>
+														</div>
+													</div>
+												</li>--}}
+
 				<li class="sort notSortable" id="dontSort" position-list="100">
 					<br>
 				<div class="dsb_cardz" style="opacity:0.8; position: relative;">
@@ -87,113 +88,52 @@ ul{list-style-type:none;margin:0;padding:0;}
 					</div>
 				</div>
 			</li>
+				
+				
 			</ul>
 			
 		</div>
 		<div class="col-md-3">
-			<ul class="sortContainer">
+			
 			<ul class="dsb_card sortable dsb_card20 dsb_blue_card" id="ongoing">
 				<h2 class="text-white bolder">ONGOING</h2>
-				<li class="sort">
+				{{--<li class="sort">
 					<br>
-				<div class="dsb_cardz">
-					<div class="row">
-						<div class="col-md-2">
-							<div class="text-center">
-								<h2>
-									<i class="fas fa-comments ico_gre"></i>
-								</h2>
-							</div>
-						</div>
-						<div class="col-md-10">
-							<div class="row">
-								<div class="col-md-6">
-									<div class="progress" style="height:5px;margin-top:5px;">
-									  <div class="progress-bar" style="width:40%;height:5px;background-color:#74b9ff;"></div>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<span style="float:right;font-size:0.8em;">
-										<i>15th Dec 2018</i>
-									</span><br>
-								</div>
-							</div>
-							Have a meeting with the Leadership Team regarding salary <br>
-							<span style="float:right;">
-								<img src="{{asset('images/picture.jpg')}}" alt="" class="task_peeps peeps_blue">
-							</span>
-						</div>
-					</div>
-				</div>
-				</li>
-				<br>
-				<li class="sort">
 					<div class="dsb_cardz">
-					<div class="row">
-						<div class="col-md-2">
-							<div class="text-center">
-								<h2>
-									<i class="fas fa-palette ico_gre"></i>
-								</h2>
+						<div class="row">
+							<div class="col-md-2">
+								<div class="text-center">
+									<h2>
+										<i class="fas fa-comments ico_gre"></i>
+									</h2>
+								</div>
 							</div>
-						</div>
-						<div class="col-md-10">
-							<div class="row">
-								<div class="col-md-6">
-									<div class="progress" style="height:5px;margin-top:5px;">
-									  <div class="progress-bar" style="width:10%;height:5px;background-color:#74b9ff;"></div>
+							<div class="col-md-10">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="progress" style="height:5px;margin-top:5px;">
+										  <div class="progress-bar" style="width:40%;height:5px;background-color:#74b9ff;"></div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<span style="float:right;font-size:0.8em;">
+											<i>15th Dec 2018</i>
+										</span><br>
 									</div>
 								</div>
-								<div class="col-md-6">
-									<span style="float:right;font-size:0.8em;">
-										<i>15th Dec 2018</i>
-									</span><br>
-								</div>
+								Have a meeting with the Leadership Team regarding salary <br>
+								<span style="float:right;">
+									<img src="{{asset('images/picture.jpg')}}" alt="" class="task_peeps peeps_blue">
+								</span>
 							</div>
-							Complete the design for the dashboard ASAP <br>
-							<span style="float:right;">
-								<img src="{{asset('images/picture.jpg')}}" alt="" class="task_peeps peeps_blue">
-							</span>
 						</div>
 					</div>
-				</div>
-				</li>
+				</li>--}}
 				
-				<br>
-				<li class="sort">
-					<div class="dsb_cardz">
-					<div class="row">
-						<div class="col-md-2">
-							<div class="text-center">
-								<h2>
-									<i class="fas fa-vial ico_gre"></i>
-								</h2>
-							</div>
-						</div>
-						<div class="col-md-10">
-							<div class="row">
-								<div class="col-md-6">
-									<div class="progress" style="height:5px;margin-top:5px;">
-									  <div class="progress-bar" style="width:90%;height:5px;background-color:#74b9ff;"></div>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<span style="float:right;font-size:0.8em;">
-										<i>15th Dec 2018</i>
-									</span><br>
-								</div>
-							</div>
-							Learn VueJS<br>
-							<span style="float:right;">
-								<img src="{{asset('images/picture.jpg')}}" alt="" class="task_peeps peeps_blue">
-							</span>
-						</div>
-					</div>
-				</div>
-				</li>
+			
 				
 			</ul>
-			</ul>
+			
 		</div>
 		<div class="col-md-3">
 			<ul class="dsb_card sortable dsb_card20 dsb_pink_card" id="testing">
@@ -236,7 +176,7 @@ ul{list-style-type:none;margin:0;padding:0;}
 		<div class="col-md-3">
 			<ul class="dsb_card sortable dsb_card20 dsb_green_card" id="completed">
 				<h2 class="text-white bolder">COMPLETED</h2>
-				<div class="dsb_cardz">
+				<li class="dsb_cardz">
 					<div class="row">
 						<div class="col-md-2">
 							<div class="text-center">
@@ -255,71 +195,71 @@ ul{list-style-type:none;margin:0;padding:0;}
 							</span>
 						</div>
 					</div>
-				</div>
-				<br>
-				<div class="dsb_cardz">
-					<div class="row">
-						<div class="col-md-2">
-							<div class="text-center">
-								<h2>
-									<i class="fas fa-palette ico_gre"></i>
-								</h2>
-							</div>
-						</div>
-						<div class="col-md-10">
-							<span style="float:right;font-size:0.8em;">
-								<i>15th Dec 2018</i>
-							</span><br>
-							Make the low fedility wireframes for the project <br>
-							<span style="float:right;">
-								<img src="{{asset('images/picture.jpg')}}" alt="" class="task_peeps peeps_green">
-							</span>
-						</div>
-					</div>
-				</div>
-				<br>
-				<div class="dsb_cardz">
-					<div class="row">
-						<div class="col-md-2">
-							<div class="text-center">
-								<h2>
-									<i class="fas fa-code ico_gre"></i>
-								</h2>
-							</div>
-						</div>
-						<div class="col-md-10">
-							<span style="float:right;font-size:0.8em;">
-								<i>15th Dec 2018</i>
-							</span><br>
-							Set up the Laravel Project and upload to Github <br>
-							<span style="float:right;">
-								<img src="{{asset('images/picture.jpg')}}" alt="" class="task_peeps peeps_green">
-							</span>
-						</div>
-					</div>
-				</div>
-				<br>
-				<div class="dsb_cardz">
-					<div class="row">
-						<div class="col-md-2">
-							<div class="text-center">
-								<h2>
-									<i class="fas fa-vial ico_gre"></i>
-								</h2>
-							</div>
-						</div>
-						<div class="col-md-10">
-							<span style="float:right;font-size:0.8em;">
-								<i>15th Dec 2018</i>
-							</span><br>
-							Learn basic git commands <br>
-							<span style="float:right;">
-								<img src="{{asset('images/picture.jpg')}}" alt="" class="task_peeps peeps_green">
-								<img src="{{asset('images/picture.jpg')}}" alt="" class="task_peeps peeps_green">
-							</span>
-						</div>
-					</div>
-				</div>
+				</li>
+			
+				{{--<div class="dsb_cardz">
+													<div class="row">
+														<div class="col-md-2">
+															<div class="text-center">
+																<h2>
+																	<i class="fas fa-palette ico_gre"></i>
+																</h2>
+															</div>
+														</div>
+														<div class="col-md-10">
+															<span style="float:right;font-size:0.8em;">
+																<i>15th Dec 2018</i>
+															</span><br>
+															Make the low fedility wireframes for the project <br>
+															<span style="float:right;">
+																<img src="{{asset('images/picture.jpg')}}" alt="" class="task_peeps peeps_green">
+															</span>
+														</div>
+													</div>
+												</div>
+												<br>
+												<div class="dsb_cardz">
+													<div class="row">
+														<div class="col-md-2">
+															<div class="text-center">
+																<h2>
+																	<i class="fas fa-code ico_gre"></i>
+																</h2>
+															</div>
+														</div>
+														<div class="col-md-10">
+															<span style="float:right;font-size:0.8em;">
+																<i>15th Dec 2018</i>
+															</span><br>
+															Set up the Laravel Project and upload to Github <br>
+															<span style="float:right;">
+																<img src="{{asset('images/picture.jpg')}}" alt="" class="task_peeps peeps_green">
+															</span>
+														</div>
+													</div>
+												</div>
+												<br>
+												<div class="dsb_cardz">
+													<div class="row">
+														<div class="col-md-2">
+															<div class="text-center">
+																<h2>
+																	<i class="fas fa-vial ico_gre"></i>
+																</h2>
+															</div>
+														</div>
+														<div class="col-md-10">
+															<span style="float:right;font-size:0.8em;">
+																<i>15th Dec 2018</i>
+															</span><br>
+															Learn basic git commands <br>
+															<span style="float:right;">
+																<img src="{{asset('images/picture.jpg')}}" alt="" class="task_peeps peeps_green">
+																<img src="{{asset('images/picture.jpg')}}" alt="" class="task_peeps peeps_green">
+															</span>
+														</div>
+													</div>
+												</div>--}}
 			</ul>
 		</div>
 	</div>
@@ -389,7 +329,7 @@ ul{list-style-type:none;margin:0;padding:0;}
 		            <div class="modal-body" style="color:#444;margin-top:40px;">
 						<div class="text-center">
 							<input type="text" class="boxee" id="projectName" value="{{$project->name}}" placeholder="Project Name" required><br><br>
-							<input name='tags' class='boxee makeTagify' placeholder='Add people' value='css, html, javascript, css' autofocus><br><br>
+							<input id='tags' class='boxee makeTagify' placeholder='Add people'  autofocus><br><br>
 							<textarea name="" id="projectDesc" cols="30" rows="5" class="boxee_text" placeholder="Description">{{$project->description}}</textarea><br><br>
 							<span style="font-size:0.9em;">Choose Icon</span><br>
 							<div id="iconContainer" style="font-size:1.5em;">
@@ -531,12 +471,9 @@ ul{list-style-type:none;margin:0;padding:0;}
 					<br>
 					<input type="text" id="taskID" name="id" style="display: none;">
 					<textarea id="taskDescription" name="" id="" cols="30" rows="5" class="boxee_text" placeholder="Task Description" required></textarea><br><br>
-					<input type="text" class="boxee" placeholder="Assign Members"><br><br>
+					<input type="text" class="boxee makeTagify" id="taskUsers" placeholder="Assign Members"><br><br>
 					<input type="text" id="taskDeadline" class="boxee" placeholder="Deadline" onfocus="(this.type='date')"><br><br>
-					<div class="form-group">
-					    <label for="formControlRange">Set Progress</label>
-					    <input type="range" class="form-control-range slider" id="formControlRange" style="width:50%;margin-left:auto;margin-right:auto;" min="1" max="100">
-					  </div><br>
+					
 					<button class="btn dsb_button dsb_button_pink">
 						<i class="fas fa-trash"></i>&nbsp;
 						Delete Task
@@ -563,7 +500,7 @@ ul{list-style-type:none;margin:0;padding:0;}
 
         <!-- Modal content-->
         <div class="modal-content" style="border-radius:0px;">
-        	<form action="#">
+        	<form id="createTask" action="#" >
             <div class="modal-header" style="height:256px;background:#27ae60;color:#fff;background-image:url('https://images.pexels.com/photos/34199/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');background-size:cover;background-repeat:no-repeat;">
                 <h3 class="modal-title"  style="color:#fff;margin-top:180px;">
                     <i class="fas fa-edit"></i>&nbsp;&nbsp;
@@ -600,7 +537,7 @@ ul{list-style-type:none;margin:0;padding:0;}
 					</div>
 					<br>
 					<textarea id="taskDescriptionCreate" name="" id="" cols="30" rows="5" class="boxee_text" placeholder="Task Description" required></textarea><br><br>
-					<input type="text" class="boxee" placeholder="Assign Members"><br><br>
+					<input type="text" class="boxee makeTagify" id="addTaskUsers" placeholder="Assign Members"><br><br>
 					<input type="text" id="taskDeadlineCreate" class="boxee" placeholder="Deadline" onfocus="(this.type='date')">
 				</div>
             </div>
@@ -630,9 +567,7 @@ ul{list-style-type:none;margin:0;padding:0;}
 
 
 <script type="text/javascript">
-	function checkEmail(inp){
-		console.log(inp);
-	}	
+	
 	// var child = $('#iconContainer').children();
 	// INITIALIZING GLOBAL VARIABLES
 	var icon;
@@ -649,7 +584,15 @@ ul{list-style-type:none;margin:0;padding:0;}
 	var taskIcon;
 	const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 	var selectElm;
-
+	var projectEmails = [];
+	var forTaskEmails = [];
+	var taskEmailSpeceific = [];
+	var colorCodeClass = {
+		'ongoing': 'peeps_blue',
+		'todo': 'peeps_yellow',
+		'testing': 'peeps_pink',
+		'completed': 'peeps_green'
+	};
 	//creating const object for icons
 	const iconObj = {
 		'Prototyping': 'fa-th',
@@ -665,6 +608,7 @@ ul{list-style-type:none;margin:0;padding:0;}
 	$(document).on('shown.bs.modal','#settings_project', function () {
  		 $('.fa-'+icon).css('color', iconColor);
 	});
+	
 
 	//HANDLING CLICK EVENT OF ICONS
 	 $(document).on('click', '.iconSelect', function(e){
@@ -693,9 +637,20 @@ ul{list-style-type:none;margin:0;padding:0;}
 		 i.css('color', iconColor);
 		 	
 	});
-
+	 let today = new Date();
+ 		
+ 		let dd = today.getDate();
+		let mm = today.getMonth(); //January is 0!
+		let yyyy = today.getFullYear();
+		let todayStr = dd + nth(dd)+ " " + monthNames[mm] + " " + yyyy;
+ 		$('#dontSort').find('span').find('i').text(todayStr);
  	$(document).ready(function() {
+ 		
 	 	$("#settings").submit(function(e){
+	        //PREVENTING THE FORM FROM SUBMITTING 
+	        e.preventDefault(e);
+	    });
+	    $("#createTask").submit(function(e){
 	        //PREVENTING THE FORM FROM SUBMITTING 
 	        e.preventDefault(e);
 	    });
@@ -718,9 +673,11 @@ ul{list-style-type:none;margin:0;padding:0;}
 			     },    
 			 success: function (s){
 			 	project = s;
-			    console.log(s);
+			    // console.log(s);
 			     icon =  s.icon;
 			     iconName = s.icon;
+			     forTaskEmails = [];
+			     projectEmails = [];
 			     //PUTTING THE VALUES IN TO PROJECT DETAILS
 			     $('#projectName').val(s.name);
 			     $('#projectDesc').val(s.description);	
@@ -729,6 +686,12 @@ ul{list-style-type:none;margin:0;padding:0;}
 			     $('#memberCount').text(s.userCount);
 			     $('.projectDesc').text(s.description);
 			     $('#taskCount').text(s.taskCount);
+			     forTaskEmails.push(s.creator.email);
+			     for (var i = 0; i < s.users.length; i++) {
+			     	// console.log(s.users);
+			     	projectEmails.push(s.users[i].email);
+			     	forTaskEmails.push(s.users[i].email);
+			     }
 			     // console.log($('#ownerName'));
 			     loadAllTasks(s.id);
 			 },
@@ -758,13 +721,13 @@ ul{list-style-type:none;margin:0;padding:0;}
 	            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 	            },
 	            data: { _token : $('meta[name="csrf-token"]').attr('content'),
-	            project_id:project.id, name : name, description: description, icon: iconName 
+	            project_id:project.id, name : name, description: description, icon: iconName, emails: projectEmails
 	            },
 	            success: function (s){
 	            	removeModal();
 	            	getProjectDetails();
 	            	toastr.success("Updated!!");
-	                // console.log(s);
+	                console.log(s);
 
 	            },
 	            error: function(e){
@@ -803,6 +766,21 @@ ul{list-style-type:none;margin:0;padding:0;}
 
 	//FOR ADDING NEW CARD OR TASK
 	function addNewCard(){
+		taskTagify = '';
+		if ($('#create_task').find('.tagify')[0]) {
+			$('#create_task').find('.tagify').remove();
+			taskTagify = '';
+		}
+		setTimeout(function(){
+			console.log($('#create_task').find('.tagify'));
+			$('#create_task').find('.tagify').remove();
+			taskTagify = '';
+			$('#addTaskUsers').val('');
+			getAddTaskTagify(0);
+		}, 200);
+		
+		// console.log($('#create_task').find('.tagify')[0]);
+		
 		//GETTING VALUES OF THE INPUT VALUE
 		$('#taskDescriptionCreate').val('');
 		$('#taskDeadlineCreate').val('');
@@ -813,7 +791,10 @@ ul{list-style-type:none;margin:0;padding:0;}
 		//FOR MORE THAN ONE TIME
 		if (k > 1) {
 			taskPrevIcon = taskNowIcon;
-			taskPrevIcon.css('color', '');
+			if (taskPrevIcon) {
+				taskPrevIcon.css('color', '');
+			}
+			
 			k = 1;
 		}
 
@@ -850,20 +831,24 @@ ul{list-style-type:none;margin:0;padding:0;}
 	            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 	            },
 	            data: { _token : $('meta[name="csrf-token"]').attr('content'),
-	            project_id:project.id, title : taskTitle, description: descriptionTask, icon: taskIcon, created_by: created_by, position: positionTask, deadline: deadlineTask
+	            project_id:project.id, title : taskTitle, description: descriptionTask, icon: taskIcon, created_by: created_by, position: positionTask, deadline: deadlineTask, emails: taskEmailSpeceific
 	            },
 	            success: function (s){
 	            	taskModelClose('Create');
 	            	toastr.success("Created!!");
 	            	loadSpecificTask(project.id, 'todo');
 	                console.log(s);
+	               
 
 	            },
 	            error: function(e){
 	                toastr.error("Something went wrong!!");
 	                console.log(e);
 
-	        }
+	        },complete: function(){
+
+		        	taskEmailSpeceific = [];
+		        }
             // $('#'+id).text();
         });
 			
@@ -891,10 +876,32 @@ ul{list-style-type:none;margin:0;padding:0;}
 	        stop: function(){
 	        	console.log('stop');
 	        },receive: function(event, ui) {
-		            // console.log(ui);
-		            // console.log(event);
-		            // console.log(this.id);
-		            console.log('receive');
+		            if (this.id == 'ongoing') {
+	            			$(ui.item).find('img').removeClass();
+	            			$(ui.item).find('img').addClass('task_peeps peeps_blue');
+	            	}
+	            	if (this.id == 'todo') {
+	            			$(ui.item).find('img').removeClass();
+	            			$(ui.item).find('img').addClass('task_peeps peeps_yellow');
+	            			checkSort();
+	            	}
+	            	if (this.id == 'testing') {
+	            			$(ui.item).find('img').removeClass();
+	            			$(ui.item).find('img').addClass('task_peeps peeps_pink');
+	            	}
+	            	if (this.id == 'completed') {
+	            			$(ui.item).find('img').removeClass();
+	            			$(ui.item).find('img').addClass('task_peeps peeps_green');
+	            	}
+		            if (this.id == 'ongoing' || this.id == 'testing') {
+		            		// console.log(ui.item);
+	            		appendProgressBar(ui.item);
+	            		$(ui.item).attr('progress', 0);	
+
+		            }else{
+		            	deleteProgressBar(ui.item);
+		            }
+		            // console.log('receive');
 	        },
 	        update: function(event, ui){
 	        	console.log(this.id);
@@ -907,6 +914,23 @@ ul{list-style-type:none;margin:0;padding:0;}
 	    	
 	});
 
+	function deleteProgressBar(item){
+		$(item).find('.progress').remove();
+	}
+
+    function appendProgressBar(item){
+    	let div = `<div class="progress" style="height:5px;margin-top:5px;">
+									  <div class="progress-bar" style="width:0%;height:5px;background-color:#74b9ff;"></div>
+									</div>`;
+		// console.log($(item).find('.col-md-10'));
+		// $(item).attr('progress', 0);
+		if ($(item).find('.progress')) {
+			$(item).find('.progress-bar').css('width', '0');
+		}else{
+			$(item).find('.prog').append(div);
+		}
+    	
+    }
     //FOR CLOSING MODALS
     function taskModelClose(t=''){
     	$('#taskCancel'+t).click();
@@ -925,14 +949,32 @@ ul{list-style-type:none;margin:0;padding:0;}
 
 	//FOR TASK EDITING
 	function editTask(elem){
+		if ($('#edit_task').find('.tagify')[0]) {
 
+			$('#edit_task').find('.tagify').remove();
+			taskTagify = '';
+		}
+		getTaskTagify();
+		getTaskUsers($(elem).find('.dsb_cardz').attr('id'));
+		// console.log(taskEmailSpeceific);
 		//STORING THE SELECTED ELEMENT
 		selectElm = elem;
 		taskState = '';
 
 		//GETTING THE PARENT OF SELECTED ELEM TO GET STATE
 		taskState = $(elem).parent().attr('id');
-		
+		if (taskState == 'ongoing' || taskState == 'testing') {
+			if (!$('#divControl')[0]) {
+				let prog = $(elem).attr('progress');
+				$('#taskDeadline').after(`<div class="form-group" id="divControl">
+									    <label for="formControlRange">Set Progress</label>
+									    <input type="range" class="form-control-range slider" id="formControlRange" style="width:50%;margin-left:auto;margin-right:auto;" value="${prog}" min="1" max="100">
+									  </div><br>`);
+			}
+			
+		}else{
+			$('#divControl').remove();
+		}
 		//GETTING SELECTED ICON
 		let selectedIcon = $(elem).find('.fas');
 		// console.log(selectedIcon);
@@ -1016,17 +1058,12 @@ ul{list-style-type:none;margin:0;padding:0;}
             success: function (s){
             	// console.log(s);
             	//LOOPING THROUGH THE TASKS
+            	$(".sortable").find('li').not('#dontSort').remove();
             	$.each(s, function(k, v){
             		//PUTTING THE TASKS IN THEIR STATE
+
             		insertAtIndex(v.state, v.position, v);
-            		// if (v.state == 'todo') {
-            		// 	// console.log(v.position);
-            		// 	insertAtIndex('todo', v.position, v);
-            		// }
-            		// if (v.state == 'ongoing') {
-            		// 	// console.log(v.position);
-            		// 	insertAtIndex('ongoing', v.position, v);
-            		// }
+            		
             	});
             	//SORTING THE DIV
             	checkSort();
@@ -1042,13 +1079,16 @@ ul{list-style-type:none;margin:0;padding:0;}
 	}
 
 	//SORTING THE DIVS ACCORDING TO THEIR POSITION
-	function checkSort(){
-		let items = $('#todo li');
+	function checkSort(i = 'todo'){
+
+		let items = $('#'+i+ ' li');
+		console.log($('#'+i));
+		console.log(items);
 		items.sort(function(a, b){
 		    return +$(a).attr('position-list') - +$(b).attr('position-list');
 		});
 		    
-		items.appendTo('#todo');
+		items.appendTo('#'+i);
 		console.log(items);
 
 	}
@@ -1056,10 +1096,11 @@ ul{list-style-type:none;margin:0;padding:0;}
 	//UPDATE THE POSITION AFTER SORTING
 	function updatePosition(parentId){
 		//SELECTING EACH OF THE LI
-		$('#'+parentId + ' li').each(function(i, v){
+		$('#'+parentId + ' li').not('#dontSort').each(function(i, v){
 			let selectedItem = $(v);
 			//UPDATING THEIR ATTRIBUTE
 			selectedItem.attr('position-list', selectedItem.index());
+
 			// console.log();
 			//UPDATING THE POSITION IN DB
 			$.ajax({
@@ -1069,7 +1110,8 @@ ul{list-style-type:none;margin:0;padding:0;}
 		            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 		            },
 		            data: { _token : $('meta[name="csrf-token"]').attr('content'),
-		            task_id:selectedItem.find('.dsb_cardz').attr('id'), position: selectedItem.index(), state: parentId
+		            task_id:selectedItem.find('.dsb_cardz').attr('id'), position: selectedItem.index(), state: parentId,
+		            progress: selectedItem.attr('progress')
 		            },
 		            success: function (s){
 		                console.log(s);
@@ -1091,11 +1133,13 @@ ul{list-style-type:none;margin:0;padding:0;}
 		//GETTING THE DATE
 		let date = v.deadline.split('-');
 
-		// console.log(id);
+		console.log(v);
 		let th = nth(date[2]);
-
+		if (i ==0) {
+			$("#"+id).find('li').not('#dontSort').remove();
+		}
 		//APPENDING IN THE UL
-	    $("#"+id).append(`<li position-list="${v.position}" class="sort">
+	    $("#"+id).append(`<li position-list="${v.position}" progress="${v.progress}" class="sort">
 					<br>
 				
 					<div class="dsb_cardz" id="${v.id}">
@@ -1107,18 +1151,44 @@ ul{list-style-type:none;margin:0;padding:0;}
 									</h2>
 								</div>
 							</div>
-							<div class="col-md-10" style="border-left:2px solid #cbcbcb;">
-								<span style="float:right;font-size:0.8em;">
-									<i>${date[2]}${th} ${date[1]} ${date[0]}</i>
-								</span><br>
-								<label>${v.description}</label> <br>
-								<span style="float:right;">
-									<img src="{{asset('images/picture.jpg')}}" alt="asd" class="task_peeps peeps_yellow">
+							<div class="col-md-10">
+							<div class="row">
+								<div class="col-md-6 prog">
+									
+								</div>
+								<div class="col-md-6">
+									<span style="float:right;font-size:0.8em;">
+										<i>${date[2]}${th} ${date[1]} ${date[0]}</i>
+									</span><br>
+								</div>
+							</div>
+							<label>${v.description}</label><br>
+							
+								<span class="image" style="float:right;">
+									
 								</span>
 							</div>
 						</div>
 					</div>
 				</li>`);
+
+	    for (var i = 0; i < v.users.length; i++) {
+	    	$('#'+v.id).find('.image').append('<img src="'+v.users[i].image+'" alt="asd" class="task_peeps '+colorCodeClass[id]+'">');
+	    }
+	    if (id == 'ongoing') {
+	    	let div = `<div class="progress" style="height:5px;margin-top:5px;">
+									  <div class="progress-bar" style="width:${v.progress}%;height:5px;background-color:#74b9ff;"></div>
+									</div>`;
+	    	$('#'+v.id).find('.prog').append(div);
+
+	    }
+	    if (id == 'testing') {
+	    	let div = `<div class="progress" style="height:5px;margin-top:5px;">
+									  <div class="progress-bar" style="width:${v.progress}%;height:5px;background-color:#fd79a8;"></div>
+									</div>`;
+	    	$('#'+v.id).find('.prog').append(div);
+
+	    }
 	    // console.log($('#todo').children());
 	     // console.log($("#"+id+" > :nth-child(" + (i) + ")"));
 	}
@@ -1163,7 +1233,7 @@ ul{list-style-type:none;margin:0;padding:0;}
 	            	});
 
 	            	//SORT DIV
-	            	checkSort();
+	            	checkSort(state);
 
 	            	//CHECKING IF STATE IS TODO
 	            	if (state == 'todo') {
@@ -1184,9 +1254,17 @@ ul{list-style-type:none;margin:0;padding:0;}
 		descriptionTask = $('#taskDescription').val();
 		deadlineTask = $('#taskDeadline').val();
 		created_by = {{auth()->user()->id}};
-		
+		let progress;
+		console.log(taskState);
+		if (taskState == 'ongoing' || taskState == 'testing') {
+			progress = $('#formControlRange').val();
+			
+		}else{
+			progress = 0;
+		}
+		// console.log(progress);
 		let id = $('#taskID').val();
-		// console.log(id);
+		console.log(deadlineTask);
 		//CHECKING IF THE INPUT HAVE VALUES
 		if (id && descriptionTask && taskTitle && deadlineTask) {
 				$.ajax({
@@ -1196,19 +1274,23 @@ ul{list-style-type:none;margin:0;padding:0;}
 		            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 		            },
 		            data: { _token : $('meta[name="csrf-token"]').attr('content'),
-		            project_id:project.id, task_id:id, title : taskTitle, description: descriptionTask, icon: taskIcon, created_by: created_by, deadline: deadlineTask, state: taskState
+		            project_id:project.id, task_id:id, title : taskTitle, description: descriptionTask, icon: taskIcon, created_by: created_by, deadline: deadlineTask, state: taskState, progress:progress,
+		            emails: taskEmailSpeceific
 		            },
 		            success: function (s){
 		            	taskModelClose();
 		            	toastr.success("Created!!");
 		            	loadSpecificTask(project.id, taskState);
 		                console.log(s);
+		                checkSort();
 
 		            },
 		            error: function(e){
 		                toastr.error("Something went wrong!!");
 		                console.log(e);
 
+		        },complete: function(){
+		        	taskEmailSpeceific = [];
 		        }
 	            // $('#'+id).text();
 	        });
@@ -1225,7 +1307,61 @@ ul{list-style-type:none;margin:0;padding:0;}
 			
 	}
 
+	function getTaskUsers(id){
+		// console.log(id);
+		// $('#taskUsers').val('');
+		taskEmailSpeceific = [];
+		console.log(taskEmailSpeceific);
+		taskTagify.removeAllTags();
+		$.ajax({
+    		type: "get",
+            url: "{{ route('task.user.get') }}",
+            headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: { _token : $('meta[name="csrf-token"]').attr('content'),
+            task_id:id
+            },
+            success: function (s){
+            	// $.each();
+            	if (s) {
+            		
+            		$.each(s, function(i, v){
+            			// taskEmailSpeceific.push(v.email);
+            			
+            			taskEmailSpeceific[taskEmailSpeceific.length] = v.email;
+            		
+            		});
+            	
+            		
+            		str = taskEmailSpeceific.join(',');
+            		console.log(s);
 
+					// console.log(taskEmailSpeceific.length);
+					//  let t = taskEmailSpeceific.filter( function(value, index, self){
+					// 	return self.indexOf(value) === index;
+					// } );
+					 // taskEmailSpeceific = [];
+					 // taskEmailSpeceific = t;
+            		
+            	}
+            	
+            	// console.log(t);
+
+            },
+            error: function(e){
+                toastr.error("Something went wrong!!");
+                console.log(e);
+
+        },complete: function(){
+        	console.log(taskEmailSpeceific);
+        	taskTagify.off('add', onAddTaskTag);
+        	taskTagify.addTags(str);
+        	taskTagify.on('add', onAddTaskTag);
+        }
+	            // $('#'+id).text();
+	        });
+	}
 		// console.log(project);
 		// setTimeout(function(){ loadSpecificTask('asda', 'todo');}, 3000);
 
@@ -1241,25 +1377,33 @@ ul{list-style-type:none;margin:0;padding:0;}
 <script type="text/javascript" defer>
 	var tagify;
 	var input;
-	setTimeout(getTagify, 1000);
-	$(document).on('ready', function(){
-		
-	});
+	// setTimeout(getTagify, 1000);
+	function settingOpen(){
+		if (!$('#settings_project').find('.tagify')[0]) {
+
+			getTagify();
+		}	
+	}
 	function getTagify(){
-	 input = document.querySelector('input[name=tags]'),
+	 input = document.querySelector('input[id=tags]');
+	 	
+	 str = projectEmails.join(',');
+	 $(input).val(str);
+
     // init Tagify script on the above inputs
     tagify = new Tagify(input, {
-        whitelist : ["ani.mesh13578@gmail.com"],
-        blacklist : ["/.*/" ],
+        whitelist : [],
+        blacklist : [],
         keepInvalidTags     : false,
         dropdown : false,
         enforceWhitelist: false
     });
 
+    console.log(input);
 	// // "remove all tags" button event listener
 	// document.querySelector('.tags--removeAllBtn')
 	//     .addEventListener('click', tagify.removeAllTags.bind(tagify))
-	    console.log(tagify);
+	// console.log(tagify);
 	// Chainable event listeners
 	tagify.on('add', onAddTag)
 	      .on('remove', onRemoveTag)
@@ -1267,12 +1411,16 @@ ul{list-style-type:none;margin:0;padding:0;}
 	      .on('invalid', onInvalidTag)
 	      .on('click', onTagClick);
 
-}
+	}
+		
 	// tag added callback
 	function onAddTag(e){
-	    console.log(e.detail.tag);
+	    // console.log(e.detail.tag);
 	    // tagify.removeTag(e.detail.tag);
-	    console.log("original input value: ", input.value)
+	    // console.log("original input value: ", input.value);
+	    // console.log(JSON.parse(input.value));
+	    let inp = JSON.parse(input.value);
+	    checkEmail(inp[inp.length-1].value, e.detail.tag);
 	    // tagify.off('add', onAddTag) // exmaple of removing a custom Tagify event
 	}
 
@@ -1280,11 +1428,13 @@ ul{list-style-type:none;margin:0;padding:0;}
 	function onRemoveTag(e){
 	    console.log(e.detail);
 	    console.log("tagify instance value:", tagify.value);
+	    projectEmails.pop(e.detail.data.value);
+	    
 	}
 
 	// on character(s) added/removed (user is typing/deleting)
 	function onInput(e){
-	    console.log(e.detail);
+	    // console.log(e.detail);
 	}
 
 	// invalid tag added callback
@@ -1297,6 +1447,192 @@ ul{list-style-type:none;margin:0;padding:0;}
 	function onTagClick(e){
 	    console.log(e.detail);
 	}
+
+	function checkEmail(inp, target){
+		// console.log(inp);
+		$.ajax({
+        		type: "get",
+	            url: "{{ route('check.email') }}",
+	            headers: {
+	            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	            },
+	            data: { _token : $('meta[name="csrf-token"]').attr('content'),
+	            email: inp
+	            },
+	            
+	            success: function (s){
+	            	projectEmails.push(inp);
+	            },
+	            error: function(e){
+	            	// console.log(target.data);
+	            	tagify.removeTag(target);
+
+	                // toastr.error("Something went wrong!!");
+                	
+
+	        	}
+		            // $('#'+id).text();
+		    });
+	}
 </script>
+<script type="text/javascript">
+	
+	var taskTagify;
+	var taskInput;
+
+	// setTimeout(getTaskTagify, 1000);
+	function getAddTaskTagify(){
+	
+	taskInput = document.querySelector('input[id=addTaskUsers]');
+	 	
+	console.log(forTaskEmails);
+    // init Tagify script on the above inputs
+    taskTagify = new Tagify(taskInput, {
+        whitelist : forTaskEmails,
+        blacklist : [],
+        keepInvalidTags     : false,
+        dropdown : {
+            enabled: 3,
+        },
+        enforceWhitelist: true
+    });
+
+	// // "remove all tags" button event listener
+	// document.querySelector('.tags--removeAllBtn')
+	//     .addEventListener('click', tagify.removeAllTags.bind(tagify))
+	// console.log(tagify);
+	// Chainable event listeners
+	taskTagify.on('add', onAddTaskTag)
+	      .on('remove', onRemoveTaskTag)
+	      .on('input', onTaskInput)
+	      .on('invalid', onInvalidTaskTag)
+	      .on('click', onTagTaskClick);
+
+	}
+		
+	// tag added callback
+	function onAddTaskTag(e){
+	   
+	    let inp = JSON.parse(taskInput.value);
+	    console.log(taskEmailSpeceific.indexOf(inp));
+	    if (taskEmailSpeceific.indexOf(inp) < 0) {
+
+	    	taskEmailSpeceific.push(inp[inp.length-1].value);
+	    }
+	    console.log(taskInput.value);
+	    // tagify.off('add', onAddTag) // exmaple of removing a custom Tagify event
+	}
+
+	// tag remvoed callback
+	function onRemoveTaskTag(e){
+	    console.log(e.detail);
+	    console.log("tagify instance value:", taskTagify.value);
+	    // taskEmailSpeceific.pop(e.detail.data.value);
+
+		var index = taskEmailSpeceific.indexOf(e.detail.data.value);
+		if (index > -1) {
+		  taskEmailSpeceific.splice(index, 1);
+		}
+	
+	    
+	}
+
+	// on character(s) added/removed (user is typing/deleting)
+	function onTaskInput(e){
+	    // console.log(e.detail);
+	}
+
+	// invalid tag added callback
+	function onInvalidTaskTag(e){
+	    console.log(e.detail);
+	    
+	}
+
+	// invalid tag added callback
+	function onTagTaskClick(e){
+	    console.log(e.detail);
+	   
+	}
+</script>
+<script type="text/javascript" defer>
+	var taskTagify;
+	var taskInput;
+
+	// setTimeout(getTaskTagify, 1000);
+	function getTaskTagify(){
+	
+	taskInput = document.querySelector('input[id=taskUsers]');
+	 	
+	console.log(forTaskEmails);
+    // init Tagify script on the above inputs
+    taskTagify = new Tagify(taskInput, {
+        whitelist : forTaskEmails,
+        blacklist : [],
+        keepInvalidTags     : false,
+        dropdown : {
+            enabled: 3,
+        },
+        enforceWhitelist: true
+    });
+
+	// // "remove all tags" button event listener
+	// document.querySelector('.tags--removeAllBtn')
+	//     .addEventListener('click', tagify.removeAllTags.bind(tagify))
+	// console.log(tagify);
+	// Chainable event listeners
+	taskTagify.on('add', onAddTaskTag)
+	      .on('remove', onRemoveTaskTag)
+	      .on('input', onTaskInput)
+	      .on('invalid', onInvalidTaskTag)
+	      .on('click', onTagTaskClick);
+
+	}
+		
+	// tag added callback
+	function onAddTaskTag(e){
+	   
+	    let inp = JSON.parse(taskInput.value);
+	    console.log(taskEmailSpeceific.indexOf(inp));
+	    if (taskEmailSpeceific.indexOf(inp) < 0) {
+
+	    	taskEmailSpeceific.push(inp[inp.length-1].value);
+	    }
+	    console.log(taskInput.value);
+	    // tagify.off('add', onAddTag) // exmaple of removing a custom Tagify event
+	}
+
+	// tag remvoed callback
+	function onRemoveTaskTag(e){
+	    console.log(e.detail);
+	    console.log("tagify instance value:", taskTagify.value);
+	    // taskEmailSpeceific.pop(e.detail.data.value);
+
+		var index = taskEmailSpeceific.indexOf(e.detail.data.value);
+		if (index > -1) {
+		  taskEmailSpeceific.splice(index, 1);
+		}
+	
+	    
+	}
+
+	// on character(s) added/removed (user is typing/deleting)
+	function onTaskInput(e){
+	    // console.log(e.detail);
+	}
+
+	// invalid tag added callback
+	function onInvalidTaskTag(e){
+	    console.log(e.detail);
+	    
+	}
+
+	// invalid tag added callback
+	function onTagTaskClick(e){
+	    console.log(e.detail);
+	   
+	}
+
+</script>
+
 
 @endsection

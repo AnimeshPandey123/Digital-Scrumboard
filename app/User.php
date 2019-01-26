@@ -2,7 +2,9 @@
 
 namespace App;
 
+use App\Task;
 use App\Models\Project;
+use App\UserPreference;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -26,8 +28,14 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'pivot'
     ];
+
+    protected $appends = ['image'];
+
+    public function getEmail(){
+        return $this->email;
+    }
 
     public function createdProjects(){
         return $this->hasMany(Project::class)->latest();
@@ -36,4 +44,16 @@ class User extends Authenticatable
     public function projects(){
         return $this->belongsToMany(Project::class)->latest();
     }
+
+    public function tasks(){
+        return $this->belongsToMany(Task::class);
+    }
+
+    public function userPreference(){
+        return $this->hasOne(UserPreference::class);
+    }
+    public function getImageAttribute(){
+        return $this->userPreference['picture_url'];
+    }
+
 }

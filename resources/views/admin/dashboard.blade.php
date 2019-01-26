@@ -7,7 +7,7 @@
 		</h6>
 		<div class="row" style="font-size:0.9em;">
 			<div class="col-md-8">
-				<div class="dsb_card dsb_card20 desh">
+				<div class="dsb_card dsb_card20 desh" id="taskUpper">
 					<div class="row">
 						<div class="col-md-6">
 							<h6 class="text-white">
@@ -150,14 +150,16 @@
 					@foreach($projects as $project)
 					<div class="col-md-4">
 						<div class="dsb_card">
-						  <div class="card-body dsb_blue_card">
+						  <div class="card-body {{$project->color}}">
 						  	<div class="text-center centerpox"> 
 						  		<i class="fas fa-graduation-cap bigicon align-middle"></i>
 						  	</div>
 						  </div> 
 						  <div class="card-footer">{{$project->name}}</div>
 						</div>
+						<br>
 					</div>
+					<br>
 					@endforeach
 				
 				</div>	
@@ -274,4 +276,108 @@
 		</div>
 	</div>
 
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+	var colorCodeClass = {
+		'ongoing': 'peeps_blue',
+		'todo': 'peeps_yellow',
+		'testing': 'peeps_pink',
+		'completed': 'peeps_green'
+	};
+	//creating const object for icons
+	const iconObj = {
+		'Prototyping': 'fa-th',
+		'Designing': 'fa-palette',
+		'Coding': 'fa-code',
+		'Testing': 'fa-check-double',
+		'Meeting': 'fa-comments',
+		'Researching': 'fa-vial',
+		'Learning': 'fa-book'
+	};
+	getTasks();
+	function getTasks(){
+		console.log($('#taskUpper').children('.row').not('h6').children());
+		$('#taskUpper').children('.row').children().empty();
+		$($('#taskUpper').children('.row').children()[0]).append(`<h6 class="text-white">
+								Tasks
+							</h6>`);
+		$($('#taskUpper').children('.row').children()[1]).append(`<h6 class="text-white">
+								&nbsp;
+							</h6>`);
+		$.ajax({
+			type: "get",
+			url: "{{ route('user.tasks.recent') }}",
+			headers: {
+		    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			 },
+			   
+			 success: function (s){
+			 	let task = $('#taskUpper').children('.row');
+
+			 	$.each(s, function(i, v){
+
+			 		if (i%2 == 0) {
+			 			$(task.children()[1]).append(`<div class="dsb_cardz" id="${v.id}">
+								<div class="row">
+									<div class="col-md-2">
+										<div class="text-center">
+											<h2>
+												<i class="fas ${iconObj[v.title]} ico_gre"></i>
+											</h2>
+										</div>
+									</div>
+									<div class="col-md-10">
+										<span style="float:right;font-size:0.8em;">
+											<i>${v.deadline}</i>
+										</span><br>
+										<label>${v.description}</label> <br>
+										<span class="image" style="float:right;">
+											
+										</span>
+									</div>
+								</div>
+							</div><br>`);
+			 			for (var i = 0; i < v.users.length; i++) {
+	    					$('#'+v.id).find('.image').append('<img src="'+v.users[i].image+'" alt="asd" class="task_peeps '+colorCodeClass[v.state]+'">');
+	    				}
+			 		}else{
+						$(task.children()[0]).append(`<div class="dsb_cardz" id="${v.id}">
+								<div class="row">
+									<div class="col-md-2">
+										<div class="text-center">
+											<h2>
+												<i class="fas ${iconObj[v.title]} ico_gre"></i>
+											</h2>
+										</div>
+									</div>
+									<div class="col-md-10">
+										<span style="float:right;font-size:0.8em;">
+											<i>${v.deadline}</i>
+										</span><br>
+										<label>${v.description}</label> <br>
+										<span class="image" style="float:right;">
+											
+										</span>
+									</div>
+								</div>
+							</div><br>`);
+			 			for (var i = 0; i < v.users.length; i++) {
+	    					$('#'+v.id).find('.image').append('<img src="'+v.users[i].image+'" alt="asd" class="task_peeps '+colorCodeClass[v.state]+'">');
+	    				}
+	    			}
+			 	});
+			 	console.log(s);
+			 },
+			 error: function(e){
+			 	getProjectDetails();
+			    toastr.error("Something went wrong!!");
+			     // console.log(e);
+
+			    }
+			            // $('#'+id).text();
+			   });
+	}
+</script>
 @endsection
