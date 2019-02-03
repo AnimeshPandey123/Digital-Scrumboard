@@ -138,64 +138,64 @@ ul{list-style-type:none;margin:0;padding:0;}
 		<div class="col-md-3">
 			<ul class="dsb_card sortable dsb_card20 dsb_pink_card" id="testing">
 				<h2 class="text-white bolder">TESTING</h2>
-				<li class="sort">
-					<div class="dsb_cardz">
-					<div class="row">
-						<div class="col-md-2">
-							<div class="text-center">
-								<h2>
-									<i class="fas fa-check-double ico_gre"></i>
-								</h2>
-							</div>
-						</div>
-						<div class="col-md-10">
-							<div class="row">
-								<div class="col-md-6">
-									<div class="progress" style="height:5px;margin-top:5px;">
-									  <div class="progress-bar" style="width:90%;height:5px;background-color:#fd79a8;"></div>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<span style="float:right;font-size:0.8em;">
-										<i>15th Dec 2018</i>
-									</span><br>
-								</div>
-							</div>
-							Finds bugs in the database<br>
-							<span style="float:right;">
-								<img src="{{asset('images/picture.jpg')}}" alt="" class="task_peeps peeps_pink">
-								<img src="{{asset('images/picture.jpg')}}" alt="" class="task_peeps peeps_pink">
-							</span>
-						</div>
-					</div>
-				</div>
-				</li>
+				{{--<li class="sort">
+													<div class="dsb_cardz">
+													<div class="row">
+														<div class="col-md-2">
+															<div class="text-center">
+																<h2>
+																	<i class="fas fa-check-double ico_gre"></i>
+																</h2>
+															</div>
+														</div>
+														<div class="col-md-10">
+															<div class="row">
+																<div class="col-md-6">
+																	<div class="progress" style="height:5px;margin-top:5px;">
+																	  <div class="progress-bar" style="width:90%;height:5px;background-color:#fd79a8;"></div>
+																	</div>
+																</div>
+																<div class="col-md-6">
+																	<span style="float:right;font-size:0.8em;">
+																		<i>15th Dec 2018</i>
+																	</span><br>
+																</div>
+															</div>
+															Finds bugs in the database<br>
+															<span style="float:right;">
+																<img src="{{asset('images/picture.jpg')}}" alt="" class="task_peeps peeps_pink">
+																<img src="{{asset('images/picture.jpg')}}" alt="" class="task_peeps peeps_pink">
+															</span>
+														</div>
+													</div>
+												</div>
+												</li>--}}
 				
 			</ul>
 		</div>
 		<div class="col-md-3">
 			<ul class="dsb_card sortable dsb_card20 dsb_green_card" id="completed">
 				<h2 class="text-white bolder">COMPLETED</h2>
-				<li class="dsb_cardz">
-					<div class="row">
-						<div class="col-md-2">
-							<div class="text-center">
-								<h2>
-									<i class="fas fa-palette ico_gre"></i>
-								</h2>
-							</div>
-						</div>
-						<div class="col-md-10">
-							<span style="float:right;font-size:0.8em;">
-								<i>15th Dec 2018</i>
-							</span><br>
-							Make the logo for the app <br>
-							<span style="float:right;">
-								<img src="{{asset('images/picture.jpg')}}" alt="" class="task_peeps peeps_green">
-							</span>
-						</div>
-					</div>
-				</li>
+			{{--<li class="dsb_cardz">
+													<div class="row">
+														<div class="col-md-2">
+															<div class="text-center">
+																<h2>
+																	<i class="fas fa-palette ico_gre"></i>
+																</h2>
+															</div>
+														</div>
+														<div class="col-md-10">
+															<span style="float:right;font-size:0.8em;">
+																<i>15th Dec 2018</i>
+															</span><br>
+															Make the logo for the app <br>
+															<span style="float:right;">
+																<img src="{{asset('images/picture.jpg')}}" alt="" class="task_peeps peeps_green">
+															</span>
+														</div>
+													</div>
+												</li>--}}
 			
 				{{--<div class="dsb_cardz">
 													<div class="row">
@@ -662,6 +662,7 @@ ul{list-style-type:none;margin:0;padding:0;}
 
  	//GETTING PROJECT DETAILS
  	function getProjectDetails(){
+ 		$('#mainContent').fadeOut(400);
 	 	$.ajax({
 			type: "get",
 			url: "{{ route('project.specific') }}",
@@ -700,9 +701,12 @@ ul{list-style-type:none;margin:0;padding:0;}
 			    toastr.error("Something went wrong!!");
 			     // console.log(e);
 
-			    }
+			},
+			complete: function(){
+				$('#mainContent').fadeIn(100);
+			}
 			            // $('#'+id).text();
-			   });
+		});
 	}
  
 				
@@ -732,7 +736,7 @@ ul{list-style-type:none;margin:0;padding:0;}
 	            },
 	            error: function(e){
 	                toastr.error("Something went wrong!!");
-	                // console.log(e);
+	                console.log(e);
 
 	        }
 	            // $('#'+id).text();
@@ -822,7 +826,7 @@ ul{list-style-type:none;margin:0;padding:0;}
 		positionTask = $('#todo').children().length;
 		
 		//CHECKING IF THESE INPUTS HAS VALUES
-		if (descriptionTask && taskTitle && deadlineTask) {
+		if (descriptionTask && taskTitle) {
 			//SUBMITTING THE NEWLY CREATED TASK TO SERVER
 			$.ajax({
         		type: "get",
@@ -1131,10 +1135,16 @@ ul{list-style-type:none;margin:0;padding:0;}
 	//INSERTING THE DIVS IN THEIR POSITION
 	function insertAtIndex(id, i, v) {
 		//GETTING THE DATE
-		let date = v.deadline.split('-');
+		let date = ['','',''];
+		let th = '';
+		if (v.deadline) {
+			let date = v.deadline.split('-');
 
-		console.log(v);
-		let th = nth(date[2]);
+			// console.log(v);
+			let th = nth(date[2]);
+		}
+		console.log(date);
+		
 		if (i ==0) {
 			$("#"+id).find('li').not('#dontSort').remove();
 		}

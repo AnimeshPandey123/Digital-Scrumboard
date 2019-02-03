@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColorToProject extends Migration
+class AddCompletedByToTasks extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class AddColorToProject extends Migration
      */
     public function up()
     {
-        Schema::table('projects', function (Blueprint $table)
+        Schema::table('tasks', function (Blueprint $table)
         {
-            $table->string('color')->nullable();
+
+            $table->integer('completed_by')->nullable();
 
         });
     }
@@ -27,9 +28,9 @@ class AddColorToProject extends Migration
      */
     public function down()
     {
-        Schema::table('projects', function (Blueprint $table)
+         Schema::table('tasks', function (Blueprint $table)
         {
-            $table->dropColumn('color');
+            $table->dropColumn('completed_by');
         });
     }
 }

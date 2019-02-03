@@ -22,7 +22,7 @@ class CreateTasksTable extends Migration
             $table->string('title');
             $table->enum('state',['todo', 'ongoing', 'testing', 'completed']);
             $table->string('position');
-            $table->date('deadline');
+            $table->date('deadline')->nullable();
             $table->timestamps();
         });
     }

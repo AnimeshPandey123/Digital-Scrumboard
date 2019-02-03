@@ -28,6 +28,8 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
 	})->name('setting');
 	Route::get('/project', 'Project\ProjectController@index')->name('project');
 	Route::get('/project/get', 'Project\ProjectController@get')->name('project.get');
+
+	Route::get('/project/recent/get', 'Project\ProjectController@recentProjects')->name('project.recent.get');
 	Route::get('/project/store', 'Project\ProjectController@store')->name('project.store');
 
 	Route::get('/project/main/{project_id}', 'Project\ProjectController@mainProject')->name('project.main');
@@ -50,6 +52,10 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
 
 	Route::get('users/all', 'User\UserController@returnAllUsers')->name('user.all');
 	Route::get('user/tasks/recent', 'Dashboard\DashboardController@getTasks')->name('user.tasks.recent');
+
+	Route::get('user/recent/news', 'Dashboard\DashboardController@getRecents')->name('user.recent.recent');
+
+
 	Route::get('/profile', function () {
 		return view('admin.profile');
 	})->name('profile');

@@ -64,16 +64,16 @@
                     <span class="logotext">Digital SCRUM Board</span>
                 </a>
                 <h6 class="justify-content-end">
-                    <a href="{{ route('dashboard') }}" class="nav_link navlink_active ">
+                    <a id="dashboardurl" href="{{ route('dashboard') }}" class="nav_link ">
                         Dashboard
                     </a> 
-                    <a href="{{ route('project') }}" class="nav_link">
+                    <a id="projectsurl" href="{{ route('project') }}" class="nav_link">
                         Projects
                     </a> 
-                    <a href="{{ route('setting') }}" class="nav_link">
+                    <a id="settingurl" href="{{ route('setting') }}" class="nav_link">
                         Settings
                     </a> 
-                    <a href="#" class="nav_link" style="font-size:1.1em; ">
+                    <a href="#" id="dropdown" class="nav_link" style="font-size:1.1em; ">
                         <i class="fas fa-bell"></i>
                     </a> 
                     <a href="{{ route('profile') }}" class="profile_link">
@@ -87,7 +87,7 @@
             </div>
         </nav>
         <div class="container-fluid">
-            <main class="py-4">
+            <main id="mainContent" class="py-4">
                 @yield('content')
             </main>
         </div>
@@ -96,11 +96,32 @@
     @yield('styles')
     @yield('scripts')
 
+    <script type="text/javascript">
+        $(document).on('click', '#dropdown', function(){
+            $(this).append(`<div class="dropdown-menu" show aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>`);
+        })
+    </script>
     <!-- Script for activating tooltip -->
     <script>
-    $(document).ready(function(){
-      $('[data-toggle="tooltip"]').tooltip(); 
+
+      var url      = window.location.href; 
+    $(window).on('load', function(){
+      $('[data-toggle="tooltip"]').tooltip();
+      // console.log(url);
+      if (url == "{{route('dashboard')}}") {
+        $('#dashboardurl').addClass("navlink_active"); 
+      }else if(url == '{{route('project')}}'){
+        $('#projectsurl').addClass("navlink_active"); 
+      }else if(url == '{{route('setting')}}'){
+        $('#settingurl').addClass("navlink_active"); 
+      }
+     
     });
+    
     </script>
 </body>
 </html>

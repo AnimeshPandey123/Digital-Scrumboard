@@ -14,7 +14,7 @@
 			<div class="col-md-4">
 				<div class="dsb_card dsb_card20 dsb_primary_card">
 					<div class="text-center">
-						<button class="btn" style="background:none;color:#fff;border:2px solid #ecf0f1;border-radius:100px;padding:5px 25px;" data-toggle="modal" data-target="#create_project">
+						<button type="button" class="btn" style="background:none;color:#fff;border:2px solid #ecf0f1;border-radius:100px;padding:5px 25px;" data-toggle="modal" data-target="#create_project">
 							<i class="fas fa-plus"></i>&nbsp;
 							Create New
 						</button>
@@ -29,87 +29,87 @@
 		</h6>
 		<div class="dsb_card dsb_card40">
 			<table id="allProjects" class="table" style="font-size:0.9em;">
-				<thead>
-					<tr style="font-weight:600;color:#005792;">
-						<td>Project Name</td>
-						<td>Members</td>
-						<td>Your Tasks</td>
-						<td>Progress</td>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>
-							<a href="##">
-								<i class="fas fa-graduation-cap"></i>&nbsp;College Project
-							</a>
-						</td>
-						<td>17</td>
-						<td>58</td>
-						<td>
-							<div class="progress" style="height:5px;margin-top:3px;">
-							  <div class="progress-bar" style="width:40%;height:5px;background:#005792;"></div>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<a href="##">
-								<i class="fas fa-brain"></i>&nbsp;Mind Map
-							</a>
-						</td>
-						<td>7</td>
-						<td>5</td>
-						<td>
-							<div class="progress" style="height:5px;margin-top:3px;">
-							  <div class="progress-bar" style="width:10%;height:5px;background:#005792;"></div>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<a href="##">
-								<i class="fas fa-palette"></i>&nbsp;Designer's Club
-							</a>
-						</td>
-						<td>170</td>
-						<td>72</td>
-						<td>
-							<div class="progress" style="height:5px;margin-top:3px;">
-							  <div class="progress-bar" style="width:85%;height:5px;background:#005792;"></div>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<a href="##">
-								<i class="fas fa-book"></i>&nbsp;Book Club
-							</a>
-						</td>
-						<td>8</td>
-						<td>1</td>
-						<td>
-							<div class="progress" style="height:5px;margin-top:3px;">
-							  <div class="progress-bar" style="width:85%;height:5px;background:#005792;"></div>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<a href="##">
-								<i class="fas fa-book"></i>&nbsp;Library Mangment Project
-							</a>
-						</td>
-						<td>8</td>
-						<td>1</td>
-						<td>
-							<div class="progress" style="height:5px;margin-top:3px;">
-							  <div class="progress-bar" style="width:55%;height:5px;background:#005792;"></div>
-							</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+										<thead>
+											<tr style="font-weight:600;color:#005792;">
+												<td>Project Name</td>
+												<td>Members</td>
+												<td>Your Tasks</td>
+												<td>Progress</td>
+											</tr>
+										</thead>
+										<tbody>
+											{{--<tr>
+												<td>
+													<a href="##">
+														<i class="fas fa-graduation-cap"></i>&nbsp;College Project
+													</a>
+												</td>
+												<td>17</td>
+												<td>58</td>
+												<td>
+													<div class="progress" style="height:5px;margin-top:3px;">
+													  <div class="progress-bar" style="width:40%;height:5px;background:#005792;"></div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<a href="##">
+														<i class="fas fa-brain"></i>&nbsp;Mind Map
+													</a>
+												</td>
+												<td>7</td>
+												<td>5</td>
+												<td>
+													<div class="progress" style="height:5px;margin-top:3px;">
+													  <div class="progress-bar" style="width:10%;height:5px;background:#005792;"></div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<a href="##">
+														<i class="fas fa-palette"></i>&nbsp;Designer's Club
+													</a>
+												</td>
+												<td>170</td>
+												<td>72</td>
+												<td>
+													<div class="progress" style="height:5px;margin-top:3px;">
+													  <div class="progress-bar" style="width:85%;height:5px;background:#005792;"></div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<a href="##">
+														<i class="fas fa-book"></i>&nbsp;Book Club
+													</a>
+												</td>
+												<td>8</td>
+												<td>1</td>
+												<td>
+													<div class="progress" style="height:5px;margin-top:3px;">
+													  <div class="progress-bar" style="width:85%;height:5px;background:#005792;"></div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<a href="##">
+														<i class="fas fa-book"></i>&nbsp;Library Mangment Project
+													</a>
+												</td>
+												<td>8</td>
+												<td>1</td>
+												<td>
+													<div class="progress" style="height:5px;margin-top:3px;">
+													  <div class="progress-bar" style="width:55%;height:5px;background:#005792;"></div>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+						--}}			</table>
 			<hr>
 		</div>
 	</div>
@@ -401,7 +401,7 @@
 						<td>${v.taskCount}</td>
 						<td>
 							<div class="progress" style="height:5px;margin-top:3px;">
-							  <div class="progress-bar" style="width:40%;height:5px;background:#005792;"></div>
+							  <div class="progress-bar" style="width:${v.progress}%;height:5px;background:#005792;"></div>
 							</div>
 						</td>
 					</tr>`);
@@ -421,97 +421,97 @@
 		
 	</script>
 	<script type="text/javascript" defer>
-	var tagify;
-	var input;
-	setTimeout(getTagify, 1000);
-	$(document).on('ready', function(){
-		
-	});
-	function getTagify(){
-	 input = document.querySelector('input[id=tags]'),
-    // init Tagify script on the above inputs
-    tagify = new Tagify(input, {
-        whitelist : [],
-        blacklist : [],
-        keepInvalidTags     : false,
-        dropdown : false,
-        enforceWhitelist: false
-    });
+		var tagify;
+		var input;
+		setTimeout(getTagify, 1000);
+		$(document).on('ready', function(){
+			
+		});
+		function getTagify(){
+		 input = document.querySelector('input[id=tags]'),
+	    // init Tagify script on the above inputs
+	    tagify = new Tagify(input, {
+	        whitelist : [],
+	        blacklist : [],
+	        keepInvalidTags     : false,
+	        dropdown : false,
+	        enforceWhitelist: false
+	    });
 
-	// // "remove all tags" button event listener
-	// document.querySelector('.tags--removeAllBtn')
-	//     .addEventListener('click', tagify.removeAllTags.bind(tagify))
-	// console.log(tagify);
-	// Chainable event listeners
-	tagify.on('add', onAddTag)
-	      .on('remove', onRemoveTag)
-	      .on('input', onInput)
-	      .on('invalid', onInvalidTag)
-	      .on('click', onTagClick);
+		// // "remove all tags" button event listener
+		// document.querySelector('.tags--removeAllBtn')
+		//     .addEventListener('click', tagify.removeAllTags.bind(tagify))
+		// console.log(tagify);
+		// Chainable event listeners
+		tagify.on('add', onAddTag)
+		      .on('remove', onRemoveTag)
+		      .on('input', onInput)
+		      .on('invalid', onInvalidTag)
+		      .on('click', onTagClick);
 
-	}
-		
+		}
+			
 
-	// tag added callback
-	function onAddTag(e){
-	    // console.log(e.detail.tag);
-	    // tagify.removeTag(e.detail.tag);
-	    // console.log("original input value: ", input.value);
-	    // console.log(JSON.parse(input.value));
-	    let inp = JSON.parse(input.value);
-	    checkEmail(inp[inp.length-1].value, e.detail.tag);
-	    // tagify.off('add', onAddTag) // exmaple of removing a custom Tagify event
-	}
+		// tag added callback
+		function onAddTag(e){
+		    // console.log(e.detail.tag);
+		    // tagify.removeTag(e.detail.tag);
+		    // console.log("original input value: ", input.value);
+		    // console.log(JSON.parse(input.value));
+		    let inp = JSON.parse(input.value);
+		    checkEmail(inp[inp.length-1].value, e.detail.tag);
+		    // tagify.off('add', onAddTag) // exmaple of removing a custom Tagify event
+		}
 
-	// tag remvoed callback
-	function onRemoveTag(e){
-	    console.log(e.detail);
-	    console.log("tagify instance value:", tagify.value);
-	    newProjectUsers.pop(e.detail.data.value);
-	    
-	}
+		// tag remvoed callback
+		function onRemoveTag(e){
+		    console.log(e.detail);
+		    console.log("tagify instance value:", tagify.value);
+		    newProjectUsers.pop(e.detail.data.value);
+		    
+		}
 
-	// on character(s) added/removed (user is typing/deleting)
-	function onInput(e){
-	    // console.log(e.detail);
-	}
+		// on character(s) added/removed (user is typing/deleting)
+		function onInput(e){
+		    // console.log(e.detail);
+		}
 
-	// invalid tag added callback
-	function onInvalidTag(e){
-	    console.log(e.detail);
-	    
-	}
+		// invalid tag added callback
+		function onInvalidTag(e){
+		    console.log(e.detail);
+		    
+		}
 
-	// invalid tag added callback
-	function onTagClick(e){
-	    console.log(e.detail);
-	}
+		// invalid tag added callback
+		function onTagClick(e){
+		    console.log(e.detail);
+		}
 
-	function checkEmail(inp, target){
-		// console.log(inp);
-		$.ajax({
-        		type: "get",
-	            url: "{{ route('check.email') }}",
-	            headers: {
-	            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-	            },
-	            data: { _token : $('meta[name="csrf-token"]').attr('content'),
-	            email: inp
-	            },
-	            
-	            success: function (s){
-	            	newProjectUsers.push(inp);
-	            },
-	            error: function(e){
-	            	// console.log(target.data);
-	            	tagify.removeTag(target);
+		function checkEmail(inp, target){
+			// console.log(inp);
+			$.ajax({
+	        		type: "get",
+		            url: "{{ route('check.email') }}",
+		            headers: {
+		            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		            },
+		            data: { _token : $('meta[name="csrf-token"]').attr('content'),
+		            email: inp
+		            },
+		            
+		            success: function (s){
+		            	newProjectUsers.push(inp);
+		            },
+		            error: function(e){
+		            	// console.log(target.data);
+		            	tagify.removeTag(target);
 
-	                // toastr.error("Something went wrong!!");
-                	
+		                // toastr.error("Something went wrong!!");
+	                	
 
-	        	}
-		            // $('#'+id).text();
-		    });
-	}
-</script>
+		        	}
+			            // $('#'+id).text();
+			    });
+		}
+	</script>
 @endsection

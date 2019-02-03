@@ -111,6 +111,16 @@ class TaskController extends Controller
         // dd($task);
         $task->position = $request->position;
         $task->state    = $request->state;
+        if ($request->state == 'completed') {
+            $task->completed_by = auth()->user()->id;
+            activity()
+                   ->performedOn($task)
+                   ->causedBy(auth()->user())
+                   ->withProperties(['type' => 'task_completed'])
+                   ->log('This task is completed');
+        }else{
+            $task->completed_by = null;
+        }
         $task->save();
         return $task;
     }

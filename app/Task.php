@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-    protected $fillable = ['description', 'project_id', 'created_by', 'updated_by', 'state', 'position', 'deadline', 'title', 'progress'];
+    protected $fillable = ['description', 'project_id', 'created_by', 'updated_by', 'state', 'position', 'deadline', 'title', 'progress', 'completed_by'];
 
     protected $casts = ['deadline' => 'date:Y-M-d'];
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Project;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Notifications\AddedToProject;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -11,13 +12,23 @@ class ProjectController extends Controller
 {
     public function index()
     {
-
         return view('admin.project');
     }
 
     public function create()
     {
         return view();
+    }
+
+    public function recentProjects(Request $request)
+    {
+        $limit = ($request->limit)?$request->limit:5;
+        // dd($limit);
+        $user     = auth()->user();        
+        $projects = $user->createdProjects()->latest()->take($limit)->get();
+        // dd($projects);
+        return $projects;
+
     }
 
     public function get()
@@ -31,21 +42,29 @@ class ProjectController extends Controller
 
     public function store(Request $request)
     {
-        $color = ['dsb_blue_card', 'dsb_green_card', 'dsb_yellow_card', 'dsb_pink_card', 'dsb_grey_card'];
-        $i = rand(0, count($color)-1);
-      
+        $color = ['dsb_blue_card', 'dsb_green_card', 'dsb_yellow_card', 'dsb_pink_card'];
+        $i     = rand(0, count($color) - 1);
+    
         $project = Project::create(['name' => $request->name,
             'description'                      => $request->description,
             'icon'                             => $request->icon,
             'user_id'                          => auth()->user()->id,
-            'color'                            =>$color[$i]
+            'color'                            => $color[$i],
         ]);
-        if ($request->email)
+        activity()
+            ->performedOn($project)
+            ->causedBy(auth()->user())
+            ->withProperties(['type' => 'created_project'])
+            ->log('Project is created');
+
+        if ($request->emails)
         {
             foreach ($request->emails as $key => $value)
             {
                 $user = User::where('email', $value)->first();
                 $project->users()->attach($user->id);
+                // dd($project);
+                $user->notify(new AddedToProject($project, auth()->user()));
             }
         }
 
@@ -58,6 +77,7 @@ class ProjectController extends Controller
     {
 
         $project = Project::findOrFail($project_id);
+        // dd($project);
 
         return view('admin.project.mainProject')->with('project', $project);
     }
@@ -78,8 +98,9 @@ class ProjectController extends Controller
         $project->name        = $request->name;
         $project->icon        = $request->icon;
         $project->description = $request->description;
-        $emails = $request->emails;
-        if (!isset($request->emails)) {
+        $emails               = $request->emails;
+        if (!isset($request->emails))
+        {
             $emails = [];
         }
         if (isset($emails))
@@ -104,11 +125,15 @@ class ProjectController extends Controller
             {
                 $user = User::where('email', $value)->first();
                 $project->users()->attach($user->id);
+                // Notification::send($users, new AddedToProject($project, $user));
+
+                $user->notify(new AddedToProject($project, auth()->user()));
+
             }
             // dd($emails);
 
         }
-        $project->save();
+          $project->save();
 
         return response()->json($project, 200);
     }
@@ -120,7 +145,6 @@ class ProjectController extends Controller
         // dd($project->creator);
         $tasks = $project->tasks->where('state', $request->state);
         return $tasks;
-        return response()->json($project, 200);
     }
 
 }
