@@ -1,98 +1,293 @@
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>DSB</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Merriweather|Poppins" rel="stylesheet">
+
+        <!-- Font Awesome-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
+                background-color: #F5F5F5;
+                font-family: 'Poppins', sans-serif;
+                color: #707070;
                 margin: 0;
+                padding: 0;
             }
 
-            .full-height {
-                height: 100vh;
+            .land{
+                background: url({{asset('images/landbg.png')}}) no-repeat center right scroll; 
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: auto 100%;
+                min-height: 100vh;
             }
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
+            
+
+            .nav-link{
+                font-size: 15px;
+                font-weight: bold;
             }
 
-            .position-ref {
-                position: relative;
+            .nav-item{
+                padding: 0 0 0 20px;
             }
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
+            .navibg{
+                background: white;
+                padding: 0px 40px;
             }
 
-            .content {
+            .logo{
+                width: 80px;
+            }
+
+            .dsbtitle{
+                font-family: 'Merriweather', serif;
+                padding-top: 80px; 
+            }
+
+            .pd_20{
+                padding: 10px;
+            }
+
+            .redbutton{border-radius:15px;transition:0.5s;background:#FD79A8;padding:5px 15px; border:1px solid #FD79A8;  width: 200px; text-align:center; color:white; text-decoration: none; box-shadow: 0px 2px #ddd; margin: 40px 0px 0px 150px;} 
+
+            .redbutton:hover {background:none; color: #FD79A8; border:1px solid #FD79A8;}
+
+            .features{
+                margin: 20px auto;
+            }
+
+            .large_card_pink{
+                margin: 20px;
+                border-radius: 4px; 
+                padding: 15px 15px;
+                width: 300px;
                 text-align: center;
+                color: white;
+                background-color: #FD79A8;
+            }
+            .large_card_blue{
+                margin: 20px;
+                border-radius: 4px; 
+                padding: 15px 15px;
+                width: 300px;
+                text-align: center;
+                color: white;
+                background-color: #74B9FF;
+            }
+            .large_card_green{
+                margin: 20px;
+                border-radius: 4px; 
+                padding: 15px 15px;
+                width: 300px;
+                text-align: center;
+                color: white;
+                background-color: #55EFC4;
             }
 
-            .title {
-                font-size: 84px;
+            .centa{
+                margin: 15px auto;
             }
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
+            .team{
+                background: #515151;
             }
 
-            .m-b-md {
-                margin-bottom: 30px;
+            .dev_pic{
+                width: 100px;
+                margin: 35px 10px;
+            }
+
+            .dev_name{
+                display: inline-block;
+                color: white;
+                font-weight: bold;
+            }
+
+            .dev_role{
+                font-weight: normal;
+                font-size: 14px;
+                font-style: oblique;
+            }
+
+            .foot{
+                text-transform: capitalize;
+            }
+
+            .foot ul{
+                list-style: none;
+                margin: 0 auto;
+            }
+
+            .foot ul li{
+                display: inline-block;
+                padding: 20px 20px;
+            }
+
+
+            @media (max-width: 992px) { 
+                .land{
+                    background: none;
+                }
             }
         </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+        </head>
+        <body>
+        <div class="land">
+        <div class="container-fluid navibg">
+            <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="#">
+                    <img src="{{asset('images/logo.png')}}" alt="" class="logo">
+                </a>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    @if (Route::has('login'))
+                        @auth
+                            <a class="nav-link" href="{{ url('/home') }}">Home</a>
+                        @else
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
+                            @if (Route::has('register'))
+                                <a class="nav-link" href="{{ route('register') }}">Get Started</a>
+                            @endif
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}">Login</a>
+                        @endauth
+                    @endif
+                </li>
+            </ul>
+            </nav>
+        </div>
+            
+
+            <div class="row container-fluid">
+                <div class="col-md-1"></div>
+                <div class="col-md-3">
+                    <h1 class="dsbtitle"> Digital Scrum Board </h1>
+                    
                 </div>
-            @endif
+                <div class="col-md-8"></div>
+            </div>
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
+            <div class="row container-fluid">
+                <div class="col-md-1"></div>
+                <div class="col-md-4 pd_20">
+                    <hr>
+                    <p>" Not only has this online tool helped me get my job done faster, 
+                    it also helped me get promoted "
+                    <div class="float-right">
+                        <br>   -Saugat Sigdel 
+                        <br>   St. Xavier's College
+                    </div>
+                    </p>
                 </div>
+                <div class="col-md-7"></div>
+            </div>
+            <div class="redbutton"> <a href="{{ route('register') }}"> Get Started  </a></div>
+        </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+        <div class="features">
+        <h2 style="color:#55EFC4;text-align: center;padding-top: 30px;">Features</h2>
+        <div class="row container-fluid ">
+            <div class="col-md-4"><div class=" large_card_blue centa">Dashboard </div> </div>
+            <div class="col-md-4"><div class=" large_card_pink centa">Super Fast</div></div>
+            <div class="col-md-4"><div class=" large_card_green centa">Notifications</div></div>
+        </div>
+        <div class="row container-fluid">
+            <div class="col-md-4"><div class=" large_card_green centa">Flexible Cards</div></div>
+            <div class="col-md-4"><div class=" large_card_blue centa">Customizable</div></div>
+            <div class="col-md-4"><div class=" large_card_pink centa">Secure</div> </div>
+        </div>
+        </div>
+            
+        <div class="team container-fluid">
+            <h2 style="color:#fff;text-align: center;padding-top: 30px;"> Meet The Team</h2>
+            <div class="row ">
+                <div class="col-md-3">
+                        <img src="{{asset('images/Akash.png')}}" alt="" class="dev_pic">
+                        <div class="dev_name">
+                        Aakash Singh Thakuri
+                        <br><p class="dev_role">Frontend Developer<p>
+                        </div>
+                </div>
+                <div class="col-md-3">
+                        <img src="{{asset('images/Pandu.png')}}" alt="" class="dev_pic">
+                        <div class="dev_name">
+                        Animesh Pandey
+                        <br><p class="dev_role">Backend and API<p>
+                        </div>
+                </div>
+                <div class="col-md-3">
+                        <img src="{{asset('images/Biku.png')}}" alt="" class="dev_pic">
+                        <div class="dev_name">
+                        Bibek Paudel
+                        <br><p class="dev_role">Frontend Developer<p>
+                        </div>
+                </div>
+                <div class="col-md-3">
+                        <img src="{{asset('images/Ghiru.png')}}" alt="" class="dev_pic">
+                        <div class="dev_name">
+                        Cheena Niraula
+                        <br><p class="dev_role">Frontend Developer<p>
+                        </div>
                 </div>
             </div>
+
+            <div class="row ">
+                <div class="col-md-3">
+                        <img src="{{asset('images/Pandu female.png')}}" alt="" class="dev_pic">
+                        <div class="dev_name">
+                        Neha Pandey
+                        <br><p class="dev_role">Backend Developer<p>
+                        </div>
+                </div>
+                <div class="col-md-3">
+                        <img src="{{asset('images/me.png')}}" alt="" class="dev_pic">
+                        <div class="dev_name">
+                        Nischal Kharel
+                        <br><p class="dev_role">UI/UX and Frontend<p>
+                        </div>
+                </div>
+                <div class="col-md-3">
+                        <img src="{{asset('images/Hairy.png')}}" alt="" class="dev_pic">
+                        <div class="dev_name">
+                        Prashant Raj Dahal
+                        <br><p class="dev_role">UI/UX and Backend<p>
+                        </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
         </div>
+
+        <div class="row container-fluid foot">
+            <ul>
+                <li>About</li>
+                <li>Terms and conditions</li>
+                <li>Privacy Policy</li>
+                <li>Help</li>
+            </ul>
+        </div>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     </body>
 </html>
