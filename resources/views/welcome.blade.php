@@ -316,11 +316,34 @@
 
               <!-- Modal body -->
               <div class="modal-body">
-                <div class="text-center">
-                    <button class="btn btn-danger" style="border-radius:100px;padding:5px 15px;">
-                        <i class="fab fa-google"></i>&nbsp;
-                        Sign In with Google
-                    </button>
+                <!-- Nav pills -->
+                <ul class="nav nav-pills">
+                  <li class="nav-item">
+                    <a class="nav-link active" data-toggle="pill" href="#home">Log In</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="pill" href="#menu1">Register</a>
+                  </li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                  <div class="tab-pane container active" id="home">
+                      <div class="text-center"><br><br>
+                          <button class="btn btn-danger" style="border-radius:100px;padding:5px 15px;">
+                              <i class="fab fa-google"></i>&nbsp;
+                              Sign In with Google
+                          </button><br><br>
+                      </div>
+                  </div>
+                  <div class="tab-pane container fade" id="menu1">
+                      <div class="text-center"><br><br>
+                          <button class="btn btn-danger" style="border-radius:100px;padding:5px 15px;">
+                              <i class="fab fa-google"></i>&nbsp;
+                              Get Started with Google
+                          </button><br><br>
+                      </div>
+                  </div>
                 </div>
               </div>
 
