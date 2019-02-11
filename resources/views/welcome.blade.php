@@ -68,7 +68,7 @@
 
             .redbutton{border-radius:100px;transition:0.5s;background:#FD79A8;padding:5px 15px; border:1px solid #FD79A8;  width: 200px; text-align:center; color:#fff; text-decoration: none; box-shadow: 0px 2px #ddd; margin: 40px 0px 0px 150px;} 
 
-            .redbutton:hover {background:none; color: #FD79A8; border:2px solid #FD79A8;}
+            .redbutton:hover {background:#fd79a7;}
 
             .features{
                 margin: 20px auto;
@@ -166,11 +166,11 @@
                                 <a class="nav-link" href="{{ url('/home') }}">Home</a>
                             @else
                                 @if (Route::has('register'))
-                                    <a class="nav-link" href="{{ route('register') }}">Get Started</a>
+                                    <a class="nav-link" href="{{ route('register') }}" data-toggle="modal" data-target="#login">Get Started</a>
                                 @endif
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+                        <a class="nav-link" href="{{ route('login') }}" data-toggle="modal" data-target="#login">Login</a>
                             @endauth
                         @endif
                     </li>
@@ -202,8 +202,8 @@
                 </div>
                 <div class="col-md-7"></div>
             </div>
-            <div class="btn btn-danger redbutton"> 
-                <a href="{{ route('register') }}"> Get Started  </a>
+            <div class="redbutton"> 
+                <a href="{{ route('register') }}" style="color:#fff;"  data-toggle="modal" data-target="#login"> Get Started  </a>
             </div>
         </div>
 
@@ -299,6 +299,41 @@
                 <li>Privacy Policy</li>
                 <li>Help</li>
             </ul>
+        </div>
+
+        <!-- The Modal -->
+        <div class="modal fade" id="login">
+          <div class="modal-dialog">
+            <div class="modal-content">
+
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title text-info">
+                    Get Inside
+                </h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body">
+                <div class="text-center">
+                    <button class="btn btn-danger" style="border-radius:100px;padding:5px 15px;">
+                        <i class="fab fa-google"></i>&nbsp;
+                        Sign In with Google
+                    </button>
+                </div>
+              </div>
+
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-info" style="border-radius:100px;padding:5px 15px;" data-dismiss="modal">
+                    <i class="fas fa-times"></i>&nbsp;
+                    Not Now
+                </button>
+              </div>
+
+            </div>
+          </div>
         </div>
 
         <!-- Optional JavaScript -->
