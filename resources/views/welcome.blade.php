@@ -12,7 +12,7 @@
         <link href="https://fonts.googleapis.com/css?family=Merriweather|Poppins" rel="stylesheet">
 
         <!-- Font Awesome-->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -34,9 +34,7 @@
                 -o-background-size: cover;
                 background-size: auto 100%;
                 min-height: 100vh;
-            }
-
-            
+            }            
 
             .nav-link{
                 font-size: 15px;
@@ -50,6 +48,7 @@
             .navibg{
                 background: white;
                 padding: 0px 40px;
+                box-shadow:0px 1px 3px #b5b5b5;
             }
 
             .logo{
@@ -59,15 +58,17 @@
             .dsbtitle{
                 font-family: 'Merriweather', serif;
                 padding-top: 80px; 
+                font-weight: bold;
+                font-size:3em;
             }
 
             .pd_20{
                 padding: 10px;
             }
 
-            .redbutton{border-radius:15px;transition:0.5s;background:#FD79A8;padding:5px 15px; border:1px solid #FD79A8;  width: 200px; text-align:center; color:white; text-decoration: none; box-shadow: 0px 2px #ddd; margin: 40px 0px 0px 150px;} 
+            .redbutton{border-radius:100px;transition:0.5s;background:#FD79A8;padding:5px 15px; border:1px solid #FD79A8;  width: 200px; text-align:center; color:#fff; text-decoration: none; box-shadow: 0px 2px #ddd; margin: 40px 0px 0px 150px;} 
 
-            .redbutton:hover {background:none; color: #FD79A8; border:1px solid #FD79A8;}
+            .redbutton:hover {background:none; color: #FD79A8; border:2px solid #FD79A8;}
 
             .features{
                 margin: 20px auto;
@@ -103,6 +104,8 @@
 
             .centa{
                 margin: 15px auto;
+                font-size:22px;
+                font-weight:bold;
             }
 
             .team{
@@ -151,36 +154,36 @@
         <body>
         <div class="land">
         <div class="container-fluid navibg">
-            <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="#">
-                    <img src="{{asset('images/logo.png')}}" alt="" class="logo">
-                </a>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    @if (Route::has('login'))
-                        @auth
-                            <a class="nav-link" href="{{ url('/home') }}">Home</a>
-                        @else
-
-                            @if (Route::has('register'))
-                                <a class="nav-link" href="{{ route('register') }}">Get Started</a>
-                            @endif
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">Login</a>
-                        @endauth
-                    @endif
-                </li>
-            </ul>
-            </nav>
+            <div class="container">
+                <nav class="navbar navbar-expand-lg">
+                    <a class="navbar-brand" href="#">
+                        <img src="{{asset('images/logo.png')}}" alt="" class="logo">
+                    </a>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        @if (Route::has('login'))
+                            @auth
+                                <a class="nav-link" href="{{ url('/home') }}">Home</a>
+                            @else
+                                @if (Route::has('register'))
+                                    <a class="nav-link" href="{{ route('register') }}">Get Started</a>
+                                @endif
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+                            @endauth
+                        @endif
+                    </li>
+                </ul>
+                </nav>
+            </div>
         </div>
             
 
             <div class="row container-fluid">
                 <div class="col-md-1"></div>
-                <div class="col-md-3">
-                    <h1 class="dsbtitle"> Digital Scrum Board </h1>
-                    
+                <div class="col-md-4">
+                    <h1 class="dsbtitle"> Digital Scrum Board</h1>
                 </div>
                 <div class="col-md-8"></div>
             </div>
@@ -189,30 +192,44 @@
                 <div class="col-md-1"></div>
                 <div class="col-md-4 pd_20">
                     <hr>
-                    <p>" Not only has this online tool helped me get my job done faster, 
+                    <p style="font-size:20px;">" Not only has this online tool helped me get my job done faster, 
                     it also helped me get promoted "
                     <div class="float-right">
                         <br>   -Saugat Sigdel 
-                        <br>   St. Xavier's College
+                        <br>   <span style="margin-left:8px;font-style:italic;">St. Xavier's College</span>
                     </div>
                     </p>
                 </div>
                 <div class="col-md-7"></div>
             </div>
-            <div class="redbutton"> <a href="{{ route('register') }}"> Get Started  </a></div>
+            <div class="btn btn-danger redbutton"> 
+                <a href="{{ route('register') }}"> Get Started  </a>
+            </div>
         </div>
 
         <div class="features">
-        <h2 style="color:#55EFC4;text-align: center;padding-top: 30px;">Features</h2>
+        <h2 style="color:#55EFC4;text-align:center;padding-top: 30px;">Features</h2>
         <div class="row container-fluid ">
-            <div class="col-md-4"><div class=" large_card_blue centa">Dashboard </div> </div>
-            <div class="col-md-4"><div class=" large_card_pink centa">Super Fast</div></div>
-            <div class="col-md-4"><div class=" large_card_green centa">Notifications</div></div>
+            <div class="col-md-4"><div class=" large_card_blue centa">
+                <i class="fas fa-tachometer-alt"></i>&nbsp;Dashboard 
+            </div> </div>
+            <div class="col-md-4"><div class=" large_card_pink centa">
+                <i class="fas fa-bolt"></i>&nbsp;Super Fast
+            </div></div>
+            <div class="col-md-4"><div class=" large_card_green centa">
+                <i class="fas fa-bell"></i>&nbsp;Notifications
+            </div></div>
         </div>
         <div class="row container-fluid">
-            <div class="col-md-4"><div class=" large_card_green centa">Flexible Cards</div></div>
-            <div class="col-md-4"><div class=" large_card_blue centa">Customizable</div></div>
-            <div class="col-md-4"><div class=" large_card_pink centa">Secure</div> </div>
+            <div class="col-md-4"><div class=" large_card_green centa">
+                <i class="fas fa-file"></i>&nbsp;Flexible Cards
+            </div></div>
+            <div class="col-md-4"><div class=" large_card_blue centa">
+                <i class="fas fa-cog"></i>&nbsp;Customizable
+            </div></div>
+            <div class="col-md-4"><div class=" large_card_pink centa">
+                <i class="fas fa-lock"></i>&nbsp;Secure
+            </div> </div>
         </div>
         </div>
             
