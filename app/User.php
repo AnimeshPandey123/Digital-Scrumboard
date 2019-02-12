@@ -8,6 +8,7 @@ use App\UserPreference;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Storage;
 
 class User extends Authenticatable
 {
@@ -53,7 +54,12 @@ class User extends Authenticatable
         return $this->hasOne(UserPreference::class);
     }
     public function getImageAttribute(){
-        return $this->userPreference['picture_url'];
+        if ($this->userPreference->uploaded) {
+            return $this->userPreference['picture_url'];
+        }else{
+            return Storage::url($this->userPreference['picture_url']);
+        }
+        
     }
 
 }

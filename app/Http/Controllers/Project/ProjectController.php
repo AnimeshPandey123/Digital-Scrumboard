@@ -36,8 +36,10 @@ class ProjectController extends Controller
         $user            = auth()->user();
         $createdProjects = $user->createdProjects;
         $projects        = $user->projects;
+        // dd($projects);
+        // $addedToProject  = Project::where();
         $allProjects     = array_merge($createdProjects->toArray(), $projects->toArray());
-        return response()->json($createdProjects, 200);
+        return response()->json($allProjects, 200);
     }
 
     public function store(Request $request)

@@ -160,20 +160,23 @@
                         <img src="{{asset('images/logo.png')}}" alt="" class="logo">
                     </a>
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        @if (Route::has('login'))
+
+                    @if (Route::has('login'))
+                        <li class="nav-item">
                             @auth
-                                <a class="nav-link" href="{{ url('/home') }}">Home</a>
+                                <a class="nav-link" href="{{ route('dashboard') }}">Home</a>
                             @else
                                 @if (Route::has('register'))
-                                    <a class="nav-link" href="{{ route('register') }}" data-toggle="modal" data-target="#login">Get Started</a>
+                                    <a class="nav-link" href="#" data-toggle="modal" data-target="#login">Get Started</a>
                                 @endif
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}" data-toggle="modal" data-target="#login">Login</a>
-                            @endauth
-                        @endif
-                    </li>
+                             @endauth
+                        </li>
+                         @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-toggle="modal" data-target="#login">Login</a>    
+                            </li>
+                        @endguest
+                    @endif
                 </ul>
                 </nav>
             </div>
@@ -202,9 +205,11 @@
                 </div>
                 <div class="col-md-7"></div>
             </div>
+             @guest
             <div class="redbutton"> 
-                <a href="{{ route('register') }}" style="color:#fff;"  data-toggle="modal" data-target="#login"> Get Started  </a>
+                <a href="#" style="color:#fff;"  data-toggle="modal" data-target="#login"> Get Started  </a>
             </div>
+             @endguest
         </div>
 
         <div class="features">
@@ -330,18 +335,18 @@
                 <div class="tab-content">
                   <div class="tab-pane container active" id="home">
                       <div class="text-center"><br><br>
-                          <button class="btn btn-danger" style="border-radius:100px;padding:5px 15px;">
+                          <a href="{{route('login.google')}}" class="btn btn-danger" style="border-radius:100px;padding:5px 15px;">
                               <i class="fab fa-google"></i>&nbsp;
                               Sign In with Google
-                          </button><br><br>
+                          </a><br><br>
                       </div>
                   </div>
                   <div class="tab-pane container fade" id="menu1">
                       <div class="text-center"><br><br>
-                          <button class="btn btn-danger" style="border-radius:100px;padding:5px 15px;">
+                          <a href="{{route('login.google')}}"" class="btn btn-danger" style="border-radius:100px;padding:5px 15px;">
                               <i class="fab fa-google"></i>&nbsp;
                               Get Started with Google
-                          </button><br><br>
+                          </a><br><br>
                       </div>
                   </div>
                 </div>

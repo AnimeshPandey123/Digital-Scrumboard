@@ -292,95 +292,6 @@
 					<div class="dsb_card dsb_card20 dsb_primary_card">
 						<span class="text-white" style="font-size:1.1em;">Recents</span>
 						<div class="cardz" style="font-size:1em;" id="recents">
-							<div class="dsb_cardz">
-								<i>
-									<span style="float:right;">
-										15th Dec
-									</span>
-								</i>
-								<table class="table table-sm table-borderless">
-									<tr>
-										<td>
-											<img src="{{asset('images/picture.jpg')}}" alt="" class="rec_pic">
-										</td>
-										<td>
-											<b class="text-theme">Melissa Willaims</b><br> completed 2 tasks in <b class="text-theme">College Project</b>
-										</td>
-									</tr>
-								</table>
-							</div>
-							<br>
-							<div class="dsb_cardz">
-								<i>
-									<span style="float:right;">
-										15th Dec
-									</span>
-								</i>
-								<table class="table table-sm table-borderless">
-									<tr>
-										<td>
-											<img src="{{asset('images/picture.jpg')}}" alt="" class="rec_pic">
-										</td>
-										<td>
-											<b class="text-theme">Melissa Willaims</b><br> completed 5 tasks in <b class="text-theme">Mind Map</b>
-										</td>
-									</tr>
-								</table>
-							</div>
-							<br>
-							<div class="dsb_cardz">
-								<i>
-									<span style="float:right;">
-										15th Dec
-									</span>
-								</i>
-								<table class="table table-sm table-borderless">
-									<tr>
-										<td>
-											<img src="{{asset('images/picture.jpg')}}" alt="" class="rec_pic">
-										</td>
-										<td>
-											<b class="text-theme">Melissa Willaims</b><br> created a new project <b class="text-theme">DotA Team</b> and added 17 memebers
-										</td>
-									</tr>
-								</table>
-							</div>
-							<br>
-							<div class="dsb_cardz">
-								<i>
-									<span style="float:right;">
-										15th Dec
-									</span>
-								</i>
-								<table class="table table-sm table-borderless">
-									<tr>
-										<td>
-											<img src="{{asset('images/picture.jpg')}}" alt="" class="rec_pic">
-										</td>
-										<td>
-											<b class="text-theme">Melissa Willaims</b><br> created a new project <b class="text-theme">Reddit Nepal Mod</b> and added 3 memebers
-										</td>
-									</tr>
-								</table>
-							</div>
-							<br>
-							<div class="dsb_cardz">
-								<i>
-									<span style="float:right;">
-										15th Dec
-									</span>
-								</i>
-								<table class="table table-sm table-borderless">
-									<tr>
-										<td>
-											<img src="{{asset('images/picture.jpg')}}" alt="" class="rec_pic">
-										</td>
-										<td>
-											<b class="text-theme">Melissa Willaims</b><br> archived 25 tasks in <b class="text-theme">College Project</b>
-										</td>
-									</tr>
-								</table>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -446,10 +357,10 @@
 			   
 			 success: function (s){
 			 	let task = $('#taskUpper').children('.row');
-
+			 	console.log(s);
 			 	$.each(s, function(i, v){
-
-			 		if (i%2 == 0) {
+			 		console.log(i);
+			 		if (i%2 != 0) {
 			 			$(task.children()[0]).append(`<div class="dsb_cardz" id="${v.id}">
 								<div class="row">
 									<div class="col-md-2">
@@ -532,7 +443,7 @@
 			 				 str = '';
 			 			}
 			 			
-			 			recent.append(` <div class="dsb_cardz">
+			 			$('#recents').append(` <div class="dsb_cardz">
 								<i>
 									<span style="float:right;">
 										${v.created_at}
@@ -561,8 +472,9 @@
 			 				 str = '';
 			 			}
 
+			 			console.log(recent);
 			 			if (i != 'date') {
-			 				recent.append(` <div class="dsb_cardz">
+			 				let check = ` <div class="dsb_cardz">
 								<i>
 									<span style="float:right;">
 										${s['task_completed']['date']}
@@ -574,11 +486,13 @@
 											<img src="{{auth()->user()->image}}" alt="" class="rec_pic">
 										</td>
 										<td>
-											 <b class="text-theme">{{auth()->user()->name}}s</b><br> completed ${v.length} tasks in <b class="text-theme">${i}</b>
+										 <b class="text-theme">{{auth()->user()->name}}</b><br> completed ${v.length} tasks in <b class="text-theme">${i}</b>
 										</td>
 									</tr>
 								</table>
-							</div><br>`);
+							</div><br>`;
+							// console.log(check);
+			 				$('#recents').append(check);
 
 			 			}
 			 		}

@@ -11,6 +11,7 @@ class DashboardController extends Controller
     public function index()
     {
         $user     = auth()->user();
+        // dd($user);
         $projects = $user->createdProjects()->latest()->take(5)->get();
         // dd($projects);
         $today    = new Carbon();
@@ -25,7 +26,8 @@ class DashboardController extends Controller
     {
         $user  = auth()->user();
         $today = new Carbon();
-        $tasks = $user->tasks->where('state', '!=', 'completed')->where('deadline', '<=', $today);
+        $tasks = $user->tasks->where('state', '!=', 'completed')->where('deadline', '<=', $today->addDays(5));
+        // dd($tasks);
         return $tasks->sortByDesc('deadline');
     }
 
@@ -36,10 +38,10 @@ class DashboardController extends Controller
 
         $completedTasks  = $user->tasks->where('updated_at', '>=', Carbon::now()->subDays(5))->where('completed_by', $user->id)->sortBy('updated_at')->all();
         $createdProjects = $user->createdProjects->where('created_at', '>=', Carbon::now()->subDays(1))->sortByDesc('created_at')->take(4)->all();
-        // dd(collect($completedTasks)->last()->updated_at);
+        // dd(collect($completedTasks));
         // reset($completedTasks);
         $arr = [];
-        if ($completedTasks && $$createdProjects)
+        if ($completedTasks || $createdProjects)
         {
             # code...
 

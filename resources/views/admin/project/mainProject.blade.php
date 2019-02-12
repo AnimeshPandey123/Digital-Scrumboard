@@ -474,7 +474,7 @@ ul{list-style-type:none;margin:0;padding:0;}
 					<input type="text" class="boxee makeTagify" id="taskUsers" placeholder="Assign Members"><br><br>
 					<input type="text" id="taskDeadline" class="boxee" placeholder="Deadline" onfocus="(this.type='date')"><br><br>
 					
-					<button class="btn dsb_button dsb_button_pink">
+					<button class="btn dsb_button dsb_button_pink" onclick="deleteTask()">
 						<i class="fas fa-trash"></i>&nbsp;
 						Delete Task
 					</button>
@@ -818,6 +818,36 @@ ul{list-style-type:none;margin:0;padding:0;}
 		
 	}
 
+	function deleteTask(){
+		let taskid = $('#taskID').val();
+		$.ajax({
+        		type: "get",
+	            url: "{{ route('task.delete') }}",
+	            headers: {
+	            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	            },
+	            data: { _token : $('meta[name="csrf-token"]').attr('content'),
+	            project_id:project.id, task_id : taskid
+	            },
+	            success: function (s){
+		            	taskModelClose();
+		            	toastr.success("Deleted!!");
+		            	loadSpecificTask(project.id, taskState);
+		                console.log(s);
+		                checkSort();
+
+		            },
+		            error: function(e){
+		                toastr.error("Something went wrong!!");
+		                console.log(e);
+
+		        },complete: function(){
+		        	taskEmailSpeceific = [];
+		        }
+            // $('#'+id).text();
+        });
+	}
+
 	function createTask(){
 		//GETTING INPUT VALUES
 		descriptionTask = $('#taskDescriptionCreate').val();
@@ -967,14 +997,18 @@ ul{list-style-type:none;margin:0;padding:0;}
 
 		//GETTING THE PARENT OF SELECTED ELEM TO GET STATE
 		taskState = $(elem).parent().attr('id');
+		console.log(taskState);
 		if (taskState == 'ongoing' || taskState == 'testing') {
-			if (!$('#divControl')[0]) {
-				let prog = $(elem).attr('progress');
-				$('#taskDeadline').after(`<div class="form-group" id="divControl">
-									    <label for="formControlRange">Set Progress</label>
-									    <input type="range" class="form-control-range slider" id="formControlRange" style="width:50%;margin-left:auto;margin-right:auto;" value="${prog}" min="1" max="100">
-									  </div><br>`);
-			}
+			let prog = $(elem).attr('progress');
+			console.log(prog);
+			console.log(elem);
+			$('#divControl').remove();
+
+			$('#taskDeadline').after(`<div class="form-group" id="divControl">
+								    <label for="formControlRange">Set Progress</label>
+								    <input type="range" class="form-control-range slider" id="formControlRange" style="width:50%;margin-left:auto;margin-right:auto;" value="${prog}" min="1" max="100">
+								  </div>`);
+			
 			
 		}else{
 			$('#divControl').remove();
@@ -1137,10 +1171,11 @@ ul{list-style-type:none;margin:0;padding:0;}
 		//GETTING THE DATE
 		let date = ['','',''];
 		let th = '';
+		console.log(v);
 		if (v.deadline) {
-			let date = v.deadline.split('-');
+			 date = v.deadline.split('-');
 
-			// console.log(v);
+			console.log(date);
 			let th = nth(date[2]);
 		}
 		console.log(date);
@@ -1276,7 +1311,7 @@ ul{list-style-type:none;margin:0;padding:0;}
 		let id = $('#taskID').val();
 		console.log(deadlineTask);
 		//CHECKING IF THE INPUT HAVE VALUES
-		if (id && descriptionTask && taskTitle && deadlineTask) {
+		if (id && descriptionTask && taskTitle) {
 				$.ajax({
             		type: "get",
 		            url: "{{ route('task.update') }}",
@@ -1289,7 +1324,7 @@ ul{list-style-type:none;margin:0;padding:0;}
 		            },
 		            success: function (s){
 		            	taskModelClose();
-		            	toastr.success("Created!!");
+		            	toastr.success("Edited!!");
 		            	loadSpecificTask(project.id, taskState);
 		                console.log(s);
 		                checkSort();

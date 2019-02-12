@@ -130,4 +130,11 @@ class TaskController extends Controller
         $task = Task::find($request->task_id);
         return $task->users;
     }
+
+    public function delete(Request $request){
+        $task = Task::find($request->task_id);
+        $task->users()->detach();
+        $task->delete();
+        return response()->json(['Task deleted']);
+    }
 }

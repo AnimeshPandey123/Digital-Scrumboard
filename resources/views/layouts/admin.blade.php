@@ -76,8 +76,18 @@
                     <a href="#" id="dropdown" class="nav_link" style="font-size:1.1em; ">
                         <i class="fas fa-bell"></i>
                     </a> 
-                    <a href="{{ route('profile') }}" class="profile_link">
-                        <img src="{{asset(auth()->user()->image)}}" alt="No Image" class="pic_logo">
+                   
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                    <a href="{{ route('logout') }}" class="profile_link"  onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                   
+                        <img id="navProfilePicture" 
+                         src="{{asset(auth()->user()->image)}}" 
+
+                         alt="No Image" class="pic_logo">
                         <span class="profile_text">
                             {{auth()->user()->name}}&nbsp;
                             <i class="fas fa-chevron-down"></i>
@@ -86,6 +96,7 @@
                 </h6>
             </div>
         </nav>
+
         <div class="container-fluid">
             <main id="mainContent" class="py-4">
                 @yield('content')

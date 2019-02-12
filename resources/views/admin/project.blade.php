@@ -339,6 +339,7 @@
 		            
 		            
 		            success: function (s){
+		            	console.log(s);
 		            	// $('#allProjects tbody').empty('');
 		            	$.each(s, function(k, v) {
 		            		appendToLatest(k, v);
