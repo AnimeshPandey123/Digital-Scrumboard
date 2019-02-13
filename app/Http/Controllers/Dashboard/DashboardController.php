@@ -41,12 +41,13 @@ class DashboardController extends Controller
         // dd(collect($completedTasks));
         // reset($completedTasks);
         $arr = [];
+        
+        $arr['task_completed']  = [];
+        $arr['created_project'] = [];
         if ($completedTasks)
         {
             # code...
 
-            $arr['task_completed']  = [];
-            $arr['created_project'] = [];
             // dd($arr['task_completed']);
 
             $recentDate                    = collect($completedTasks)->last()->updated_at->format('Y-M-d');
@@ -64,8 +65,10 @@ class DashboardController extends Controller
 
         if ($createdProjects)
         {
+            // dd($arr['created_project']);
             foreach ($createdProjects as $key => $value)
             {
+                // dd($value);
                 $created_at = Carbon::parse($value->created_at)->format('Y-M-d');
                 // dd($value);
                 // return $value;
