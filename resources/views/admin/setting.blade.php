@@ -111,7 +111,7 @@
 			  <div class="tab-pane container fade" id="custom">
 			  	<div class="text-center">
 			  		<div class="row">
-			  			<div class="col-md-6" onclick="setLight()">
+			  			<div class="col-md-6" onclick="setLight(this)">
 			  				<div class="light">
 			  					<div class="purp"></div>
 			  					<div class="row">
@@ -128,7 +128,7 @@
 			  					<div class="purp"></div>
 			  				</div>
 			  			</div>
-			  			<div class="col-md-6" onclick="setDark()">
+			  			<div class="col-md-6" onclick="setDark(this)">
 			  				<div class="dark">
 			  					<div class="purpa"></div>
 			  					<div class="row">
@@ -148,15 +148,12 @@
 			  		</div>
 			  		<br>
 			  		<div class="row">
-			  			<div class="col-md-6">
+			  			<div class="col-md-6" id="light">
 			  				Light Theme (Current)
 			  			</div>
-			  			<div class="col-md-6">
+			  			<div class="col-md-6" id="dark">
 			  				Dark Theme 
-			  				<button class="btn btn-sm btn-info bluebutton" style="margin-left:40px;">
-			  					<i class="fas fa-check"></i>&nbsp;
-			  					Apply
-			  				</button>
+			  				
 			  			</div>
 			  		</div>
 			  	</div>
@@ -298,6 +295,51 @@
 	            	url = '/'+url;
             		$('#imagesPrev').append(`<img src="${url}" alt="" class="pro_settings_prev">&nbsp;&nbsp;`);
             	});
+            	
+            },
+            error: function(e){
+            	console.log(e);
+            	toastr.error('Something went wrong');
+
+        	}
+	    });
+	}
+
+	function setLight(){
+		$('#dark').find('button').remove();
+		$('#light').find('button').remove();
+		$('body').css('background', '#fafafa');
+		$('#light').append(`<button class="btn btn-sm btn-info bluebutton" style="margin-left:40px;">
+			  					<i class="fas fa-check"></i>&nbsp;
+			  					Apply
+			  				</button>`);
+		setCustom('light');
+	}
+
+	function setDark(){
+		$('body').css('background', '#34495e');
+		$('#light').find('button').remove();
+		$('#dark').find('button').remove();
+		$('#dark').append(`<button class="btn btn-sm btn-info bluebutton" style="margin-left:40px;">
+			  					<i class="fas fa-check"></i>&nbsp;
+			  					Apply
+			  				</button>`);
+		setCustom('dark');
+	}
+
+	function setCustom(type){
+		$.ajax({
+    		type: "get",
+            url: "{{ route('update.theme') }}",
+            headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data:{
+            	type: type
+            },
+            
+            success: function (s){
+            	
             	
             },
             error: function(e){

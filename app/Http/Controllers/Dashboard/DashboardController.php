@@ -10,12 +10,12 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $user     = auth()->user();
+        $user = auth()->user();
         // dd($user);
         $projects = $user->createdProjects()->latest()->take(5)->get();
         // dd($projects);
-        $today    = new Carbon();
-        $tasks    = $user->tasks->where('deadline', '<', $today);
+        $today = new Carbon();
+        $tasks = $user->tasks->where('deadline', '<', $today);
         $tasks->sortByDesc('deadline');
         // dd($tasks);
         return view('admin.dashboard')->with('projects', $projects)->with('userPref', $user->userPreference)->with('tasks', $tasks);
@@ -41,7 +41,7 @@ class DashboardController extends Controller
         // dd(collect($completedTasks));
         // reset($completedTasks);
         $arr = [];
-        if ($completedTasks || $createdProjects)
+        if ($completedTasks)
         {
             # code...
 
@@ -58,6 +58,12 @@ class DashboardController extends Controller
 
                 $arr['task_completed'][$project->name][] = $value->id;
             }
+
+            // dd($arr);
+        }
+
+        if ($createdProjects)
+        {
             foreach ($createdProjects as $key => $value)
             {
                 $created_at = Carbon::parse($value->created_at)->format('Y-M-d');
@@ -69,7 +75,6 @@ class DashboardController extends Controller
                     'userCount'  => $value->userCount - 1,
                 ]);
             }
-            // dd($arr);
         }
         return $arr;
     }

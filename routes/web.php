@@ -62,7 +62,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
 
 	Route::get('user/recent/news', 'Dashboard\DashboardController@getRecents')->name('user.recent.recent');
 
-
+	Route::get('change/theme','User\UserController@updateTheme')->name('update.theme');
 	Route::get('/profile', function () {
 		return view('admin.profile');
 	})->name('profile');

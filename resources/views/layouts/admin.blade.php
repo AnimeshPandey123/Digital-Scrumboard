@@ -54,8 +54,16 @@
     <!-- Toastr Script -->
     <script src="{{ asset('js/toastr.min.js') }}"></script>
 
+
 </head>
-<body>
+<body style="background: @if(isset(auth()->user()->userPreference->theme))
+                            @if(auth()->user()->userPreference->theme == 'dark')
+                                #34495e
+                            @else
+                                #fafafa
+                            @endif
+                        @endif
+">
     <div id="app">
         <nav class="navbar navbar-expand-sm navi">
             <div class="container-fluid">

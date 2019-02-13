@@ -280,7 +280,7 @@
                         </div>
                 </div>
                 <div class="col-md-3">
-                        <img src="{{asset('images/me.png')}}" alt="" class="dev_pic">
+                        <img src="{{asset('images/Me.png')}}" alt="" class="dev_pic">
                         <div class="dev_name">
                         Nischal Kharel
                         <br><p class="dev_role">UI/UX and Frontend<p>

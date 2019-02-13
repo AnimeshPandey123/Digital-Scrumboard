@@ -81,4 +81,11 @@ class UserController extends Controller
             return response()->json('');
         }
     }
+
+    public function updateTheme(Request $request){
+        $user = auth()->user();
+
+        $user->userPreference->theme = $request->type;
+        $user->userPreference->save();
+    }
 }
