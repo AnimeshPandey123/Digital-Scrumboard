@@ -263,7 +263,7 @@
 						<div class="dsb_card">
 						  <div class="card-body {{$project->color}}">
 						  	<div class="text-center centerpox"> 
-						  		<i class="fas fa-graduation-cap bigicon align-middle"></i>
+						  		<i class="fas fa-{{$project->icon}} bigicon align-middle"></i>
 						  	</div>
 						  </div> 
 						  <div class="card-footer">{{$project->name}}</div>
@@ -421,7 +421,7 @@
 			            // $('#'+id).text();
 			   });
 	}
-	getRecent();
+	
 	function getRecent(){
 		let recent = $('#recents');
 		recent.empty(' ');
@@ -433,7 +433,6 @@
 			 },
 			 success: function (s){ 	
 			 	console.log(s);
-			 	console.log(s.created_project);
 			 	$.each(s['created_project'], function(i, v){
 			 		if (v) {
 			 			// console.log(v);
@@ -508,6 +507,7 @@
 			            // $('#'+id).text();
 			   });
 	}
+	getRecent();
 </script>
 <script type="text/javascript">
 	var newProjectUsers = [];
@@ -614,7 +614,7 @@
 						<div class="dsb_card">
 						  <div class="card-body ${v.color}">
 						  	<div class="text-center centerpox"> 
-						  		<i class="fas fa-graduation-cap bigicon align-middle"></i>
+						  		<i class="fas fa-${v.icon} bigicon align-middle"></i>
 						  	</div>
 						  </div> 
 						  <div class="card-footer">${v.name}</div>

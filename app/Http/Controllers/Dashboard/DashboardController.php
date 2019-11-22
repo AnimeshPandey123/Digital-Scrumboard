@@ -36,9 +36,18 @@ class DashboardController extends Controller
         $user = auth()->user();
         // $today = new Carbon();
 
-        $completedTasks  = $user->tasks->where('updated_at', '>=', Carbon::now()->subDays(5))->where('completed_by', $user->id)->sortBy('updated_at')->all();
-        $createdProjects = $user->createdProjects->where('created_at', '>=', Carbon::now()->subDays(1))->sortByDesc('created_at')->take(4)->all();
-        // dd(collect($completedTasks));
+        $completedTasks  = $user->tasks
+                                ->where('updated_at', '>=', Carbon::now()->subDays(5))
+                                ->where('completed_by', $user->id)
+                                ->sortBy('updated_at')
+                                ->all();
+
+        $createdProjects = $user->createdProjects
+                                ->where('created_at', '>=', Carbon::now()->subDays(1))
+                                ->sortByDesc('created_at')
+                                ->take(4)
+                                ->all();
+        // dd($completedTasks);
         // reset($completedTasks);
         $arr = [];
         
@@ -50,8 +59,10 @@ class DashboardController extends Controller
 
             // dd($arr['task_completed']);
 
-            $recentDate                    = collect($completedTasks)->last()->updated_at->format('Y-M-d');
+            $recentDate  = collect($completedTasks)->last()->updated_at->format('Y-M-d');
+
             $arr['task_completed']['date'] = $recentDate;
+
             foreach ($completedTasks as $key => $value)
             {
                 // dd($value->subject->project->id);

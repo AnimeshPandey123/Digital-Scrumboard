@@ -57,7 +57,7 @@ class User extends Authenticatable
         if ($this->userPreference->uploaded) {
             return $this->userPreference['picture_url'];
         }else{
-            return Storage::url($this->userPreference['picture_url']);
+            return $this->userPreference['picture_url'];
         }
         
     }
